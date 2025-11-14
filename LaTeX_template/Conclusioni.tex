@@ -1,0 +1,53 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Preamble ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[italian]{babel}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+% --- Main Document ---
+\begin{document}
+
+Dopo l'analisi si è concluso che il programma, per quanto valido nel suo lungo
+periodo di utilizzo, non è la soluzione per un'azienda che ha come obiettivo la
+crescita qualitativa e quantitativa. Il programma presenta problemi già
+descritti nelle sezioni precedenti, come problemi di sicurezza e affidabilità,
+oltre alla impossibilità di lavorare concorrentemente sul DB.\@ La manutenzione
+e correzione dello stesso non è una via percorribile; la scelta migliore è
+ripensare il tutto anche per unificare i codici in uso dai commerciali quelli
+dei reparti tecnici, riducendo i margini di errore successivi.\@
+
+\subsection{Proposte di Implementazione}
+\begin{itemize}
+      \item Riprogettare il database spostandolo su prodotti più moderni come ad esempio
+            SQL Server, con la possibilità di mantenere attiva la funzionalità di creare
+            offerte offline.
+      \item Ripensare tutta l'interfaccia front-end in un'ottica più vicina ai canoni della
+            User Experience, tenendo conto, dove possibile, anche dell'accessibilità.
+      \item Inserire un configuratore di prodotto in modo da ricreare le macchine vendute
+            con una corrispondenza 1:1 con quello che necessitano i tecnici in fase
+            progettuale post-vendita. L'azienda prevede come beneficio di tale strumento
+            una maggiore velocità in fase di vendita, ma soprattutto far fronte a tutte le
+            discrepanze gestionali con i reparti successivi al commerciale, snellendo così
+            tutti i processi.
+      \item Includere un configuratore 3D, conseguentemente al punto precedente, che
+            permetta di generare modelli preliminari delle macchine vendute da mostrare in
+            fase di vendita. La realizzazione di questo configuratore si potrebbe ottenere
+            appoggiandosi al programma di disegno tecnico Solid Work già in
+            uso~\cite{solidworks2025}.
+      \item A prescindere dall'infrastruttura, serve tenere conto del debito tecnico dei
+            programmi utilizzati per rendere il software aggiornabile e manutenibile nel
+            lungo periodo.
+\end{itemize}
+
+\end{document}

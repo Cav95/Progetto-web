@@ -1,0 +1,78 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Preamble ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[italian]{babel}
+\usepackage{float}
+\usepackage{url}
+\usepackage{subfiles}
+\usepackage{booktabs}
+
+\pagestyle{plain}
+
+% Document Information
+% ---------------------------------
+\title{Tirocinio Formativo}
+\author{Cavina Mattia}
+\date{\today} % or specify a date, e.g., \date{September 25, 2025}
+
+% --- Main Document ---
+\begin{document}
+
+% --- Title Page ---
+\maketitle
+
+% --- Sections ---
+\section{Introduzione}
+Il progetto di tirocinio era volto all'analisi di un applicativo, su base
+Microsoft Access, in uso dal reparto commerciale per gestire le vendite.
+L'applicativo è in uso da circa 30 anni è stato ampliato nel tempo senza una
+reale progettazione, portando a criticità e difficoltà di manutenzione. Il
+progetto è stato svolto per conto e presso la sede di Cepi S.p.A.~\cite{Cepi}.
+\section{Tecnologie}
+
+\subsection{Programmi utilizzati}
+\begin{itemize}
+    \item Microsoft Access
+    \item GitHub
+    \item Visual Studio
+    \item Lucidchart
+\end{itemize}
+
+\section{Attività}
+Le principali attività svolte sono:
+\begin{enumerate}
+    \item Individuare casi d'uso.\@
+    \item Intervistare utenti e progettista del DB raccogliendo eventuali criticità e
+          pregi.\@
+    \item Ricostruire e analizzare la struttura del DB.\@
+    \item Individuare criticità e pregi dell'applicativo.\@
+    \item Verificare se sono possibili operazioni correttive sullo stesso.\@
+    \item Proporre eventuali nuove tecnologie applicabili.
+\end{enumerate}
+
+%File Casi d'uso
+\subfile{UseCase.tex}
+\newpage
+%Aggiunta file con interviste
+\subfile{Domande.tex}
+
+%Aggiunta file con analisi tecnica
+\subfile{AnalisiTabelle.tex}
+
+%Conclusioni
+\section{Conclusioni}
+\subfile{Conclusioni.tex}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+% --- Table of Contents ---
+\tableofcontents
+
+\end{document}

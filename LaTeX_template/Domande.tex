@@ -1,0 +1,111 @@
+\documentclass[12pt, a4paper]{article}
+% --- Preamble ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[italian]{babel}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{subfiles}
+
+% --- Main Document ---
+\begin{document}
+
+\subsection{Interviste all'User ed Admin del Database}
+\subsubsection{Intervista all' Utente}
+
+\paragraph{Problematiche riscontrate:}
+Le problematiche si dividono in due macro argomenti: Sicurezza e Affidabilità.
+
+\subparagraph{Sicurezza:}
+\begin{itemize}
+      \item Possibilità di manomissione offerte altrui senza permessi e tracciamento della
+            modifica.\@
+      \item Possibilità per l'utente standard di manomettere manualmente le tabelle e
+            aggiungere utenti con relativa password.\@
+      \item L'anagrafica del Cliente deve essere scritta due volte sia per commessa che
+            assistenza; ciò comporta l'obbligo di creare manualmente due volte lo stesso
+            cliente.\@ \end{itemize}
+
+\subparagraph{Affidabilità:}
+\begin{itemize}
+      \item Il sistema si blocca facilmente se vengono eseguite più operazioni alla volta;
+            sono necessari riavvii del sistema per risolverlo. Comuni nella schermata di
+            Creazione Offerta (Figura:~\ref{fig:SchermataOfferta}) \@
+      \item Se presente la concorrenza di due persone su una stessa commessa il sistema si
+            blocca irrimediabilmente per tutti. Necessaria una uscita di tutti gli user dal
+            DB.\@
+      \item Non sono gestite le revisioni delle anagrafiche componenti e clienti, in caso
+            di modifica non c'è la possibilità di vedere cosa venduto con esattezza in una
+            certa data. Rimediato tenendo annualmente copie del DB.\@
+      \item Non presenti controlli e blocchi nella creazione di clienti ed offerte,
+            possibilità di creare copie dello stesso.\@
+\end{itemize}
+
+\begin{figure}[H]\label{fig:SchermataOfferta}
+      \centering
+      \includegraphics[width=0.8\textwidth]{../image/SchermataOfferta.png}
+      \caption{Schermata creazione Offerta}
+\end{figure}
+
+\subsubsection{Intervista Progettista}
+\begin{itemize}
+      \item \textbf{Anno di progettazione:} Il programma è stato impostato in una prima stesura nel 1995 e ultimato nel 1998.
+            La progettazione era partita da una base di contratti  svolti in Word.\@
+      \item \textbf{Tecnologie del tempo e motivazione utilizzo Access:} Al tempo era la
+            soluzione più comoda avendo a disposizione sia una interfaccia front-end che
+            backend.\@
+            Era disponibile sul mercato anche Oracle, ma non si adattava alle
+            esigenze aziendali.\@
+      \item \textbf{Logica costruzione delle Tabelle:} Le tabelle erano inizialmente
+            progettate con tutte le cardinalità e i criteri di gestione tipici di un
+            database RDBMS.\@
+            Nel tempo, però, molte caratteristiche strutturali sono
+            state perse a favore della flessibilità. Un esempio sono i vincoli
+            referenziali e le relazioni tra le tabelle, che oggi vengono ricostruite
+            solo mediante l'esecuzione di query.\@
+      \item \textbf{Ampliamenti avvenuti nel corso del tempo:} Il database è stato
+            modificato per far fronte sia a cambiamenti geopolitici, come
+            l'introduzione dell'euro e la gestione di paesi UE ed extra-UE, sia a
+            esigenze interne come la separazione dei ruoli tra venditori e riferimenti esterni
+            delle vendite.\@
+            Inizialmente i ruoli coincidevano, ma con l'aumento del
+            mercato è stato necessario suddividerli. Una modifica sostanziale è
+            stata lo spostamento di alcune tabelle dal back-end al front-end per
+            permettere l'importazione di valori da copie locali del database.\@
+      \item \textbf{Tecnologie utilizzate:}
+            \begin{itemize}
+                  \item \textbf{Access:} Utilizzato come front-end e back-end tramite il file \.mdb nativo di
+                        accesso dove raccoglie l'intero DB.\@
+                  \item \textbf{VBA:}\@ Utilizzato per richiamare le query all'interno delle maschere, scegliere
+                        DB esterni da importare.\@
+                  \item \textbf{Excel:} Utilizzato come tabella di frontiera per importare le offerte nel
+                        programma gestione aziendale (Ad-Hoc).\@
+            \end{itemize}
+      \item \textbf{Prove di modernizzazione:} Nel corso degli anni si è tentato di
+            modernizzare il programma mantenendo Access come front-end e SQL Server
+            come back-end, già in uso per altri applicativi aziendali. La migrazione tuttavia non
+            è stato possibile attuarla completamente a causa dei vincoli
+            di portabilità in aree senza connessione dati, funzione fondamentale per
+            la vendita in zone non coperte da Internet.
+      \item \textbf{Problemi attuali:}
+            \begin{itemize}
+                  \item I codici creati nelle offerte non corrispondono ai codici del gestionale
+                        utilizzato dalla totalità dell'azienda, causando problemi in fase progettuale e
+                        doganale che vanno risolti a posteriori.\@
+                  \item I contratti vengono revisionati su carta a mano e non sempre aggiornati nel
+                        database; manca un processo e una funzione per la revisione tecnica
+                        post-vendita.\@
+                  \item La manutenzione è facilitata dalla mancanza di vincoli, ma il sistema è nel
+                        complesso fragile e soggetto a blocchi.\@
+            \end{itemize}
+\end{itemize}
+
+\end{document}

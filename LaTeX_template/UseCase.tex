@@ -1,0 +1,116 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Preamble ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[italian]{babel}
+\usepackage{float}
+\usepackage{url}
+\usepackage{subfiles}
+\usepackage{booktabs}
+
+%\newcommand{\nuovaOff}{Creazione Offerta}
+
+% --- Main Document ---
+\begin{document}
+\subsection{Individuare Casi d’uso:}
+Di seguito riporto le tabelle dei casi d'uso attivi sull'applicativo divisi per
+tipologia utente, escludendo le azioni di pura consultazione.\@
+\begin{table}[H]
+      \scalebox{0.9}{
+            \begin{tabular}{l}
+                  \toprule
+                  \textbf{Azione}                         \\
+                  \midrule
+                  Creazione/Modifica Offerta Commessa     \\
+                  \midrule
+                  Creazione/Modifica Richiesta Assistenza \\
+                  \midrule
+                  Creazione/Modifica Clienti              \\
+                  \midrule
+                  Creazione/Modifica riferimenti Esterni  \\
+                  \bottomrule
+            \end{tabular}}
+
+      \caption{Casi d'uso Commerciali}\label{tab:TableCommEs}
+\end{table}
+
+\begin{table}[H]
+      \scalebox{0.9}{
+            \begin{tabular}{l}
+                  \toprule
+                  \textbf{Azione}                         \\
+                  \midrule
+                  Creazione/Modifica Offerta Commessa     \\
+                  \midrule
+                  Creazione/Modifica Richiesta Assistenza \\
+                  \midrule
+                  Creazione clienti                       \\
+                  \midrule
+                  Aggiungere Autori                       \\
+                  \midrule
+                  Creazione Agente                        \\
+                  \midrule
+                  Creazione Nazione                       \\
+                  \midrule
+                  Creazione Zone                          \\
+                  \midrule
+                  Aggiunta/Revisione Prodotti             \\
+                  \midrule
+                  Creazione riferimenti Esterni           \\
+                  \bottomrule
+            \end{tabular}}
+
+      \caption{Casi d'uso Commerciali Interni}\label{tab:TableComm}
+\end{table}
+
+\begin{table}[H]
+      \scalebox{0.9}{
+            \begin{tabular}{l}
+                  \toprule
+                  \textbf{Azione}                      \\
+                  \midrule
+                  Esportazione Contratti al Gestionale \\
+                  \bottomrule
+            \end{tabular}}
+
+      \caption{Casi d'uso Amministrazione}\label{tab:TableAmm}
+\end{table}
+
+L'admin oltre alle azione precedenti può inoltre tramite apposite maschere:
+\begin{table}[H]
+      \scalebox{0.9}{
+            \begin{tabular}{l}
+                  \toprule
+                  \textbf{Azione}                       \\
+                  \midrule
+                  Creazione/Modifica Corrieri           \\
+                  \midrule
+                  Creazione/Modifica Provvigioni        \\
+                  \midrule
+                  Creazione/Modifica prezzi prodotti    \\
+                  \midrule
+                  Creazione/Modifica Banche di Appoggio \\
+                  \midrule
+                  Creazione Lingue                      \\
+                  \bottomrule
+            \end{tabular}}
+
+      \caption{Casi d'uso Admin}\label{tab:Admin}
+\end{table}
+\paragraph{Nota:}
+Tutte le ulteriori azioni, come creazione query, modifica dell'applicativo e
+aggiunta valori esterni dalle maschere preimpostate, rimangono a carico dello
+sviluppatore interno.
+
+\begin{figure}[H]\label{fig:Schema Casi D Uso}
+      \centering
+      \includegraphics[width=1\textwidth]{../image/schemi/CasiDUso.png}
+      \caption{Schema Casi d'Uso}
+\end{figure}
+
+\end{document}

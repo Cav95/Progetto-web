@@ -1,0 +1,253 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Preamble ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[italian]{babel}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+
+% Document Information
+% ---------------------------------
+\title{Analisi delle Tabelle del Database Access}
+\author{Cavina Mattia}
+\date{November 5, 2025} % or specify a date, e.g., \date{September 25, 2025}
+
+% --- Main Document ---
+\begin{document}
+
+\subsection{Ricostruire ed analizzare struttura DB}
+\subsection{File Database}
+L'applicativo viene gestito con tre file:
+\begin{itemize}
+      \item \textbf{CepiDa2024.accdb:} Front-End per le offerte di nuove commesse. Al suo interno sono presenti anche tabelle del DB.\@
+      \item \textbf{INTERVDa2024.accdb:} Front-End per le richieste di assistenza, ovvero gestione ricambistica.
+      \item \textbf{INTERVDa2024\_be.accdb:} Back-End con tutte le tabelle del DB.\@
+\end{itemize}
+\subsubsection{Analisi delle tabelle DB}
+Di seguito elenco le tabelle presenti nel DB, indicando poi se sono ancora
+utilizzate o meno all'interno dell'applicativo.
+\begin{table}[H]
+      \scalebox{0.85}{
+            \begin{tabular}{lc}
+                  \toprule
+                  \textbf{Tabelle del Database Access} & \textbf{Attivo} \\
+                  \midrule
+                  Dettagli offerta                     & Sì              \\
+                  \midrule
+                  Dettagli offerte Optional            & Sì              \\
+                  \midrule
+                  Lingua\_Documenti                    & Sì              \\
+                  \midrule
+                  Montaggio                            & Sì              \\
+                  \midrule
+                  Offerte                              & Sì              \\
+                  \midrule
+                  Offerte\_titoli                      & Sì              \\
+                  \midrule
+                  Ordini                               & Sì              \\
+                  \midrule
+                  Agente                               & Sì              \\
+                  \midrule
+                  Autore offerta                       & Sì              \\
+                  \midrule
+                  Banche d'appoggio Cepi               & Sì              \\
+                  \midrule
+                  Categorie utilizzatori               & Sì              \\
+                  \midrule
+                  Causali                              & Sì              \\
+                  \midrule
+                  Clienti                              & Sì              \\
+                  \midrule
+                  Condizioni                           & Sì              \\
+                  \midrule
+                  Corrieri                             & Sì              \\
+                  \midrule
+                  Dettagli offerta 97                  & No              \\
+                  \midrule
+                  Dettagli offerta 98                  & No              \\
+                  \midrule
+                  Dettagli offerta 2002                & No              \\
+                  \midrule
+                  EX\_Prodotti\_08032022               & No              \\
+                  \midrule
+                  Lingue\_accessori                    & Sì              \\
+                  \midrule
+                  Nazioni                              & Sì              \\
+                  \midrule
+                  Offerte 97                           & No              \\
+                  \midrule
+                  Offerte 98                           & No              \\
+                  \midrule
+                  Offerte 2002                         & No              \\
+                  \midrule
+                  Pagamento                            & Sì              \\
+                  \midrule
+                  Prodotti                             & Sì              \\
+                  \midrule
+                  Riferimenti Esterni                  & Sì              \\
+                  \midrule
+                  Riferimenti Interni                  & Sì              \\
+                  \midrule
+                  Tabella di parità Euro               & Sì              \\
+                  \midrule
+                  tblPassword                          & Sì              \\
+                  \midrule
+                  Tipi di assistenza                   & Sì              \\
+                  \midrule
+                  Tipi di imballo                      & Sì              \\
+                  \midrule
+                  Tipi di percetuale Agente            & Sì              \\
+                  \midrule
+                  Tipi di resa                         & Sì              \\
+                  \midrule
+                  Utilizzatori                         & Sì              \\
+                  \midrule
+                  Zona                                 & Sì              \\
+                  \bottomrule
+            \end{tabular}}
+
+      \caption{Tabelle del database Access esistente}\label{tab:database-tables}
+\end{table}
+\subsubsection{Attributi tabelle Attive}
+Elenco di seguito gli attributi delle tabelle principalmente utilizzate.
+\begin{itemize}
+      \item\label{sec:Dettagli offerta}\textbf{Dettagli offerta} (ID offerta:OFFERTE, ID prodotto:PRODOTTI, \\
+            Posizione,Prezzo unitario euro, Prezzo unitario, Quantità, Volume, Altezza, Profondità,
+            Diametro, Lunghezza, Portata, Potenza installata, CosQuadro unit euro,
+            CosQuadro unit, CosQuadro unit noncoll euro, CosQuadro unit noncoll, Note,
+            Nuovo nome del prodotto, ID causale:CAUSALI, Comm, Data\_aggiuntiva\_no\_stampa,
+            Data\_aggiuntiva\_si\_stampa, Titolo\_riga, Sub\_totale\_offerta, Tipo,
+            Perc\_tipo, Visualizza\_Capitolo, Sub\_totale\_offerta\_listino)
+
+      \item\label{sec:Offerte}\textbf{Offerte} (ID offerta, ID cliente:CLIENTI, ID autore:AUTORE OFFERTA, \ ID agente:AGENTE,
+            Data Offerta, Rif utilizzatore, Spese trasporto,
+            Spese montaggio, Valutata offerta, Cambio, ID euro:TABELLA DI PARITA EURO, ID pagam:PAGAMENTO, Sconto 1 offerta, Sconto 2 offerta,
+            Sconto aggiuntivo, Note, Termini consegna,
+            Resa, Pagamento, Imballo, Corriere, Montaggio, Garanzia, Condizioni, Volt monofase, Hz monofase, Volt trifase, Hz trifase,
+            Data consegna, Validità offerta, Incidenza quadro, ID ordine:ORDINE, epilogo offerta,
+            Destinatario offerta, Destinatario Fax, Schema Allegato, Schema Allegato\_2, Schema Allegato\_3,\label{sec:SchemaAllegato}
+            ID tipo percentuale:TIPI PERCENTUALE AGENTE, fattura di evasione, Importo evaso, ID Banca:Banche d'appoggio cepi, Pagamento per Fatture,
+            offerta\_in\_valuta, rif comm, Esclusione, Direttiva\_atex, norme\_sanitarie, Visualizza\_descr\_aggiuntiva, DB\_provenienza, Titolo, Rif\_ord\_cli,
+            ValoreSconto0Agente, ValoreSconto1Agente, ValoreSconto2Agente, ValoreSconto3Agente, VerificaCapitolo, RIF\_1090, ID Tipo\_resa:TIPI DI RESA,
+            Offerta\_calda, Non\_importare\_HubSpot)
+
+      \item\label{sec:Prodotti}\textbf{Prodotti} (\underline{ID PRODOTTO}, Nome prodotto italia,Nome prodotto inglese, Nome prodotto francese, Nome prodotto tedesco,
+            Nome prodotto italiaspagnolo, Nome prodotto portoghese, Nome prodotto jolly,
+            Memo prodotto italia,Memo prodotto inglese, Memo prodotto francese, Memo prodotto tedesco, Memo prodotto spagnolo, Memo prodotto portoghese,
+            Memo prodotto jolly, Prezzo articolo, Prezzo articolo euro, Potenza installata,
+            Aria compressa, Volume imballo, Peso a vuoto, Volume, Altezza, Profondità, Diametro, Lunghezza, Portata, Costo quadro euro,
+            Costo quadro, costo quadro non collegato euro, Costo qudro non collegato,
+            Descrizione Manuale ita, Descrizione Manuale fra, Descrizione Manuale ing, Descrizione Manuale ted, Descrizione Manuale spa, Prezzo articolo euro ex, Tipo, perc\_tipo)
+
+      \item \textbf{Ordini} (\underline{ID Ordine}, SubID Ordine, ID Offerta.OFFERTA, Data ordine,
+            ID cliente:CLIENTI, ID pagamento:PAGAMENTO,
+            ID preventivo produzione, ID spedizionieri, Destinazione:UTILIZZATORI, Destinazione Indirizzo,
+            Destinazione CAP, Destinazione Città, Destinazione Prov, Destinazione Nazione, Destinazione Telefono, Destinazione Fax, Destinazione Zona,
+            Destinazione2\_ragione\_soc, Destinazione2\_indirizzo, Destinazione2\_tel, Destinazione2\_fax, Commessa,
+            Note ut, Etichetta, Data consegna, DataContratto, DataIscriz, DataTecnico, DataProg, DataProd, DataSpediz, DataMagaz, ID coriere:CORIERI,
+            ID tipo imballo:TIPI DI IMBALLO, ID tipo\_resa,:TIPI DI RESA, Note intervento, ID Tipo\_assistenza:TIPI ASSISTENZA,
+            Pervenuto\_a, Nominativo\_richiedente, Data cartella, Data evasione,  Tipo\_assistenza, N\_comm, Data fattura 1, Data fattura 2, Data fattura 3,
+            Data consegna ut, Manuale\_uso\_manu, Centraline\_WP, Supervisiore, Etichette,
+            Lingua\_manuale:LINGUE\_ACCESSORI, Lingua\_centraline:LINGUE\_ACCESSORI,\\
+            Lingua\_supervisore:LINGUE\_ACCESSORI, Lingua\_etichette:LINGUE\_ACCESSORI,
+            Data\_prev\_cons\_manuale, Data\_cons\_cliente\_manuale,
+            Note\_manuale, Etichette\_cepi\_altre, Dichiaraz\_dogana, Esporta\_adhoc, Rif\_ord\_cli)
+
+      \item \textbf{Causali} (\underline{ID causale}, Sigla, Descrizione)
+
+      \item \textbf{Clienti} (\underline{ID cliente}, Codice\_adhoc, Contatto, Posizione, Indirrizzo, CAP, Città, Prov, Zona:ZONA, Nazione:NAZIONI, Fax,
+            PIVA-CF, Banca, bancca Agenzia, banca ABI, Banca CAB, Sconto, Sconto2, Tipo valuta, perc dec trasp, perc dec mont,
+            Termini consegna, Resa, Pagamento, Imballo, Coriere, Montaggio, Garanzia,
+            Condizioni Aggiuntive, Monofase, Trifase, Frequenza, E-mail, Cellulare contatto, c\_ITA, c\_CEE, c\_ECEE, id riferimento interno:RIFERIMENTO INTERNO,
+            id riferimento esterno:RIFERIMENTO ESTERNO, Tipo\_cliente, Logo\_cliente\_sigla, RischioCliente,
+            StringaPagamentoRischio, Nome società, Ex\_nome\_SOC, Short\_name)
+
+      \item \textbf{Autore Offerta} (\underline{ID autore}, nome autore, sigla, firma)
+
+      \item \textbf{Agente} (\underline{ID agente}, nome agente, indirizzo, cap, città, prov, zona, tel)
+
+      \item \textbf{Pagamento} (\underline{ID pagam}, Descrizione pagamento)
+
+      \item \textbf{Utilizzatori} (ID utilizatori, Nome società, Contatto, Posizione, Indirizzo, CAP, Città, Prov, Zona:ZONA, Nazione:NAZIONI,
+            Telefono, fax, ID CATEGORIE UTILIZZATORE, PIVA-CF)
+
+      \item \textbf{Tipo Percentuale Agente} (\underline{ID tipo percentuale}, tipo di percentuale, Descrizione)
+
+      \item \textbf{Banche d'appoggio cepi} (\underline{ID Banca}, Sigla, Agenzia, ABI Telex, CAB Swift Code, C/C Count, IBAN)
+
+      \item \textbf{Tipi di resa} (\underline{ID Tipo resa}, Resa, Altro)
+\end{itemize}
+Dalla scrittura degli attributi si può notare che:
+\begin{itemize}
+      \item Non tutte le tabelle hanno chiavi assegnate.
+      \item Sono presenti più istanze di una sola tipologia di attributo che potrebbero
+            essere reificate in tabelle opportune, come l'attributo
+            \hyperref[sec:SchemaAllegato]{Schema Allegato} nella tabella Offerte.
+\end{itemize}
+
+\subsubsection{Analisi delle relazioni Dettagli Offerta}
+Si è scelto di analizzare la parte di DB relativa ai dettagli offerta
+(Fig:~\ref{fig:Dettagli Offerta Sch}) in quanto è la più utilizzata e
+consultata. Per ricostruirla, in assenza di cardinalità e collegamenti, si è
+sfruttato lo schema ricostruito tramite la query \textit{Informazioni dettagli
+      offerte}.
+
+\begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\textwidth]{../image/schemi/DettagliOfferta.png}
+      \caption{Schema Dettagli Offerta}\label{fig:Dettagli Offerta Sch}
+\end{figure}
+\subparagraph{Chiavi:}
+Dallo schema scheletro ricostruito tramite la query \textit{Informazioni
+      dettagli offerte} si nota come siano state eliminate le chiavi delle tabelle
+Offerte e Dettagli offerte. Questi riferimenti vengono ricostruiti solo in fase
+di join con le query.
+
+\subparagraph{Cardinalità:}
+Un altro dettaglio dallo schema ricostruito tramite query si nota come le
+cardinalità siano state rimosse. Dall'intervista al progettista era emerso come
+in una prima fase:
+\begin{itemize}
+      \item \textit{Prodotti} possano essere in $\infty$ \textit{Dettagli offerta}, ma un \textit{Dettagli offerta} corrisponde ad 1 \textit{Prodotti}
+      \item \textit{Dettagli Offerta} si riferisce ad un solo \textit{Offerta}, ma una \textit{Offerta} può avere $\infty$ \textit{Dettagli Offerta}
+\end{itemize}
+
+\subparagraph{Normalizzazioni tabelle:}
+Non essendoci chiavi di riferimento si deduce che il database non sia in prima
+forma normale. Di seguito impostando un correttivo riassegnando le chiavi
+originali, analizziamo se possa essere in almeno seconda forma normale,
+indicando nel caso le dipendenze transitive riscontrate.
+
+\begin{itemize}
+      \item \hyperref[sec:Offerte]{Offerte:} (Key: ID OFFERTA)
+            \begin{itemize}
+                  \item ID\_CLIENTE $\longrightarrow$ Destinatario Offerte, Destinatario Fax.
+                  \item ID\_AGENTE $\longrightarrow$ ValoreSconto0Agente, ValoreSconto1Agente,
+                        ValoreSconto2Agente, ValoreSconto3Agente.
+                  \item ID\_CLIENTE $\longrightarrow$ Volt, monofase, Hz monofase, Volt trifase, Hz
+                        trifase.
+            \end{itemize}
+      \item \hyperref[sec:Prodotti]{Prodotti:} (Key: ID PRODOTTO)
+            La tabella si può considerare in seconda forma normale data la chiave \textit{ID PRODOTTO}.
+
+      \item \hyperref[sec:Dettagli offerta]{Dettagli Offerta:}  (Key: ID OFFERTA, ID PRODOTTO)
+            \begin{itemize}
+                  \item ID PRODOTTO $\longrightarrow$ Volume, Altezza, Profondità, Diametro, Lunghezza,
+                        Portata, Potenza installata.
+            \end{itemize}
+
+\end{itemize}
+I problemi fatti riscontrati in queste tabelle, come la mancanza di cardinalità, chiavi e non normalizzazione, sono comuni ad altre tabelle analizzate come \textit{Ordini};
+si è voluto mostrare solo il caso più utilizzato.
+
+\end{document}
