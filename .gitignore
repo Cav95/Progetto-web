@@ -1,3 +1,4 @@
+# LaTeX intermediate and output files
 *.aux
 *.log
 *.out
@@ -5,8 +6,6 @@
 *.gz
 *.fdb*
 *.fls
-*.aux
-*.bbl
 *.blg
 *.xml
 *.bcf
