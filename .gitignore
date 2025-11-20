@@ -1,12 +1,2 @@
 # LaTeX intermediate and output files
-*.aux
-*.log
-*.out
-*.toc
-*.gz
-*.fdb*
-*.fls
-*.blg
-*.xml
-*.bcf
-*.bbl
+LaTeX*/build/
