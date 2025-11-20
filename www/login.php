@@ -21,7 +21,7 @@ if (isUserLoggedIn()) {
     exit;
 }
 
-$templateParams["title"] = "Login | Unibo Per Therapy";
+$templateParams["title"] = "Login | Unibo Pet Therapy";
 $templateParams["formaction"] = "Login";
 $templateParams["nome"] = "login-form.php";
     

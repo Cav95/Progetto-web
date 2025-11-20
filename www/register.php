@@ -21,7 +21,7 @@ if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["pass
 
 }
 
-$templateParams["title"] = "Registrati | Unibo Per Therapy";
+$templateParams["title"] = "Registrati | Unibo Pet Therapy";
 $templateParams["formaction"] = "Registrati";
 $templateParams["nome"] = "login-form.php";
     
