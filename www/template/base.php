@@ -24,7 +24,7 @@
               <a class="nav-link" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Animali</a>
+              <a class="nav-link" href="#">Pet</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -33,7 +33,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Nuova prenotazione</a></li>
-                <li><a class="dropdown-item" href="#">Cancella prenotazione</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Cancella prenotazione</a></li> -->
                 <li>
                   <hr class="dropdown-divider">
                 </li>
