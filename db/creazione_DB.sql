@@ -1,6 +1,7 @@
 -- Database Section
 -- ________________ 
 
+drop database if exists UniboPetTherapy;
 create database UniboPetTherapy;
 use UniboPetTherapy;
 
@@ -86,3 +87,43 @@ alter table Razze add constraint FKappartiene
      foreign key (ID_Specie)
      references Specie (ID_Specie);
 
+-- Popolamento tabelle
+
+INSERT INTO Utenti (E_Mail, Nome, Cognome, Immagine, Password, Bannato, Admin) VALUES
+('mattia.cavina2@studio.unibo.it', 'Mattia', 'Cavina', 'upload/profile/mattia.png', 'password123', false, true),
+('matteo.grandini@studio.unibo.it', 'Matteo', 'Grandini', 'upload/profile/matteo.png', 'password123', false, true),
+('luca@gmail.com', 'Luca', 'Verdi', 'upload/profile/luca.jpg', 'password123', false, false),
+('alice@gmail.com', 'Alice', 'Rossi', 'upload/profile/alice.jpg', 'password123', false, false);
+     
+INSERT INTO Specie (Nome) VALUES
+('Cane'),
+('Gatto');
+
+INSERT INTO Razze (Nome, ID_Specie) VALUES
+('Labrador', 1),
+('Barboncino', 1),
+('Siamese', 2),
+('Persiano', 2);
+
+INSERT INTO Stanze (Numero, Piano, Capienza) VALUES
+('A101', 1, 2),
+('B201', 2, 3),
+('C301', 3, 1);
+
+INSERT INTO Curiosita (Titolo, Descrizione) VALUES
+('Benefici della Pet Therapy', 'La pet therapy aiuta a ridurre stress e ansia in pazienti di tutte le età.'),
+('Addestramento Base', 'I nostri pet sono addestrati per interagire in modo sicuro con gli utenti.'),
+('Visite Programmate', 'Le visite si svolgono su prenotazione nelle stanze dedicate.');
+
+INSERT INTO Pet (Nome, DataDiNascita, Descrizione, Immagine, DescrizioneImmagine, Disponibile, ID_Razza) VALUES
+('Fido', '2019-06-01', 'Cane adulto di taglia media, pelo corto e sguardo vivace', 'upload/pet/dog_1.jpg', 'Cane seduto con lingua fuori', 1, 1),
+('Rocky', '2020-03-12', 'Cane di piccola taglia con pelo riccio, molto affettuoso', 'upload/pet/dog_2.jpg', 'Cane di piccola taglia in primo piano', 1, 2),
+('Max', '2017-10-05', 'Cane più anziano, tranquillo e adatto a terapie', 'upload/pet/dog_3.jpg', 'Cane sdraiato e rilassato', 0, 1),
+('Timmy', '2021-01-20', 'Gatto giovane, pelo tigrato, curioso e vivace', 'upload/pet/cat_1.jpg', 'Gatto tigrato che osserva', 1, 3),
+('Micia', '2018-08-14', 'Gatta dal pelo lungo, elegante e calma', 'upload/pet/cat_2.jpg', 'Gatta dal pelo lungo seduta', 1, 4),
+('Lulu', '2022-02-28', 'Gatto molto socievole e giocherellone', 'upload/pet/cat_3.jpg', 'Gatto in posizione di gioco', 1, 3),
+('Lui', '2020-11-11', 'Gatto calmo e affettuoso, adatto alle visite', 'upload/pet/cat_4.jpg', 'Gatto disteso su un cuscino', 1, 4);
+
+INSERT INTO Prenotazioni (Data, Ora, Utente, Stanza) VALUES
+('2025-12-01', '10:00:00', 'luca@gmail.com', 'A101'),
+('2025-12-02', '14:30:00', 'alice@gmail.com', 'B201');
