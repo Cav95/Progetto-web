@@ -1,9 +1,9 @@
 -- Database Section
 -- ________________ 
 
-drop database if exists UniboPetTherapy;
-create database UniboPetTherapy;
-use UniboPetTherapy;
+drop database if exists Unibo_Pet_Therapy;
+create database Unibo_Pet_Therapy;
+use Unibo_Pet_Therapy;
 
 -- Tables Section
 -- _____________ 
