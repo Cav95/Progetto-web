@@ -11,42 +11,7 @@
 
 <body class="container-fluid bg-body p-0 overflow-x-hidden">
   <header class="bg-warning p-4">
-    <nav class="navbar navbar-expand-md mb-3 bg-warning-subtle rounded">
-      <div class="container-fluid">
-        <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Apri navigazione">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pet</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Prenotazioni
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Nuova prenotazione</a></li>
-                <!-- <li><a class="dropdown-item" href="#">Cancella prenotazione</a></li> -->
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Vedi prenotazioni</a></li>
-              </ul>
-            </li>
-          </ul>
-          <form class="d-flex" action="#" method="POST">
-            <button class="btn btn-outline-dark" type="submit" name="logChange"><?php echo $templateParams["navbtn"]; ?></button>
-          </form>
-        </div>
-      </div>
-    </nav>
+    <?php include "navbar.php"; ?>
 
     <div class="row">
       <div class="col col-md-8">
@@ -69,7 +34,7 @@
       <aside>
         <h3 class="text-center my-3 h4">Curiosità</h3>
         <div class="row px-2 g-3">
-          
+
           <?php foreach ($templateParams["curiosita"] as $curiosita): ?>
           <div class="card col-12">
             <div class="card-body">

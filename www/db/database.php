@@ -9,9 +9,9 @@ class DatabaseHelper{
         }        
     }
 
-    // LOGIN
+    // LOGIN / REGISTRAZIONE -- DA RIFARE
     public function getUserPasswordHash($username): bool|string {
-        $query = "SELECT password FROM users WHERE username = ?;";
+        $query = "SELECT password FROM utenti WHERE e_mail = ?;";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$username);
         $stmt->execute();
@@ -21,7 +21,7 @@ class DatabaseHelper{
     }
 
     public function doesUserExist($username): bool {
-        $query = "SELECT username FROM users WHERE username = ?;";
+        $query = "SELECT e_mail FROM utenti WHERE e_mail = ?;";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$username);
         $stmt->execute();
@@ -31,7 +31,7 @@ class DatabaseHelper{
     }
 
     public function registerUser($username, $passwordHash): bool {
-        $query = "INSERT INTO users VALUES (?, ?);";
+        $query = "INSERT INTO utenti(e_mail, password) VALUES (?, ?);";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $passwordHash);
         return $stmt->execute();

@@ -1,6 +1,5 @@
 <?php
 require_once "bootstrap.php";
-require_once "navbar.php";
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     $hash = $dbh->getUserPasswordHash($_POST["username"]);
@@ -20,6 +19,9 @@ if (isUserLoggedIn()) {
     header("Location: index.php");
     exit;
 }
+
+// Base
+$templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 $templateParams["title"] = "Login | Unibo Pet Therapy";
 $templateParams["formaction"] = "Login";

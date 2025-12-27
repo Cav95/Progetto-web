@@ -1,6 +1,5 @@
 <?php
 require_once "bootstrap.php";
-require_once "navbar.php";
 
 if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["password_R"])) {
   $username = $_POST["username"];
@@ -20,6 +19,9 @@ if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["pass
   }
 
 }
+
+// Base
+$templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 $templateParams["title"] = "Registrati | Unibo Pet Therapy";
 $templateParams["formaction"] = "Registrati";
