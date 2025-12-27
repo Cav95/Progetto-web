@@ -67,44 +67,19 @@
     </div>
     <div class="col-lg-3 border-start border-2 px-3 pb-3">
       <aside>
-        <h3 class="text-center my-3 h4">Notizie</h3>
+        <h3 class="text-center my-3 h4">Curiosità</h3>
         <div class="row px-2 g-3">
-
+          
+          <?php foreach ($templateParams["curiosita"] as $curiosita): ?>
           <div class="card col-12">
             <div class="card-body">
-              <h5 class="card-title">Nuovi animali in arrivo!</h5>
-              <h6 class="card-subtitle mb-2 text-body-secondary">Data articolo: 16/11/2025</h6>
-              <p class="card-text">Da venerdì arriveranno a farci compagnia anche i cani Pippo e Pluto!</p>
-              <a href="#" class="card-link">Leggi tutto</a>
+              <h5 class="card-title"><?php echo $curiosita["titolo"]; ?></h5>
+              <p class="card-text"><?php echo $curiosita["descrizione"]; ?></p>
             </div>
           </div>
-          <div class="card col-12">
-            <div class="card-body">
-              <h5 class="card-title">Nuovi animali in arrivo!</h5>
-              <h6 class="card-subtitle mb-2 text-body-secondary">Data articolo: 16/11/2025</h6>
-              <p class="card-text">Da venerdì arriveranno a farci compagnia anche i cani Pippo e Pluto!</p>
-              <a href="#" class="card-link">Leggi tutto</a>
-            </div>
-          </div>
-          <div class="card col-12">
-            <div class="card-body">
-              <h5 class="card-title">Nuovi animali in arrivo!</h5>
-              <h6 class="card-subtitle mb-2 text-body-secondary">Data articolo: 16/11/2025</h6>
-              <p class="card-text">Da venerdì arriveranno a farci compagnia anche i cani Pippo e Pluto!</p>
-              <a href="#" class="card-link">Leggi tutto</a>
-            </div>
-          </div>
-          <div class="card col-12">
-            <div class="card-body">
-              <h5 class="card-title">Nuovi animali in arrivo!</h5>
-              <h6 class="card-subtitle mb-2 text-body-secondary">Data articolo: 16/11/2025</h6>
-              <p class="card-text">Da venerdì arriveranno a farci compagnia anche i cani Pippo e Pluto!</p>
-              <a href="#" class="card-link">Leggi tutto</a>
-            </div>
-          </div>
+          <?php endforeach; ?>
+          
         </div>
-        
-
       </aside>
     </div>
   </div>

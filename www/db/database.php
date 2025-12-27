@@ -9,6 +9,7 @@ class DatabaseHelper{
         }        
     }
 
+    // LOGIN
     public function getUserPasswordHash($username): bool|string {
         $query = "SELECT password FROM users WHERE username = ?;";
         $stmt = $this->db->prepare($query);
@@ -36,4 +37,13 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
+    // CURIOSITÀ
+    public function getRandomFacts($n): array {
+        $query = "SELECT titolo, descrizione FROM curiosita ORDER BY RAND() LIMIT ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
