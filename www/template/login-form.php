@@ -14,54 +14,34 @@
         <?php endif; ?>
         <form action="#" method="POST">
           <div class="form-floating mb-3">
-            <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
-            <label for="username" class="form-label">Username</label>
+            <input type="text" name="email" class="form-control" id="email" placeholder="Email" required>
+            <label for="email" class="form-label">Email</label>
           </div>
           <div class="form-floating mb-3">
             <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
             <label for="password" class="form-label">Password</label>
           </div>
-          <?php
-          switch ($templateParams["formaction"]):
-            case "Login":
-          ?>
-          <div class="form-check mb-3">
-            <input type="checkbox" class="form-check-input" name="remember" id="remember" checked disabled>
-            <label for="remember" class="form-check-label">Ricordami</label>
+          <div class="d-flex justify-content-end">
+            <input type="submit" id="submit" class="btn btn-primary my-3 px-3" value="<?php echo $templateParams["formaction"]; ?>">
           </div>
-          <?php
-          break;
-          case "Registrati":
-          ?>
-          <div class="form-floating mb-3">
-            <input type="password" name="password_R" class="form-control" id="password_R" placeholder="Ripeti password" required>
-            <label for="password_R" class="form-label">Ripeti password</label>
-          </div>
-          <?php
-          break;
-          endswitch;
-          ?>
-          <button type="submit" class="btn btn-primary mb-3"><?php echo $templateParams["formaction"]; ?></button>
         </form>
       </div>
-      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center g-sm-2">
-          <?php
-          switch ($templateParams["formaction"]):
-            case "Login":
-          ?>
-          <span>Non sei ancora registrato?</span>
-          <a href="register.php" class="btn btn-secondary">Registrati</a>
-          <?php
-          break;
-          case "Registrati":
-          ?>
-          <span>Sei già registrato?</span>
-          <a href="login.php" class="btn btn-secondary">Login</a>
-          <?php
-          break;
-          endswitch;
-          ?>
-      </div>
+        <?php
+        switch ($templateParams["formaction"]):
+          case "Login":
+        ?>
+        <span>Non sei ancora registrato?</span>
+        <a href="register.php" class="link-primary">Registrati</a>
+        <?php
+        break;
+        case "Registrati":
+        ?>
+        <span>Sei già registrato?</span>
+        <a href="login.php" class="link-primary">Login</a>
+        <?php
+        break;
+        endswitch;
+        ?>
     </div>
     
 
