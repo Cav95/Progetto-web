@@ -23,8 +23,11 @@ if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["pass
 // Base
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
+// Generic
 $templateParams["title"] = "Registrati | Unibo Pet Therapy";
-$templateParams["formaction"] = "Registrati";
 $templateParams["nome"] = "login-form.php";
+
+// Specific
+$templateParams["formaction"] = "Registrati";
     
 require "template/base.php";

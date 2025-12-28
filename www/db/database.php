@@ -1,49 +1,55 @@
 <?php
-class DatabaseHelper{
-    private $db;
+class DatabaseHelper
+{
+  private $db;
 
-    public function __construct($servername, $username, $password, $dbname, $port) {
-        $this->db = new mysqli($servername, $username, $password, $dbname, $port);
-        if ($this->db->connect_error) {
-            die("Connection failed: " . $this->db->connect_error);
-        }        
+  public function __construct($servername, $username, $password, $dbname, $port)
+  {
+    $this->db = new mysqli($servername, $username, $password, $dbname, $port);
+    if ($this->db->connect_error) {
+      die("Connection failed: " . $this->db->connect_error);
     }
+  }
 
-    // LOGIN / REGISTRAZIONE -- DA RIFARE
-    public function getUserPasswordHash($username): bool|string {
-        $query = "SELECT password FROM utenti WHERE e_mail = ?;";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s',$username);
-        $stmt->execute();
-        $result = $stmt->get_result();
+  // LOGIN / REGISTRAZIONE -- DA RIFARE
+  public function getUserPasswordHash($username): bool|string
+  {
+    $query = "SELECT password FROM utenti WHERE e_mail = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        return $result->fetch_column();
-    }
+    return $result->fetch_column();
+  }
 
-    public function doesUserExist($username): bool {
-        $query = "SELECT e_mail FROM utenti WHERE e_mail = ?;";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s',$username);
-        $stmt->execute();
-        $result = $stmt->get_result();
+  public function doesUserExist($email): bool
+  {
+    $query = "SELECT e_mail FROM utenti WHERE e_mail = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        return $result->fetch_column() ? true : false;
-    }
+    return $result->fetch_column() ? true : false;
+  }
 
-    public function registerUser($username, $passwordHash): bool {
-        $query = "INSERT INTO utenti(e_mail, password) VALUES (?, ?);";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username, $passwordHash);
-        return $stmt->execute();
-    }
+  public function registerUser($email, $name, $surname, $password_hash): bool
+  {
+    $query = "INSERT INTO utenti(e_mail, nome, cognome, password) VALUES (?, ?, ?, ?);";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('ssss', $email, $name, $surname, $password_hash);
+    return $stmt->execute();
+  }
 
-    // CURIOSITÀ
-    public function getRandomFacts($n): array {
-        $query = "SELECT titolo, descrizione FROM curiosita ORDER BY RAND() LIMIT ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $n);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
+  // CURIOSITÀ
+  public function getRandomFacts($n): array
+  {
+    $query = "SELECT titolo, descrizione FROM curiosita ORDER BY RAND() LIMIT ?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $n);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
 }
