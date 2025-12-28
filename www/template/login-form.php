@@ -3,15 +3,8 @@
     <h2 class="text-center h1 mb-3 card-header bg-body"><?php echo $templateParams["formaction"]; ?></h2>
     <div class="card-body">
       <div class="mb-3">
-        <?php if (isset($templateParams["errmsg"])): ?>
-          <div class="alert alert-warning">
-            <?php echo $templateParams["errmsg"]; ?>
-          </div>
-        <?php endif; if (isset($templateParams["infomsg"])): ?>
-          <div class="alert alert-success">
-            <?php echo $templateParams["infomsg"]; ?>
-          </div>
-        <?php endif; ?>
+        <div class="alert alert-warning d-none" id="alert-warning"></div>
+        <div class="alert alert-success d-none" id="alert-success"></div>
         <form action="#" method="POST">
           <div class="form-floating mb-3">
             <input type="text" name="email" class="form-control" id="email" placeholder="Email" required>
@@ -22,7 +15,7 @@
             <label for="password" class="form-label">Password</label>
           </div>
           <div class="d-flex justify-content-end">
-            <input type="submit" id="submit" class="btn btn-primary my-3 px-3" value="<?php echo $templateParams["formaction"]; ?>">
+            <input type="submit" class="btn btn-primary my-3 px-3" value="<?php echo $templateParams["formaction"]; ?>">
           </div>
         </form>
       </div>
