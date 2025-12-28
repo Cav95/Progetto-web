@@ -142,8 +142,20 @@ VALUES (
         'I nostri pet sono addestrati per interagire in modo sicuro con gli utenti.'
     ),
     (
-        'Visite Programmate',
-        'Le visite si svolgono su prenotazione nelle stanze dedicate.'
+        'Specie Adatte',
+        'Cani e gatti sono le specie più comunemente utilizzate nella pet therapy.'
+    ),
+    (
+        'I gatti hanno sviluppato il "miagolio" per noi',
+        'I gattini miagolano per attirare l attenzione della madre, ma i gatti adulti selvatici raramente miagolano tra loro (comunicano principalmente tramite odori, feromoni e linguaggio del corpo)..'
+    ),
+    (
+        'Importanza della Socializzazione',
+        'La socializzazione tra pet e utenti è cruciale per ottenere benefici terapeutici.'
+    ),
+    (
+        'Il naso del cane',
+        'Sapevi che il naso di un cane è unico, proprio come l impronta digitale di un essere umano? Se osservi da vicino il tartufo (il naso) del tuo cane, vedrai una serie di creste e fessure.'
     );
 
 INSERT INTO Pet (
