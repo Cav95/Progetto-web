@@ -1,9 +1,8 @@
 const alertWarning = document.querySelector("#alert-warning");
 const alertSuccess = document.querySelector("#alert-success");
-const form = document.forms[0];
+const form = document.querySelector("main form");
 
 form.addEventListener("submit", e => {
-  resetAlert();
   if (form.checkValidity()) {
     e.preventDefault();
     const password = document.querySelector("#password").value;

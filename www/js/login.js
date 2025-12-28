@@ -2,7 +2,6 @@ const alertWarning = document.querySelector("#alert-warning");
 const form = document.querySelector("main form");
 
 form.addEventListener("submit", e => {
-  resetAlert();
   if (form.checkValidity()) {
     e.preventDefault();
     const email = document.querySelector("#email").value;
