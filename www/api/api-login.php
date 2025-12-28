@@ -7,7 +7,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
   $hash = $dbh->getUserPasswordHash($_POST["email"]);
   $isPasswordValid = password_verify($_POST["password"], $hash);
   if (!$isPasswordValid) {
-    $result["errormsg"] = "Email o Password errati!";
+    $result["msg"] = "Email o Password errati!";
   } else {
     registerLoggedUser($_POST["email"]);
     $result["ok"] = true;

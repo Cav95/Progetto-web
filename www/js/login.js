@@ -2,15 +2,16 @@ const alertWarning = document.querySelector("#alert-warning");
 const form = document.querySelector("main form");
 
 form.addEventListener("submit", e => {
+  resetAlert();
   if (form.checkValidity()) {
     e.preventDefault();
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
-    login(email, password);
+    register(email, password);
   }
 });
 
-async function login(email, password) {
+async function register(email, password) {
   const url = "api/api-login.php";
   const formData = new FormData();
   formData.append("email", email);
@@ -27,15 +28,21 @@ async function login(email, password) {
     if (json["ok"]){
       window.location.reload();
     } else {
-      displayAlert(json["errormsg"]);
+      if (json["msg"] != null) {
+        displayWarning(json["msg"]);
+      }
     }
   } catch (error) {
     console.log(error.message);
   }
 }
 
-function displayAlert(message) {
-  alertWarning.innerText = message;
+function displayWarning(message) {
+  alertWarning.innerHTML = message;
   alertWarning.classList.remove("d-none");
   alertWarning.focus(true);
+}
+
+function resetAlert() {
+  alertWarning.classList.add("d-none");
 }
