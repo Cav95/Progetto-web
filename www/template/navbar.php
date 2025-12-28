@@ -8,7 +8,7 @@ if (isset($_POST["logChange"])) {
     exit;
 }
 
-$templateParams["navbtn"] = isUserLoggedIn() ? "Log out" : "Log in";
+$templateParams["navbtn"] = isUserLoggedIn() ? "Logout" : "Accedi";
 
 ?>
 

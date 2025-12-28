@@ -24,11 +24,10 @@ async function login(email, password) {
       throw new Error("Response status: " + response.status);
     }
     const json = await response.json();
-    console.log(json);
     if (json["ok"]){
       window.location.reload();
     } else {
-      displayAlert(json["errorelogin"]);
+      displayAlert(json["errormsg"]);
     }
   } catch (error) {
     console.log(error.message);
