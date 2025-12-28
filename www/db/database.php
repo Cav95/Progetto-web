@@ -11,21 +11,20 @@ class DatabaseHelper
     }
   }
 
-  // LOGIN / REGISTRAZIONE -- DA RIFARE
-  public function getUserPasswordHash($username): bool|string
+  // LOGIN / REGISTRAZIONE
+  public function getUser($email): array
   {
-    $query = "SELECT password FROM utenti WHERE e_mail = ?;";
+    $query = "SELECT * FROM utenti WHERE email = ?;";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param('s', $username);
+    $stmt->bind_param('s', $email);
     $stmt->execute();
     $result = $stmt->get_result();
-
-    return $result->fetch_column();
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 
   public function doesUserExist($email): bool
   {
-    $query = "SELECT e_mail FROM utenti WHERE e_mail = ?;";
+    $query = "SELECT email FROM utenti WHERE email = ?;";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param('s', $email);
     $stmt->execute();
@@ -36,7 +35,7 @@ class DatabaseHelper
 
   public function registerUser($email, $name, $surname, $password_hash): bool
   {
-    $query = "INSERT INTO utenti(e_mail, nome, cognome, password) VALUES (?, ?, ?, ?);";
+    $query = "INSERT INTO utenti(email, nome, cognome, password) VALUES (?, ?, ?, ?);";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param('ssss', $email, $name, $surname, $password_hash);
     return $stmt->execute();

@@ -1,6 +1,6 @@
 const alertWarning = document.querySelector("#alert-warning");
 const alertSuccess = document.querySelector("#alert-success");
-const form = document.querySelector("main form");
+const form = document.forms[0];
 
 form.addEventListener("submit", e => {
   resetAlert();
@@ -15,7 +15,7 @@ form.addEventListener("submit", e => {
     const email = document.querySelector("#email").value;
     const name = document.querySelector("#nome").value;
     const surname = document.querySelector("#cognome").value;
-    register(email, name, surname, password, passwordRepeat);
+    register(email, name, surname, password, passwordRepeat)
   }
 });
 
@@ -39,6 +39,7 @@ async function register(email, name, surname, password, passwordRepeat) {
     if (json["msg"] != null) {
       if (json["ok"]){
         displaySuccess(json["msg"]);
+        form.reset();
       } else {
         displayWarning(json["msg"]);
       }
@@ -52,12 +53,14 @@ function displaySuccess(message) {
   alertSuccess.innerHTML = message;
   alertWarning.classList.add("d-none");
   alertSuccess.classList.remove("d-none");
+  alertSuccess.focus();
 }
 
 function displayWarning(message) {
   alertWarning.innerHTML = message;
   alertSuccess.classList.add("d-none");
   alertWarning.classList.remove("d-none");
+  alertWarning.focus();
 }
 
 function resetAlert() {

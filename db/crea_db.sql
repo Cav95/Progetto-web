@@ -53,17 +53,17 @@ create table Stanze (
 
 create table Utenti (
     ID_Utente INT not null auto_increment,
-    E_Mail varchar(50) not null,
+    Email varchar(50) not null,
     Nome varchar(50) not null,
     Cognome varchar(50) not null,
     Password varchar(255) not null,
-    Bannato boolean not null,
-    Admin boolean not null,
+    Bannato boolean not null default 0,
+    Admin boolean not null default 0,
     constraint IDUtente primary key (ID_Utente)
 );
 
 alter table Utenti
-add constraint UniqueMail unique key `E_Mail` (`E_Mail`);
+add constraint UniqueMail unique key Email (Email);
 
 alter table Pet
 add constraint FKdi foreign key (ID_Razza) references Razze (ID_Razza);
@@ -78,7 +78,7 @@ alter table Razze
 add constraint FKappartiene foreign key (ID_Specie) references Specie (ID_Specie);
 
 -- TABLE POPULATION
-INSERT INTO Utenti (ID_Utente, E_Mail, Nome, Cognome, Password, Bannato, Admin)
+INSERT INTO Utenti (ID_Utente, Email, Nome, Cognome, Password, Bannato, Admin)
 VALUES (
         1,
         'matteo.grandini@studio.unibo.it',

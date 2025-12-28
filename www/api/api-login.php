@@ -4,14 +4,25 @@ require_once "../bootstrap.php";
 $result["ok"] = false;
 
 if (isset($_POST["email"]) && isset($_POST["password"])) {
-  $hash = $dbh->getUserPasswordHash($_POST["email"]);
-  $isPasswordValid = password_verify($_POST["password"], $hash);
-  if (!$isPasswordValid) {
+  $temp = $dbh->getUser($_POST["email"]);
+  if (count($temp) == 0) {
     $result["msg"] = "Email o Password errati!";
   } else {
-    registerLoggedUser($_POST["email"]);
-    $result["ok"] = true;
+    $user = $temp[0];
+    if ($user["Bannato"]) {
+      $result["msg"] = "Email o Password errati!";
+    } else {
+      $isPasswordValid = password_verify($_POST["password"], $user["Password"]);
+      if (!$isPasswordValid) {
+        $result["msg"] = "Email o Password errati!";
+      } else {
+        registerLoggedUser($user["Email"], $user["Nome"], $user["Cognome"], $user["Admin"]);
+        $result["ok"] = true;
+      }
+    }
+    
   }
+
 }
 
 header("Content-Type: application/json");
