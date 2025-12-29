@@ -21,9 +21,11 @@
         <li class="nav-item">
           <a class="nav-link" href="#">I nostri Pet</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Prenota sessione</a>
-        </li>
+        <?php if (!isLoggedUserAdmin()): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Prenota sessione</a>
+          </li>
+        <?php endif; ?>
         <?php if (isUserLoggedIn()): ?>
           <li class="nav-item">
             <a class="btn btn-outline-dark d-md-none" href="logout.php">Logout</a>
