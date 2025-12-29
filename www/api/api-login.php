@@ -16,7 +16,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
       if (!$isPasswordValid) {
         $result["msg"] = "Email o Password errati!";
       } else {
-        registerLoggedUser($user["Email"], $user["Nome"], $user["Cognome"], $user["Admin"]);
+        registerLoggedUser($user["ID_Utente"], $user["Email"], $user["Nome"], $user["Cognome"], $user["Admin"]);
         $result["ok"] = true;
       }
     }

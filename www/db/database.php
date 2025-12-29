@@ -51,4 +51,41 @@ class DatabaseHelper
     $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);
   }
+
+  // PRENOTAZIONI
+  public function getUserNextSessions($user_id): array {
+    $query = 
+      "SELECT id_prenotazione, DATE_FORMAT(data, '%d/%c/%Y') as data, TIME_FORMAT(ora, '%H:%i') as ora, stanza 
+       FROM prenotazioni 
+       WHERE utente = ?
+       AND data >= CURRENT_DATE()
+       AND ora >= CURRENT_TIME();
+    ";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+
+  public function getUserOfSession($app_id): array {
+    $query = 
+      "SELECT id_utente, nome, cognome FROM prenotazioni p, utenti u
+       WHERE p.utente = u.id_utente
+       AND p.id_prenotazione = ?;
+    ";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $app_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+
+  public function deleteSession($app_id): bool {
+    $query = "DELETE FROM prenotazioni WHERE id_prenotazione = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('i', $app_id);
+    return $stmt->execute();
+  }
+
 }

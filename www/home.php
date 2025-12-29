@@ -20,4 +20,7 @@ if (isLoggedUserAdmin()) {
   $templateParams["js"] = ["js/user-home.js"];
 }
 
+// Specific
+$templateParams["prenotazioni"] = $dbh->getUserNextSessions($_SESSION["userid"]);
+
 require "template/base.php";
