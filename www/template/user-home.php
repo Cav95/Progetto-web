@@ -33,13 +33,32 @@
             <?php echo $prenotazione["stanza"]; ?>
           </div>
           <div class="col-md d-flex align-items-center justify-content-end">
-            <button class="btn btn-danger" value="<?php echo $prenotazione["id_prenotazione"] ?>">Disdici appuntamento</button>
+            <button type="button" value="<?php echo $prenotazione["id_prenotazione"] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Disdici appuntamento</button>
           </div>
         </div>
       </div>
     <?php endforeach; ?>
   </div>
   <div class="col-md-1"></div>
+</div>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalLabel">Conferma cancellazione</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Sei sicuro di voler cancellare questa sessione?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+        <button type="button" id="delete-app" data-bs-dismiss="modal" class="btn btn-danger">Disdici</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 

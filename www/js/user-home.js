@@ -1,6 +1,12 @@
+const deleteAppBtn = document.querySelector("#delete-app");
+
+deleteAppBtn.addEventListener("click", e => {
+  cancelSession(e.target.value);
+});
+
 document.querySelectorAll("main button").forEach(btn => {
   btn.addEventListener("click", e => {
-    cancelSession(e.target.value);
+    deleteAppBtn.value = e.target.value;
   });
 });
 
