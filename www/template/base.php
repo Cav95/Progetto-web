@@ -14,11 +14,11 @@
     <?php include "navbar.php"; ?>
 
     <div class="row">
-      <div class="col col-md-8">
+      <div class="col col-md-4">
         <h1 class="visually-hidden">Unibo Pet Therapy</h1>
-        <a href="index.php"><img src="<?php echo DESIGN_IMG_DIR . "Titolo.png"; ?>" alt="Unibo Pet Therapy" class="img-fluid w-50"></a>
+        <a href="index.php"><img src="<?php echo DESIGN_IMG_DIR . "Titolo.png"; ?>" alt="Unibo Pet Therapy" class="img-fluid w-100"></a>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-8">
 
       </div>
     </div>
