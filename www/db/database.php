@@ -87,4 +87,12 @@ class DatabaseHelper
     return $stmt->execute();
   }
 
+  public function getPetList():array{
+    $query= "SELECT * FROM pet P ,razze R , specie S WHERE P.ID_Razza = R.ID_Razza  AND R.ID_Specie = S.ID_Specie;";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+
 }
