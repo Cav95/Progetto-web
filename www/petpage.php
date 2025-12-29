@@ -5,6 +5,6 @@ require_once "bootstrap.php";
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 $templateParams["title"] = "Unibo Pet Therapy";
-$templateParams["nome"] = "intro.php";
+$templateParams["js"] = array("js/petcard.js");
 
 require "template/base.php";

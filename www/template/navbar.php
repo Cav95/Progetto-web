@@ -23,7 +23,7 @@
             <?php endif; ?>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">I nostri Pet</a>
+          <a class="nav-link" href="petpage.php">I nostri Pet</a>
         </li>
         <?php if (!isLoggedUserAdmin()): ?>
           <li class="nav-item">

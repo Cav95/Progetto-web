@@ -27,7 +27,11 @@
   <div class="row g-0 bg-body-tertiary">
     <div class="col-lg-9 col">
       <main>
-        <?php include $templateParams["nome"]; ?>
+            <?php
+    if(isset($templateParams["nome"])){
+        require($templateParams["nome"]);
+    }
+    ?>
       </main>
     </div>
     <div class="col-lg-3 border-start border-2 px-3 pb-3">

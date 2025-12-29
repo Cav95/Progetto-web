@@ -12,7 +12,7 @@ create table Curiosita (
 
 create table Pet (
     ID_Pet int not null auto_increment,
-    Nome varchar(50) not null,
+    Nomepet varchar(50) not null,
     DataDiNascita date not null,
     Descrizione varchar(300) not null,
     Immagine varchar(255) not null,
@@ -33,14 +33,14 @@ create table Prenotazioni (
 
 create table Razze (
     ID_Razza int not null auto_increment,
-    Nome varchar(50) not null,
+    Nomerazza varchar(50) not null,
     ID_Specie int not null,
     constraint IDRAZZA primary key (ID_Razza)
 );
 
 create table Specie (
     ID_Specie int not null auto_increment,
-    Nome varchar(50) not null,
+    Nomespecie varchar(50) not null,
     constraint IDSPECIE primary key (ID_Specie)
 );
 
@@ -117,11 +117,11 @@ VALUES (
     );
     
 
-INSERT INTO Specie (Nome)
+INSERT INTO Specie (Nomespecie)
 VALUES ('Cane'),
     ('Gatto');
 
-INSERT INTO Razze (Nome, ID_Specie)
+INSERT INTO Razze (Nomerazza, ID_Specie)
 VALUES ('Labrador', 1),
     ('Barboncino', 1),
     ('Siamese', 2),
@@ -159,7 +159,7 @@ VALUES (
     );
 
 INSERT INTO Pet (
-        Nome,
+        Nomepet,
         DataDiNascita,
         Descrizione,
         Immagine,
