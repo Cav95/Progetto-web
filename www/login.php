@@ -2,7 +2,7 @@
 require_once "bootstrap.php";
 
 if (isUserLoggedIn()) {
-  header("Location: index.php"); // TODO Change to home.php
+  header("Location: home.php");
   exit;
 }
 
