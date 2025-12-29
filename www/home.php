@@ -12,6 +12,12 @@ $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 // Generic
 $templateParams["title"] = "Home | Unibo Pet Therapy";
-$templateParams["nome"] = isLoggedUserAdmin() ? "admin-home.php" : "user-home.php";
+if (isLoggedUserAdmin()) {
+  $templateParams["nome"] = "admin-home.php";
+  $templateParams["js"] = ["js/admin-home.js"];
+} else {
+  $templateParams["nome"] = "user-home.php";
+  $templateParams["js"] = ["js/user-home.js"];
+}
 
 require "template/base.php";
