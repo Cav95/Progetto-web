@@ -1,4 +1,7 @@
 <h2 class="text-center my-4 h2">Le mie prenotazioni</h2>
+<div class="d-flex justify-content-center mb-4">
+  <a href="#" class="btn btn-primary">Nuova prenotazione</a>
+</div>
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col col-md-10 vstack">

@@ -55,11 +55,10 @@ class DatabaseHelper
   // PRENOTAZIONI
   public function getUserNextSessions($user_id): array {
     $query = 
-      "SELECT id_prenotazione, DATE_FORMAT(data, '%d/%c/%Y') as data, TIME_FORMAT(ora, '%H:%i') as ora, stanza 
+      "SELECT id_prenotazione, DATE_FORMAT(data, '%d/%m/%Y') as data, TIME_FORMAT(ora, '%H:%i') as ora, stanza 
        FROM prenotazioni 
        WHERE utente = ?
-       AND data >= CURRENT_DATE()
-       AND ora >= CURRENT_TIME();
+       AND TIMESTAMP(data, ora) >= CURRENT_TIMESTAMP();
     ";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param("i", $user_id);
