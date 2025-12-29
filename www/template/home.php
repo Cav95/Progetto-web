@@ -18,6 +18,7 @@
   <p>La nostra associazione promuove servizi volti al miglioramento del benessere psicofisico della
     persona attraverso la relazione con gli animali a fini educativi e co-terapeutici, tramite Interventi Assistiti con
     Animali.</p>
+    <h3>A CHI È RIVOLTO?</h3>
   <p>In particolare ci preme aiutare gli studenti perchè la correlazione positiva si spiega con il meccanismo del
     conforto non giudicante. A differenza di professori,
     genitori o compagni di corso, l'animale non valuta la performance accademica dello studente. Questo offre una "pausa
