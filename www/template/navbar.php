@@ -16,7 +16,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-md-0 gap-md-3">
         <li class="nav-item">
-          <a class="nav-link" href="home.php">Home</a>
+          <?php if (!isUserLoggedIn()): ?>
+          <a class="nav-link" href="index.php">Home</a>
+          <?php else: ?>
+            <a class="nav-link" href="home.php">Home</a>
+            <?php endif; ?>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">I nostri Pet</a>
