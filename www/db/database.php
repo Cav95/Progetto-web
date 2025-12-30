@@ -92,6 +92,26 @@ class DatabaseHelper
     return $stmt->execute();
   }
 
+  public function getAvailableTimes($date): array {
+    $query =
+      "SELECT TIME_FORMAT(orario, '%H:%i') as orario 
+       FROM orari
+       WHERE orario not in (SELECT ora
+                            FROM prenotazioni
+                            WHERE data = ?)
+       AND TIMESTAMP(?, orario) > CURRENT_TIMESTAMP();
+    ";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("ss", $date, $date);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    $times = [];
+    foreach ($result as $time) {
+      $times[] = $time["orario"];
+    }
+    return $times;
+  }
+
   public function getPetList(): array
   {
     $query = "SELECT * FROM pet P ,razze R , specie S WHERE P.ID_Razza = R.ID_Razza  AND R.ID_Specie = S.ID_Specie;";

@@ -5,7 +5,6 @@ const timeChooser = document.querySelector("#ora");
 
 document.querySelector("#data").addEventListener('input', (e) => {
   if (e.target.checkValidity() && e.target.value !== "") {
-    timeChooser.disabled = false;
     setTimesForDate(e.target.value);
   } else {
     timeChooser.disabled = true;
@@ -23,11 +22,17 @@ form.addEventListener("submit", e => {
 });
 
 function buildTimes(times) {
+  if (times.length == 0) {
+    timeChooser.innerHTML = '<option>Nessun orario disponibile</option>';
+    timeChooser.disabled = true;
+    return;
+  }
   buffer = '';
   times.forEach(time => {
     buffer += `<option value="${time}">${time}</option>`;
   });
   timeChooser.innerHTML = buffer;
+  timeChooser.disabled = false;
 }
 
 async function setTimesForDate(date) {

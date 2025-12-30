@@ -27,7 +27,20 @@ switch ($_REQUEST["action"]) {
   
   // Create a PT session
   case 'create':
+    if (!isset($_REQUEST["app-date"]) || !isset($_REQUEST["app-time"])) {
+      http_response_code(400);
+      exit;
+    }
     // TODO
+    break;
+
+  // Get available times for a specific date
+  case 'time':
+    if (!isset($_REQUEST["date"])) {
+      http_response_code(400);
+      exit;
+    }
+    $result["times"] = $dbh->getAvailableTimes($_REQUEST["date"]);
     break;
 }
 
