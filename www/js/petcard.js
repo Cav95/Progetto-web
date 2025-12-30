@@ -10,8 +10,6 @@ function generaCard(petCard) {
         <a href="#" class="col-md-auto btn btn-primary allign-center">Aggiungi Pet</a>
           </div>
 </div>`
-
-        buttom = `<a href="#" class="btn btn-primary">Modifica Pet</a>`
     }
 
     result += addPetbuttom;
@@ -36,14 +34,22 @@ function generaCard(petCard) {
     <li><strong>Specie</strong>: ${petCard["pet"][i]["Nomespecie"]}</li>
     <li><strong>Disponibilità</strong>: ${disponibile} </li>
     </ul>
-    <div class="container text-center p-3">
+`;
+        if (petCard["isadmin"] && petCard["islogedin"]) {
+
+
+            card += `<div class="container text-center p-3">
         <div class="row justify-content-md-center">
-    ${buttom}
+        <a href="#" id="${petCard["pet"][i]["ID_Pet"]}"class="btn btn-primary">Modifica Pet</a>
+            </div>
     </div>
     </div>
-  </div>
-</div>
-        `;
+                        </div>`
+        }
+        else {
+            card += `  </div>
+                        </div>`
+        }
 
         result += card;
     }
