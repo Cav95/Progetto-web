@@ -8,6 +8,7 @@ if (!isUserLoggedIn()) {
 }
 
 // Base
+$templateParams["css"] = ["css/navbar.css"];
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 // Generic

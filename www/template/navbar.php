@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-md mb-3 bg-warning-subtle rounded">
   <div class="container-fluid">
+    <a class="navbar-brand d-none d-md-flex align-content-center" href="index.php">
+      <img src="<?php echo DESIGN_IMG_DIR . "Zampa_P.png"; ?>" alt="Logo" class="img-fluid logo">
+    </a>
     <button class="navbar-toggler me-auto border-0 px-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Apri navigazione">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,20 +19,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-md-0 gap-md-3">
         <li class="nav-item">
-          <?php if (!isUserLoggedIn()): ?>
-          <a class="nav-link" href="index.php">Home</a>
-          <?php else: ?>
-            <a class="nav-link" href="home.php">Home</a>
-            <?php endif; ?>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="petpage.php">I nostri Pet</a>
+          <a class="nav-link" href="#">
+            <?php echo isLoggedUserAdmin() ? "Gestisci Pet" : "I nostri Pet"; ?>
+          </a>
         </li>
         <?php if (!isLoggedUserAdmin()): ?>
           <li class="nav-item">
             <a class="nav-link" href="#">Prenota sessione</a>
           </li>
         <?php endif; ?>
+        <li class="nav-item">
+          <a class="nav-link" href="home.php">
+            <?php echo isLoggedUserAdmin() ? "Gestisci appuntamenti" : "Le tue prenotazioni"; ?>
+          </a>
+        </li>
         <?php if (isUserLoggedIn()): ?>
           <li class="nav-item">
             <a class="btn btn-outline-dark d-md-none" href="logout.php">Logout</a>

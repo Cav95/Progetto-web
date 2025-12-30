@@ -4,4 +4,4 @@ require_once "bootstrap.php";
 if (isUserLoggedIn()) {
   session_unset();
 }
-header("Location: login.php");
+header("Location: index.php");
