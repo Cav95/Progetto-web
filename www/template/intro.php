@@ -1,16 +1,3 @@
-<head>
-  <style>
-    #cane {
-      width: 90%;
-    }
-
-    @media screen and (min-width:768px) {
-      #cane {
-        width: 30%;
-      }
-    }
-  </style>
-</head>
 <h2 class="text-center my-3 h1">Home</h2>
 <div class="col-1"></div>
 <div class="col-md-10 offset-md-1 text-center">

@@ -6,6 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <?php
+  if(isset($templateParams["css"])):
+    foreach($templateParams["css"] as $sheet):
+  ?>
+    <link rel="stylesheet" href="<?php echo $sheet; ?>">
+  <?php
+    endforeach;
+  endif;
+  ?>
   <title><?php echo $templateParams["title"]; ?></title>
 </head>
 
@@ -16,7 +25,7 @@
     <div class="row">
       <div class="col col-md-4">
         <h1 class="visually-hidden">Unibo Pet Therapy</h1>
-        <img src="<?php echo DESIGN_IMG_DIR . "Titolo.png"; ?>" alt="Unibo Pet Therapy" class="img-fluid w-100">
+        <a href="index.php"><img src="<?php echo DESIGN_IMG_DIR . "Titolo.png"; ?>" alt="Unibo Pet Therapy" class="img-fluid w-100"></a>
       </div>
       <div class="col-md-8">
 

@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-md mb-3 bg-warning-subtle rounded">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">Unibo Pet Therapy</a>
+    <a class="navbar-brand d-none d-md-flex align-content-center" href="index.php">
+      <img src="<?php echo DESIGN_IMG_DIR . "Zampa_P.png"; ?>" alt="Logo" class="img-fluid logo">
+    </a>
     <button class="navbar-toggler me-auto border-0 px-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Apri navigazione">
       <span class="navbar-toggler-icon"></span>
     </button>
