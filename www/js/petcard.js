@@ -1,11 +1,24 @@
 function generaCard(petCard) {
     let result = "";
     let disponibile = "";
+    let buttom = "";
+    let addPetbuttom = "";
 
+    if (petCard["isadmin"] && petCard["islogedin"]) {
+        addPetbuttom = `<div class="container text-center">
+        <div class="row justify-content-md-center">
+        <a href="#" class="col-md-auto btn btn-primary allign-center">Aggiungi Pet</a>
+          </div>
+</div>`
+
+        buttom = `<a href="#" class="btn btn-primary">Modifica Pet</a>`
+    }
+
+    result += addPetbuttom;
     result += `<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 p-4" ></div>`
-    for (let i = 0; i < petCard.length; i++) {
+    for (let i = 0; i < petCard["pet"].length; i++) {
 
-        if (petCard[i]["Disponibile"] == 1) {
+        if (petCard["pet"][i]["Disponibile"] == 1) {
             disponibile = "Animale disponibile";
         }
         else {
@@ -14,22 +27,22 @@ function generaCard(petCard) {
 
         let card = `
 <div class="card float-start p-2" style="width: 18rem;">
-  <img src="${petCard[i]["Immagine"]}" class="card-img-top" alt="..." alt="${petCard[i]["Descrizioneimmagine"]}">
+  <img src="${petCard["pet"][i]["Immagine"]}" class="card-img-top" alt="..." alt="${petCard["pet"][i]["Descrizioneimmagine"]}">
   <div class="card-body">
-    <h5 class="card-title">${petCard[i]["Nomepet"]}</h5>
-    <p class="card-text">${petCard[i]["Descrizione"]}</p>
+    <h5 class="card-title">${petCard["pet"][i]["Nomepet"]}</h5>
+    <p class="card-text">${petCard["pet"][i]["Descrizione"]}</p>
     <ul>
-    <li><strong>Razza</strong>: ${petCard[i]["Nomerazza"]}</li>
-    <li><strong>Spiece</strong>: ${petCard[i]["Nomespecie"]}</li>
+    <li><strong>Razza</strong>: ${petCard["pet"][i]["Nomerazza"]}</li>
+    <li><strong>Specie</strong>: ${petCard["pet"][i]["Nomespecie"]}</li>
     <li><strong>Disponibilità</strong>: ${disponibile} </li>
     </ul>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    ${buttom}
   </div>
 </div>
         `;
-        
+
         result += card;
-        
+
     }
     result += `</div>`;
     return result;
