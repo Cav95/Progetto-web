@@ -5,7 +5,7 @@ function generaCard(petCard) {
     let addPetbuttom = "";
 
     if (petCard["isadmin"] && petCard["islogedin"]) {
-        addPetbuttom = `<div class="container text-center">
+        addPetbuttom = `<div class="container text-center p-3">
         <div class="row justify-content-md-center">
         <a href="#" class="col-md-auto btn btn-primary allign-center">Aggiungi Pet</a>
           </div>
@@ -27,7 +27,7 @@ function generaCard(petCard) {
 
         let card = `
 <div class="card float-start p-2" style="width: 18rem;">
-  <img src="${petCard["pet"][i]["Immagine"]}" class="card-img-top" alt="..." alt="${petCard["pet"][i]["Descrizioneimmagine"]}">
+  <img src="${petCard["pet"][i]["Immagine"]}" class="card-img-top img-rounded " id="cane" alt="${petCard["pet"][i]["Descrizioneimmagine"]}">
   <div class="card-body">
     <h5 class="card-title">${petCard["pet"][i]["Nomepet"]}</h5>
     <p class="card-text">${petCard["pet"][i]["Descrizione"]}</p>
@@ -36,13 +36,16 @@ function generaCard(petCard) {
     <li><strong>Specie</strong>: ${petCard["pet"][i]["Nomespecie"]}</li>
     <li><strong>Disponibilità</strong>: ${disponibile} </li>
     </ul>
+    <div class="container text-center p-3">
+        <div class="row justify-content-md-center">
     ${buttom}
+    </div>
+    </div>
   </div>
 </div>
         `;
 
         result += card;
-
     }
     result += `</div>`;
     return result;
