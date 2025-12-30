@@ -1,12 +1,18 @@
 const deleteAppBtn = document.querySelector("#delete-app");
+const newAppLink = document.querySelector("#new-app");
 
-deleteAppBtn.addEventListener("click", e => {
-  cancelSession(e.target.value);
+let appTodelete = -1;
+
+deleteAppBtn.addEventListener("click", () => {
+  if (appTodelete >= 0) {
+    cancelSession(appTodelete);
+    newAppLink.focus();
+  }
 });
 
 document.querySelectorAll("main button").forEach(btn => {
   btn.addEventListener("click", e => {
-    deleteAppBtn.value = e.target.value;
+    appTodelete = e.target.value;
   });
 });
 

@@ -1,5 +1,5 @@
 <div class="row justify-content-center bg-body-tertiary">
-  <div class="mb-1 col-md-6 p-3 card">
+  <div class="mb-1 mt-md-5 col-md-6 p-3 card">
     <h2 class="text-center h1 mb-3 card-header bg-body"><?php echo $templateParams["formaction"]; ?></h2>
     <div class="card-body">
       <div class="mb-3">
