@@ -1,11 +1,11 @@
 <?php
 require_once "bootstrap.php";
 
-$templateParams["css"] = ["css/navbar.css"];
-
 // Base
+$templateParams["css"] = ["css/navbar.css"];
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
+// Generic
 $templateParams["title"] = "Unibo Pet Therapy";
 $templateParams["js"] = array("js/petcard.js");
 

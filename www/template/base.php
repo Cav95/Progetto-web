@@ -20,7 +20,7 @@
 
 <body class="container-fluid bg-body p-0 overflow-x-hidden">
   <header class="bg-warning p-4">
-    <?php include "navbar.php"; ?>
+    <?php require "navbar.php"; ?>
 
     <div class="row">
       <div class="col col-md-4">
@@ -36,11 +36,11 @@
   <div class="row g-0 bg-body-tertiary">
     <div class="col-lg-9 col">
       <main>
-            <?php
-    if(isset($templateParams["nome"])){
-        require($templateParams["nome"]);
-    }
-    ?>
+        <?php
+        if (isset($templateParams["nome"])) {
+          require $templateParams["nome"];
+        }
+        ?>
       </main>
     </div>
     <div class="col-lg-3 border-start border-2 px-3 pb-3">
