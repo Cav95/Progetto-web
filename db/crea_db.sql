@@ -27,7 +27,7 @@ create table Prenotazioni (
     Data date not null,
     Ora time not null,
     Utente INT not null,
-    Stanza varchar(10) not null,
+    Luogo varchar(10) not null,
     constraint IDPRENOTAZIONE primary key (ID_Prenotazione)
 );
 
@@ -44,11 +44,12 @@ create table Specie (
     constraint IDSPECIE primary key (ID_Specie)
 );
 
-create table Stanze (
-    Numero varchar(10) not null,
+create table Luoghi (
+    Codice varchar(4) not null,
+    Nome varchar(50) not null,
     Piano int not null,
     Capienza int not null,
-    constraint IDSTANZA primary key (Numero)
+    constraint IDLUOGO primary key (Codice)
 );
 
 create table Utenti (
@@ -72,7 +73,7 @@ alter table Prenotazioni
 add constraint FKesegue foreign key (Utente) references Utenti (ID_Utente);
 
 alter table Prenotazioni
-add constraint FKin foreign key (Stanza) references Stanze (Numero);
+add constraint FKin foreign key (Luogo) references Luoghi (Codice);
 
 alter table Razze
 add constraint FKappartiene foreign key (ID_Specie) references Specie (ID_Specie);
@@ -127,10 +128,10 @@ VALUES ('Labrador', 1),
     ('Siamese', 2),
     ('Persiano', 2);
 
-INSERT INTO Stanze (Numero, Piano, Capienza)
-VALUES ('A101', 1, 2),
-    ('B201', 2, 3),
-    ('C301', 3, 1);
+INSERT INTO Luoghi (Codice, Nome, Piano, Capienza)
+VALUES ('A101', 'Aula 1.1', 1, 2),
+    ('A201', 'Aula 2.1', 2, 3),
+    ('C001', 'Cortile interno', 0, 10);
 
 INSERT INTO Curiosita (Titolo, Descrizione)
 VALUES (
@@ -231,7 +232,7 @@ VALUES (
         4
     );
 
-INSERT INTO Prenotazioni (Data, Ora, Utente, Stanza)
+INSERT INTO Prenotazioni (Data, Ora, Utente, Luogo)
 VALUES (
         '2025-12-01',
         '10:00:00',
@@ -242,23 +243,23 @@ VALUES (
         '2025-12-02',
         '14:30:00',
         4,
-        'B201'
+        'A201'
     ),
     (
         '2026-01-12',
         '14:00:00',
         3,
-        'B201'
+        'A201'
     ),
     (
         '2026-01-15',
         '09:30:00',
         3,
-        'A101'
+        'C001'
     ),
     (
         '2026-01-20',
         '10:00:00',
         4,
-        'B201'
+        'C001'
     );

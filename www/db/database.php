@@ -56,9 +56,10 @@ class DatabaseHelper
   public function getUserNextSessions($user_id): array
   {
     $query =
-      "SELECT id_prenotazione, DATE_FORMAT(p.data, '%d/%m/%Y') as data, TIME_FORMAT(p.ora, '%H:%i') as ora, stanza 
-       FROM prenotazioni p
-       WHERE utente = ?
+      "SELECT id_prenotazione, DATE_FORMAT(p.data, '%d/%m/%Y') as data, TIME_FORMAT(p.ora, '%H:%i') as ora, l.nome as luogo
+       FROM prenotazioni p, luoghi l
+       WHERE p.luogo = l.codice
+       AND utente = ?
        AND TIMESTAMP(p.data, p.ora) >= CURRENT_TIMESTAMP()
        ORDER BY p.data, p.ora;
     ";
