@@ -1,13 +1,13 @@
-<h2 class="text-center my-4 h2">Le mie prenotazioni</h2>
+<h2 class="text-center my-4 h2">Le tue prossime prenotazioni</h2>
 <div class="d-flex justify-content-center mb-4">
-  <a href="#" class="btn btn-primary">Nuova prenotazione</a>
+  <a href="#" class="btn btn-primary" id="new-app">Nuova prenotazione</a>
 </div>
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col col-md-10 vstack mx-md-0 mx-1">
     <?php foreach ($templateParams["prenotazioni"] as $prenotazione): ?>
       <div class="card mb-3 px-2 bg-dark text-white" id="<?php echo "app-" . $prenotazione["id_prenotazione"]; ?>">
-        <div class="card-body row gap-md-5">
+        <div class="card-body row gap-md-4">
           <div class="col-md-2 d-flex align-items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" role="img" width="16" height="16" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16" aria-labelledby="data-label">
               <title id="data-label">Data:</title>
@@ -33,7 +33,7 @@
             <?php echo $prenotazione["stanza"]; ?>
           </div>
           <div class="col-md d-flex align-items-center justify-content-end">
-            <button type="button" value="<?php echo $prenotazione["id_prenotazione"] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Disdici appuntamento</button>
+            <button type="button" value="<?php echo $prenotazione["id_prenotazione"] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Disdici prenotazione</button>
           </div>
         </div>
       </div>

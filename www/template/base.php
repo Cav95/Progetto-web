@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col col-md-4">
         <h1 class="visually-hidden">Unibo Pet Therapy</h1>
-        <a href="index.php"><img src="<?php echo DESIGN_IMG_DIR . "Titolo.png"; ?>" alt="Unibo Pet Therapy" class="img-fluid w-100"></a>
+        <img src="<?php echo DESIGN_IMG_DIR . "Titolo.png"; ?>" alt="Unibo Pet Therapy" class="img-fluid w-100">
       </div>
       <div class="col-md-8">
 
