@@ -1,6 +1,19 @@
 const alertWarning = document.querySelector("#alert-warning");
 const alertSuccess = document.querySelector("#alert-success");
 const form = document.querySelector("main form");
+const timeChooser = document.querySelector("#ora");
+
+document.querySelector("#data").addEventListener('input', (e) => {
+  if (e.target.checkValidity() && e.target.value !== "") {
+    timeChooser.disabled = false;
+    setTimesForDate(e.target.value);
+  } else {
+    timeChooser.disabled = true;
+    timeChooser.innerHTML = `
+      <option selected>Prima scegli una data</option>
+    `
+  }
+});
 
 form.addEventListener("submit", e => {
   if (form.checkValidity()) {
@@ -8,6 +21,31 @@ form.addEventListener("submit", e => {
     // TODO
   }
 });
+
+function buildTimes(times) {
+  buffer = '';
+  times.forEach(time => {
+    buffer += `<option value="${time}">${time}</option>`;
+  });
+  timeChooser.innerHTML = buffer;
+}
+
+async function setTimesForDate(date) {
+  const url = `api/api-appuntamenti.php?action=time&date=${date}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Response status: " + response.status);
+    }
+    const json = await response.json();
+    if (json["times"] == null) {
+      throw new Error("Error while retrieving available times");
+    }
+    buildTimes(json["times"]);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
 
 async function newPTSession(date, time) {
   const url = "api/api-appuntamenti.php";

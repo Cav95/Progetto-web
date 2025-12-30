@@ -15,7 +15,7 @@
             <div class="col mb-3">
               <div class="form-floating">
                 <select name="ora" id="ora" class="form-select" disabled>
-                  <option value="0" selected>Seleziona una data</option>
+                  <option value="0" selected>Prima scegli una data</option>
                   <!-- Options added with JS -->
                 </select>
                 <label for="ora" class="form-label">Orario</label>
