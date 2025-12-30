@@ -25,7 +25,7 @@
         </li>
         <?php if (!isLoggedUserAdmin()): ?>
           <li class="nav-item">
-            <a class="nav-link" href="#">Prenota sessione</a>
+            <a class="nav-link" href="nuova-prenotazione.php">Prenota sessione</a>
           </li>
         <?php endif; ?>
         <li class="nav-item">

@@ -53,8 +53,9 @@ class DatabaseHelper
   }
 
   // PRENOTAZIONI
-  public function getUserNextSessions($user_id): array {
-    $query = 
+  public function getUserNextSessions($user_id): array
+  {
+    $query =
       "SELECT id_prenotazione, DATE_FORMAT(p.data, '%d/%m/%Y') as data, TIME_FORMAT(p.ora, '%H:%i') as ora, stanza 
        FROM prenotazioni p
        WHERE utente = ?
@@ -68,8 +69,9 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
-  public function getUserOfSession($app_id): array {
-    $query = 
+  public function getUserOfSession($app_id): array|null
+  {
+    $query =
       "SELECT id_utente, nome, cognome FROM prenotazioni p, utenti u
        WHERE p.utente = u.id_utente
        AND p.id_prenotazione = ?;
@@ -78,18 +80,20 @@ class DatabaseHelper
     $stmt->bind_param("i", $app_id);
     $stmt->execute();
     $result = $stmt->get_result();
-    return $result->fetch_all(MYSQLI_ASSOC);
+    return $result->fetch_assoc();
   }
 
-  public function deleteSession($app_id): bool {
+  public function deleteSession($app_id): bool
+  {
     $query = "DELETE FROM prenotazioni WHERE id_prenotazione = ?;";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param('i', $app_id);
     return $stmt->execute();
   }
 
-  public function getPetList():array{
-    $query= "SELECT * FROM pet P ,razze R , specie S WHERE P.ID_Razza = R.ID_Razza  AND R.ID_Specie = S.ID_Specie;";
+  public function getPetList(): array
+  {
+    $query = "SELECT * FROM pet P ,razze R , specie S WHERE P.ID_Razza = R.ID_Razza  AND R.ID_Specie = S.ID_Specie;";
     $stmt = $this->db->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
