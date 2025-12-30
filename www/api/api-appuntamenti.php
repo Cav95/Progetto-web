@@ -24,14 +24,24 @@ switch ($_REQUEST["action"]) {
     }
     $result["ok"] = $dbh->deleteSession($_REQUEST["app-id"]);
     break;
-  
+
   // Create a PT session
   case 'create':
     if (!isset($_REQUEST["app-date"]) || !isset($_REQUEST["app-time"])) {
       http_response_code(400);
       exit;
     }
-    // TODO
+
+    // Check if is a valid date
+    $date = date_create_from_format('Y-m-d H:i', $_REQUEST["app-date"] . " " . $_REQUEST["app-time"]);
+    if (!$date || $date < new DateTime()) {
+      http_response_code(400);
+      exit;
+    }
+    $result["ok"] = $dbh->addReservation($_SESSION["userid"], $_REQUEST["app-date"], $_REQUEST["app-time"]);
+    $result["msg"] = $result["ok"]
+      ? "Prenotazione aggiunta correttamente! <a href='home.php'>Vedi prenotazioni</a>"
+      : "Errore imprevisto. Riprova più tardi.";
     break;
 
   // Get available times for a specific date

@@ -1,9 +1,11 @@
 const alertWarning = document.querySelector("#alert-warning");
 const alertSuccess = document.querySelector("#alert-success");
 const form = document.querySelector("main form");
-const timeChooser = document.querySelector("#ora");
 
-document.querySelector("#data").addEventListener('input', (e) => {
+const timeChooser = document.querySelector("#ora");
+const dateChooser = document.querySelector("#data");
+
+dateChooser.addEventListener('input', (e) => {
   if (e.target.checkValidity() && e.target.value !== "") {
     setTimesForDate(e.target.value);
   } else {
@@ -17,7 +19,7 @@ document.querySelector("#data").addEventListener('input', (e) => {
 form.addEventListener("submit", e => {
   if (form.checkValidity()) {
     e.preventDefault();
-    // TODO
+    newPTSession(dateChooser.value, timeChooser.value);
   }
 });
 
@@ -53,7 +55,7 @@ async function setTimesForDate(date) {
 }
 
 async function newPTSession(date, time) {
-  const url = "api/api-appuntamenti.php";
+  const url = "api/api-appuntamenti.php?action=create";
   const formData = new FormData();
   formData.append("app-date", date);
   formData.append("app-time", time);

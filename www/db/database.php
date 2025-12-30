@@ -112,6 +112,17 @@ class DatabaseHelper
     return $times;
   }
 
+  public function addReservation($user_id, $date, $time): bool {
+    $query = "INSERT INTO prenotazioni(data, ora, utente, luogo) 
+              VALUES (?, ?, ?, (SELECT codice 
+                                FROM luoghi 
+                                ORDER BY RAND() 
+                                LIMIT 1));";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('sss', $date, $time, $user_id);
+    return $stmt->execute();
+  }
+
   public function getPetList(): array
   {
     $query = "SELECT * FROM pet P ,razze R , specie S WHERE P.ID_Razza = R.ID_Razza  AND R.ID_Specie = S.ID_Specie;";

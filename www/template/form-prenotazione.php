@@ -8,7 +8,7 @@
           <div class="row row-cols-md-2 row-cols-1">
             <div class="col mb-3">
               <div class="form-floating">
-                <input type="date" name="data" class="form-control" id="data" placeholder="Data" min="<?php echo date("Y-m-d"); ?>" required>
+                <input type="date" name="data" class="form-control" id="data" placeholder="Data" required>
                 <label for="data" class="form-label">Data</label>
               </div>
             </div>

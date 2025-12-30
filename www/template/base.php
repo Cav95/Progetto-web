@@ -34,7 +34,7 @@
 
   </header>
   <div class="row g-0 bg-body-tertiary">
-    <div class="col-lg-9 col">
+    <div class="col-lg-9 col pb-4">
       <main>
         <?php
         if (isset($templateParams["nome"])) {
@@ -46,7 +46,7 @@
     <div class="col-lg-3 border-start border-2 px-3 pb-3">
       <aside>
         <h3 class="text-center my-3 h4">Curiosità</h3>
-        <div class="row px-2 g-3">
+        <div class="row px-2 g-3 pb-4">
 
           <?php foreach ($templateParams["curiosita"] as $curiosita): ?>
           <div class="card col-12">

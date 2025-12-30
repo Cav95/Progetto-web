@@ -1,6 +1,6 @@
 <h2 class="text-center my-4 h2">Le tue prossime prenotazioni</h2>
 <div class="d-flex justify-content-center mb-4">
-  <a href="#" class="btn btn-primary" id="new-app">Nuova prenotazione</a>
+  <a href="nuova-prenotazione.php" class="btn btn-primary" id="new-app">Nuova prenotazione</a>
 </div>
 <div class="row">
   <div class="col-md-1"></div>
