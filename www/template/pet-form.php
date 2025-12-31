@@ -10,10 +10,10 @@
             <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" autocomplete="given-name" required>
             <label for="nome" class="form-label">Nome</label>
           </div>
-          <div class="form-floating mb-3">
-            <input type="text" name="data-nascita" class="form-control" id="data-nascita" placeholder="data-nascita" autocomplete="family-name" required>
-            <label for="data-nascita" class="form-label">Data di Nascita</label>
-          </div>
+              <div class="form-floating mb-3">
+                <input type="date" name="data" class="form-control" id="data" placeholder="Data" required>
+                <label for="data" class="form-label">Data</label>
+              </div>
           <div>
             <select id="spec-sel" class="form-select form-select-sm mb-3" aria-label="Small select example">
               <option selected>Specie</option>               
