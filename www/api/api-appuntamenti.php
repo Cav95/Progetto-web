@@ -50,7 +50,18 @@ switch ($_REQUEST["action"]) {
       http_response_code(400);
       exit;
     }
+    $result["ok"] = true;
     $result["times"] = $dbh->getAvailableTimes($_REQUEST["date"]);
+    break;
+
+  // Get sessions from a specific date
+  case 'get':
+    if (!isset($_REQUEST["date"])) {
+      http_response_code(400);
+      exit;
+    }
+    $result["ok"] = true;
+    $result["sessions"] = $dbh->getPTSessionsFromDate($_REQUEST["date"]);
     break;
 }
 
