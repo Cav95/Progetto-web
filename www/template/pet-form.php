@@ -32,9 +32,18 @@
               <?php endforeach; ?>
             </select>
           </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" name="nome" class="form-control" id="Descrizione" placeholder="Descrizione" required>
+            <label for="Descrizione" class="form-label">Descrizione</label>
+          </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">Scegli Immagine Animale</label>
             <input class="form-control" type="file" id="pet-img">
+          </div>
+                    <div class="form-floating mb-3">
+            <input type="text" name="nome" class="form-control" id="Descrizione-img" placeholder="Descrizione Immagine" required>
+            <label for="Descrizione-img" class="form-label">Descrizione</label>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="disponibile">
