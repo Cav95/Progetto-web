@@ -31,6 +31,7 @@ async function getPTSessions(date) {
       throw new Error("Error while retrieving available times");
     }
     buildSessions(json["sessions"]);
+    window.history.replaceState({date: date}, "", `?date=${date}`);
   } catch (error) {
     console.log(error.message);
   }
@@ -74,3 +75,11 @@ function buildSessions(sessions) {
   });
   container.innerHTML = buffer;
 }
+
+const urlParams = new URLSearchParams(window.location.search);
+const dataUrl = urlParams.get('date');
+
+if (dataUrl) {
+  dateChooser.value = dataUrl;
+}
+changeDate(0);
