@@ -19,7 +19,7 @@
               <option selected>Specie</option>               
               <?php foreach ($templateParams["specie"] as $specie):
               ?>
-                <option value="<?php echo $specie["ID_Specie"]; ?>" id="<?php echo $specie["ID_Specie"]; ?>"><?php echo $specie["Nomespecie"]; ?></option>
+                <option value="<?php echo $specie["ID_Specie"]; ?>" id="nomespecie"><?php echo $specie["Nomespecie"]; ?></option>
               <?php endforeach; ?>
             </select>
           </div>
@@ -28,7 +28,7 @@
               <option selected>Razza</option>
               <?php foreach ($templateParams["razza"] as $razza):
               ?>
-                <option value="<?php echo $razza["ID_Razza"]; ?>" id="<?php echo $razza["ID_Razza"]; ?>"><?php echo $razza["Nomespecie"] . "-" . $razza["Nomerazza"]; ?></option>
+                <option value="<?php echo $razza["ID_Razza"]; ?>" id="nomerazza"><?php echo $razza["Nomespecie"] . "-" . $razza["Nomerazza"]; ?></option>
               <?php endforeach; ?>
             </select>
           </div>

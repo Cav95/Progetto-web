@@ -151,4 +151,25 @@ class DatabaseHelper
     $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);
   }
+
+  public function addPet($nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg): bool
+  {
+    $query = "INSERT INTO Pet (
+        Nomepet,
+        DataDiNascita,
+        Descrizione,
+        Immagine,
+        DescrizioneImmagine,
+        Disponibile,
+        ID_Razza
+    )
+VALUES (
+        ?,?,?,?,?,
+        1,
+        ?
+    )";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('sss', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $nomerazza,);
+    return $stmt->execute();
+  }
 }

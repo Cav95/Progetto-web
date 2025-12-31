@@ -5,27 +5,29 @@ const form = document.querySelector("main form");
 form.addEventListener("submit", e => {
   if (form.checkValidity()) {
     e.preventDefault();
-    const password = document.querySelector("#password").value;
-    const passwordRepeat = document.querySelector("#password-repeat").value;
-    if (password !== passwordRepeat) {
-      displayWarning("Le password inserite non corrispondono!");
-      return;
-    }
-    const email = document.querySelector("#email").value;
-    const name = document.querySelector("#nome").value;
-    const surname = document.querySelector("#cognome").value;
-    register(email, name, surname, password, passwordRepeat)
+    const nome = document.querySelector("#nome").value;
+    const datanascita = document.querySelector("#data-nascita").value;
+    const nomespecie = document.querySelector("#nomespecie").value;
+    const nomerazza = document.querySelector("#nomerazza").value;
+    const descrizione = document.querySelector("#Descrizione").value; 
+    const img = document.querySelector("#pet-img").value;
+    const descrizioneimg = document.querySelector("#Descrizione-img").value;
+    register(nome, datanascita, nomespecie, nomerazza, descrizione,img,descrizioneimg)
   }
 });
 
-async function register(email, name, surname, password, passwordRepeat) {
-  const url = "api/api-register.php";
+async function register(nome, datanascita, nomespecie, nomerazza, descrizione,img,descrizioneimg) {
+  const url = "api/api-addpet.php";
   const formData = new FormData();
-  formData.append("email", email);
-  formData.append("nome", name);
-  formData.append("cognome", surname);
-  formData.append("password", password);
-  formData.append("password-repeat", passwordRepeat);
+  formData.append("nome", nome);
+  formData.append("datanascita", datanascita);
+  formData.append("nomespecie", nomespecie);
+  formData.append("nomerazza", nomerazza);
+  formData.append("descrizione", descrizione);
+  formData.append("img", img);
+  formData.append("descrizioneimg", descrizioneimg);
+
+
   try {
     const response = await fetch(url, {
       method: "POST",
