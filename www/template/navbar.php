@@ -30,7 +30,7 @@
         <?php endif; ?>
         <li class="nav-item">
           <a class="nav-link" href="home.php">
-            <?php echo isLoggedUserAdmin() ? "Gestisci appuntamenti" : "Le tue prenotazioni"; ?>
+            <?php echo isLoggedUserAdmin() ? "Gestisci prenotazioni" : "Le tue prenotazioni"; ?>
           </a>
         </li>
         <?php if (isUserLoggedIn()): ?>

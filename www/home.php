@@ -27,6 +27,4 @@ if (isLoggedUserAdmin()) {
   $templateParams["prenotazioni"] = $dbh->getNextPTSessionsFromUser($_SESSION["userid"]);
 }
 
-
-
 require "template/base.php";
