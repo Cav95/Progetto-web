@@ -1,5 +1,5 @@
 <h2 class="text-center my-4 h2">Gestisci prenotazioni</h2>
-<div class="row row-cols-md-3 row-cols-12 mb-5 gx-5 gy-3 align-items-center">
+<div class="row row-cols-md-3 mb-5 gx-5 px-2 px-md-0 gy-3 align-items-center">
   <div class="col-6 col-md order-2 order-md-1">
     <div class="d-flex justify-content-end">
       <button class="btn btn-primary d-flex align-items-center gap-2" id="date-fwd">
@@ -10,7 +10,7 @@
       </button>
     </div>
   </div>
-  <div class="col mx-2 mx-md-0 order-first order-md-2">
+  <div class="col-12 col-md order-first order-md-2">
     <form action="#" method="POST">
       <div class="form-floating">
         <input type="date" name="data" class="form-control" id="data" placeholder="Data" value="<?php echo date("Y-m-d"); ?>" required>
