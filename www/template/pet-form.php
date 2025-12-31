@@ -50,9 +50,15 @@
             <label class="form-check-label" for="checkDefault">
               Disponibile
             </label>
-          </div>
-          <div class="d-flex justify-content-end">
+            <div>
+          </div class="col-auto">
+
+          <div class="d-flex justify-content-start col">
             <input type="submit" class="btn btn-primary my-3 px-3" value="<?php echo $templateParams["formaction"]; ?>">
+          </div>
+                      <div class="d-flex justify-content-end col">
+            <input type="submit" class="btn btn-primary my-3 px-3 bg-warning" value="Elimina">
+          </div>
           </div>
         </form>
       </div>
