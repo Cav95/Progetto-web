@@ -72,6 +72,10 @@ async function newPTSession(date, time) {
       if (json["ok"]){
         displaySuccess(json["msg"]);
         form.reset();
+        timeChooser.disabled = true;
+        timeChooser.innerHTML = `
+          <option selected>Prima scegli una data</option>
+        `
       } else {
         displayWarning(json["msg"]);
       }

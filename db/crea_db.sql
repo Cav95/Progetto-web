@@ -63,6 +63,11 @@ create table Utenti (
     constraint IDUtente primary key (ID_Utente)
 );
 
+CREATE TABLE Orari (
+    Orario time NOT NULL,
+    constraint PK_Orari primary key (Orario)
+);
+
 alter table Utenti
 add constraint UniqueMail unique key Email (Email);
 
@@ -263,3 +268,14 @@ VALUES (
         4,
         'C001'
     );
+
+INSERT INTO Orari (Orario)
+VALUES ('09:00:00'),
+    ('10:00:00'),
+    ('11:00:00'),
+    ('12:00:00'),
+    ('13:00:00'),
+    ('14:00:00'),
+    ('15:00:00'),
+    ('16:00:00'),
+    ('17:00:00');
