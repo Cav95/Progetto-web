@@ -11,6 +11,9 @@ $templateParams["nome"] = "pet-form.php";
 $templateParams["js"] = ["js/add-pet.js"];
 
 // Specific
-$templateParams["formaction"] = "Registrati";
+$templateParams["formaction"] = "Aggiungi";
+
+//Pet feuture
+$templateParams["specie"] = $dbh->getSpecie();
     
 require "template/base.php";

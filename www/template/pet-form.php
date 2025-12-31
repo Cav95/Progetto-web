@@ -6,52 +6,40 @@
         <div class="alert alert-warning d-none" id="alert-warning"></div>
         <div class="alert alert-success d-none" id="alert-success"></div>
         <form action="#" method="POST">
-          <?php if ($templateParams["formaction"] == "Registrati"): ?>
           <div class="form-floating mb-3">
             <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" autocomplete="given-name" required>
             <label for="nome" class="form-label">Nome</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" name="cognome" class="form-control" id="cognome" placeholder="Cognome" autocomplete="family-name" required>
-            <label for="cognome" class="form-label">Cognome</label>
+            <input type="text" name="data-nascita" class="form-control" id="data-nascita" placeholder="data-nascita" autocomplete="family-name" required>
+            <label for="data-nascita" class="form-label">Data di Nascita</label>
           </div>
-          <?php endif; ?>
-          <div class="form-floating mb-3">
-            <input type="text" name="email" class="form-control" id="email" placeholder="Email" autocomplete="email" required>
-            <label for="email" class="form-label">Email</label>
+          <div>
+            <select class="form-select form-select-sm" aria-label="Small select example">
+              <option selected>Specie</option>
+              <?php foreach ($templateParams["specie"] as $specie):
+              ?>
+                <option value="<?php echo $specie["ID_Specie"]; ?>"><?php echo $specie["Nomespecie"]; ?></option>
+              <?php endforeach; ?>
+            </select>
+
           </div>
-          <div class="form-floating mb-3">
-            <input type="password" name="password" class="form-control" id="password" placeholder="Password" autocomplete="<?php $templateParams["formaction"] == "Accedi" ? "current-password" : "new-password"; ?>" required>
-            <label for="password" class="form-label">Password</label>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Scegli Immagine Animale</label>
+            <input class="form-control" type="file" id="pet-img">
           </div>
-          <?php if ($templateParams["formaction"] == "Registrati"): ?>
-          <div class="form-floating mb-3">
-            <input type="password" name="password-repeat" class="form-control" id="password-repeat" placeholder="Ripeti password" autocomplete="new-password" required>
-            <label for="password-repeat" class="form-label">Ripeti password</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="disponibile">
+            <label class="form-check-label" for="checkDefault">
+              Disponibile
+            </label>
           </div>
-          <?php endif; ?>
           <div class="d-flex justify-content-end">
             <input type="submit" class="btn btn-primary my-3 px-3" value="<?php echo $templateParams["formaction"]; ?>">
           </div>
         </form>
       </div>
-        <?php
-        switch ($templateParams["formaction"]):
-        case "Accedi":
-        ?>
-          <span>Non sei ancora registrato?</span>
-          <a href="register.php" class="link-primary">Registrati</a>
-        <?php
-          break;
-        case "Registrati":
-        ?>
-          <span>Sei già registrato?</span>
-          <a href="login.php" class="link-primary">Accedi</a>
-        <?php
-          break;
-        endswitch;
-        ?>
+
     </div>
-    
   </div>
 </div>
