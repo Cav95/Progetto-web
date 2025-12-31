@@ -69,19 +69,22 @@ CREATE TABLE Orari (
 );
 
 alter table Utenti
-add constraint UniqueMail unique key Email (Email);
+add constraint Unique_Mail unique key Email (Email);
 
 alter table Pet
-add constraint FKdi foreign key (ID_Razza) references Razze (ID_Razza);
+add constraint FK_Razza foreign key (ID_Razza) references Razze (ID_Razza);
 
 alter table Prenotazioni
-add constraint FKesegue foreign key (Utente) references Utenti (ID_Utente);
+add constraint FK_Utente foreign key (Utente) references Utenti (ID_Utente);
 
 alter table Prenotazioni
-add constraint FKin foreign key (Luogo) references Luoghi (Codice);
+add constraint FK_Luogo foreign key (Luogo) references Luoghi (Codice);
+
+alter table Prenotazioni
+add constraint Unique_TimeSlot unique key (Data, Ora);
 
 alter table Razze
-add constraint FKappartiene foreign key (ID_Specie) references Specie (ID_Specie);
+add constraint FK_Specie foreign key (ID_Specie) references Specie (ID_Specie);
 
 -- TABLE POPULATION
 INSERT INTO Utenti (ID_Utente, Email, Nome, Cognome, Password, Bannato, Admin)
@@ -246,7 +249,7 @@ VALUES (
     ),
     (
         '2025-12-02',
-        '14:30:00',
+        '15:00:00',
         4,
         'A201'
     ),
@@ -258,7 +261,7 @@ VALUES (
     ),
     (
         '2026-01-15',
-        '09:30:00',
+        '09:00:00',
         3,
         'C001'
     ),
