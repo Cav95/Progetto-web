@@ -4,7 +4,7 @@ require_once "../bootstrap.php";
 $result["ok"] = false;
 
 if (isset($_POST["email"]) && isset($_POST["password"])) {
-  $temp = $dbh->getUser($_POST["email"]);
+  $temp = $dbh->getUserFromEmail($_POST["email"]);
   if (count($temp) == 0) {
     $result["msg"] = "Email o Password errati!";
   } else {

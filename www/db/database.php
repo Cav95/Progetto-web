@@ -12,7 +12,7 @@ class DatabaseHelper
   }
 
   // LOGIN / REGISTRAZIONE
-  public function getUser($email): array
+  public function getUserFromEmail($email): array
   {
     $query = "SELECT * FROM utenti WHERE email = ?;";
     $stmt = $this->db->prepare($query);
@@ -29,7 +29,6 @@ class DatabaseHelper
     $stmt->bind_param('s', $email);
     $stmt->execute();
     $result = $stmt->get_result();
-
     return $result->fetch_column() ? true : false;
   }
 
@@ -53,7 +52,7 @@ class DatabaseHelper
   }
 
   // PRENOTAZIONI
-  public function getUserNextSessions($user_id): array
+  public function getNextPTSessionsFromUser($user_id): array
   {
     $query =
       "SELECT id_prenotazione, DATE_FORMAT(p.data, '%d/%m/%Y') as data, TIME_FORMAT(p.ora, '%H:%i') as ora, l.nome as luogo
@@ -70,7 +69,24 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
-  public function getUserOfSession($app_id): array|null
+  public function getPTSessionsFromDate($date): array
+  {
+    $query =
+      "SELECT id_prenotazione, TIME_FORMAT(p.ora, '%H:%i') as ora, l.nome as luogo, utente, email
+       FROM prenotazioni p, luoghi l, utenti u
+       WHERE p.luogo = l.codice
+       AND p.utente = u.id_utente
+       AND p.data = ?
+       ORDER BY p.ora;
+    ";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("s", $date);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+
+  public function getUserOfSession($app_id): array|bool|null
   {
     $query =
       "SELECT id_utente, nome, cognome FROM prenotazioni p, utenti u
