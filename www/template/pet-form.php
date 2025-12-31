@@ -15,14 +15,19 @@
             <label for="data-nascita" class="form-label">Data di Nascita</label>
           </div>
           <div>
-            <select class="form-select form-select-sm" aria-label="Small select example">
+            <select id="spec-sel" class="form-select form-select-sm" aria-label="Small select example">
               <option selected>Specie</option>
               <?php foreach ($templateParams["specie"] as $specie):
               ?>
-                <option value="<?php echo $specie["ID_Specie"]; ?>"><?php echo $specie["Nomespecie"]; ?></option>
+                <option value="<?php echo $specie["ID_Specie"]; ?>" id="<?php echo $specie["ID_Specie"]; ?>"><?php echo $specie["Nomespecie"]; ?></option>
               <?php endforeach; ?>
             </select>
-
+          </div>
+                <div>
+            <select id="razza-sel" class="form-select form-select-sm" aria-label="Small select example">
+              <option selected>Razza</option>
+              <script src="js/pet-race.js"> </script>
+            </select>
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">Scegli Immagine Animale</label>

@@ -92,7 +92,8 @@ class DatabaseHelper
     return $stmt->execute();
   }
 
-  public function getAvailableTimes($date): array {
+  public function getAvailableTimes($date): array
+  {
     $query =
       "SELECT TIME_FORMAT(orario, '%H:%i') as orario 
        FROM orari
@@ -112,7 +113,8 @@ class DatabaseHelper
     return $times;
   }
 
-  public function addReservation($user_id, $date, $time): bool {
+  public function addReservation($user_id, $date, $time): bool
+  {
     $query = "INSERT INTO prenotazioni(data, ora, utente, luogo) 
               VALUES (?, ?, ?, (SELECT codice 
                                 FROM luoghi 
@@ -132,7 +134,7 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
-    public function getSpecie(): array
+  public function getSpecie(): array
   {
     $query = "SELECT * FROM specie S";
     $stmt = $this->db->prepare($query);
@@ -141,4 +143,13 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
+  public function getRace($idspecie): array
+  {
+    $query = "SELECT * FROM razza r where r.ID_Specie = ?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $idspecie);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
 }

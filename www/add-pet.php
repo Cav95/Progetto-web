@@ -15,5 +15,7 @@ $templateParams["formaction"] = "Aggiungi";
 
 //Pet feuture
 $templateParams["specie"] = $dbh->getSpecie();
+//$templateParams["js"][] = ["js/pet-race.js"];
+
     
 require "template/base.php";
