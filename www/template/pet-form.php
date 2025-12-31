@@ -15,7 +15,7 @@
             <label for="data-nascita" class="form-label">Data di Nascita</label>
           </div>
           <div>
-            <select id="spec-sel" class="form-select form-select-sm" aria-label="Small select example">
+            <select id="spec-sel" class="form-select form-select-sm mb-3" aria-label="Small select example">
               <option selected>Specie</option>
               <?php foreach ($templateParams["specie"] as $specie):
               ?>
@@ -24,7 +24,7 @@
             </select>
           </div>
           <div>
-            <select id="razza-sel" class="form-select form-select-sm" aria-label="Small select example">
+            <select id="razza-sel" class="form-select form-select-sm mb-3" aria-label="Small select example">
               <option selected>Razza</option>
               <?php foreach ($templateParams["razza"] as $razza):
               ?>
