@@ -145,7 +145,7 @@ class DatabaseHelper
 
   public function getRace(): array
   {
-    $query = "SELECT * FROM razze";
+    $query = "SELECT * FROM razze r , specie s where R.ID_Specie = S.ID_Specie; ";
     $stmt = $this->db->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
