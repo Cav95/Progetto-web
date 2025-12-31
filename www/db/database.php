@@ -136,18 +136,17 @@ class DatabaseHelper
 
   public function getSpecie(): array
   {
-    $query = "SELECT * FROM specie S";
+    $query = "SELECT * FROM specie";
     $stmt = $this->db->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
-  public function getRace($idspecie): array
+  public function getRace(): array
   {
-    $query = "SELECT * FROM razza r where r.ID_Specie = ?";
+    $query = "SELECT * FROM razze";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param("i", $idspecie);
     $stmt->execute();
     $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);

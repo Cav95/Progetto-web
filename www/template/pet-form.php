@@ -23,10 +23,13 @@
               <?php endforeach; ?>
             </select>
           </div>
-                <div>
+          <div>
             <select id="razza-sel" class="form-select form-select-sm" aria-label="Small select example">
               <option selected>Razza</option>
-              <script src="js/pet-race.js"> </script>
+              <?php foreach ($templateParams["razza"] as $razza):
+              ?>
+                <option value="<?php echo $razza["ID_Razza"]; ?>" id="<?php echo $razza["ID_Razza"]; ?>"><?php echo $razza["Nomerazza"]; ?></option>
+              <?php endforeach; ?>
             </select>
           </div>
           <div class="mb-3">
