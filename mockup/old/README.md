@@ -1,1 +1,0 @@
-NOTE: Old mockups kept for the exam
