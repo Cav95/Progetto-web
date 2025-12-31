@@ -2,32 +2,34 @@ const alertWarning = document.querySelector("#alert-warning");
 const alertSuccess = document.querySelector("#alert-success");
 const form = document.querySelector("main form");
 
+const nome = document.querySelector("#nome");
+const data = document.querySelector("#data");
+const nomespecie = document.querySelector("#nomespecie");
+const nomerazza = document.querySelector("#nomerazza");
+const descrizione = document.querySelector("#descrizione");
+const img = document.querySelector("#img");
+const descrizioneimg = document.querySelector("#descrizione-img");
+
+
 form.addEventListener("submit", e => {
   if (form.checkValidity()) {
     e.preventDefault();
-    const nome = document.querySelector("#nome").value;
-    const datanascita = document.querySelector("#data-nascita").value;
-    const nomespecie = document.querySelector("#nomespecie").value;
-    const nomerazza = document.querySelector("#nomerazza").value;
-    const descrizione = document.querySelector("#Descrizione").value; 
-    const img = document.querySelector("#pet-img").value;
-    const descrizioneimg = document.querySelector("#Descrizione-img").value;
-    register(nome, datanascita, nomespecie, nomerazza, descrizione,img,descrizioneimg)
+    newPetSession(nome.value, data.value,nomespecie.value ,nomerazza.value , descrizione.value ,img.value , descrizioneimg.value  );
   }
 });
 
-async function register(nome, datanascita, nomespecie, nomerazza, descrizione,img,descrizioneimg) {
-  const url = "api/api-addpet.php";
+
+
+async function newPetSession(nome, dateChooser,nomespecie,nomerazza, descrizione,img, descrizioneimg  ) {
+  const url = "api/api-addpet.php?action=create";
   const formData = new FormData();
   formData.append("nome", nome);
-  formData.append("datanascita", datanascita);
+  formData.append("data", data);
   formData.append("nomespecie", nomespecie);
   formData.append("nomerazza", nomerazza);
   formData.append("descrizione", descrizione);
-  formData.append("img", img);
+  formData.append("img", img);  
   formData.append("descrizioneimg", descrizioneimg);
-
-
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -41,6 +43,7 @@ async function register(nome, datanascita, nomespecie, nomerazza, descrizione,im
       if (json["ok"]){
         displaySuccess(json["msg"]);
         form.reset();
+        resetTimeChooser();
       } else {
         displayWarning(json["msg"]);
       }
