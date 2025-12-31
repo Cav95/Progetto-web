@@ -1,11 +1,19 @@
 const container = document.querySelector("#app-container");
+const form = document.querySelector("main form");
 const dateChooser = document.querySelector("#data");
 
-dateChooser.addEventListener("input", (e) => {
-  if (e.target.checkValidity() && e.target.value !== "") {
-    getPTSessions(e.target.value);
-  }
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  dateInputHandler();
 });
+
+dateChooser.addEventListener("input", dateInputHandler);
+
+function dateInputHandler() {
+  if (dateChooser.checkValidity() && dateChooser.value !== "") {
+    getPTSessions(dateChooser.value);
+  }
+}
 
 document.querySelector("#date-bwd").addEventListener("click", () => changeDate(-1));
 document.querySelector("#date-fwd").addEventListener("click", () => changeDate(+1));
@@ -67,13 +75,47 @@ function buildSessions(sessions) {
             <a href="user.php?id=${s["utente"]}" class="link-warning">${s["email"]}</a>
           </div>
           <div class="col-md-2 d-flex align-items-center justify-content-end mt-md-0 mt-3">
-            <button type="button" value="${s["id_prenotazione"]}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Elimina</button>
+            <button type="button" value="${s["id_prenotazione"]}" class="btn btn-danger delete-app" data-bs-toggle="modal" data-bs-target="#confirmModal">Elimina</button>
           </div>
         </div>
       </div>
     `
   });
   container.innerHTML = buffer;
+  document.querySelectorAll(".delete-app").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      appTodelete = e.target.value;
+    });
+  });
+}
+
+const title = document.querySelector("h2");
+let appTodelete = -1;
+
+document.querySelector("#delete-app-confirm").addEventListener("click", () => {
+  if (appTodelete >= 0) {
+    cancelSession(appTodelete);
+  }
+});
+
+async function cancelSession(id) {
+  const url = `api/api-appuntamenti.php?action=delete&app-id=${id}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Response status: " + response.status);
+    }
+    const json = await response.json();
+    if (json["ok"]) {
+      document.querySelector("#app-" + id).remove();
+      title.focus();
+      console.log("Prenotazione eliminata!");
+    } else {
+      throw new Error("Unable to delete session");
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 const urlParams = new URLSearchParams(window.location.search);

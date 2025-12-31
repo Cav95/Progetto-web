@@ -16,6 +16,7 @@
         <input type="date" name="data" class="form-control" id="data" placeholder="Data" value="<?php echo date("Y-m-d"); ?>" required>
         <label for="data" class="form-label">Data</label>
       </div>
+      <input type="submit" hidden>
     </form>
   </div>
   <div class="col-6 col-md order-last">
@@ -52,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-        <button type="button" id="delete-app" data-bs-dismiss="modal" class="btn btn-danger">Elimina</button>
+        <button type="button" id="delete-app-confirm" data-bs-dismiss="modal" class="btn btn-danger">Elimina</button>
       </div>
     </div>
   </div>

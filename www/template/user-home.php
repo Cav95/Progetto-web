@@ -33,7 +33,7 @@
             <?php echo $prenotazione["luogo"]; ?>
           </div>
           <div class="col-md d-flex align-items-center justify-content-end">
-            <button type="button" value="<?php echo $prenotazione["id_prenotazione"] ?>" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Disdici prenotazione</button>
+            <button type="button" value="<?php echo $prenotazione["id_prenotazione"] ?>" class="btn btn-danger delete-app" data-bs-toggle="modal" data-bs-target="#confirmModal">Disdici prenotazione</button>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-        <button type="button" id="delete-app" data-bs-dismiss="modal" class="btn btn-danger">Disdici</button>
+        <button type="button" id="delete-app-confirm" data-bs-dismiss="modal" class="btn btn-danger">Disdici</button>
       </div>
     </div>
   </div>

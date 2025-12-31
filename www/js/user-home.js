@@ -1,4 +1,4 @@
-const deleteAppBtn = document.querySelector("#delete-app");
+const deleteAppBtn = document.querySelector("#delete-app-confirm");
 const newAppLink = document.querySelector("#new-app");
 
 let appTodelete = -1;
@@ -9,7 +9,7 @@ deleteAppBtn.addEventListener("click", () => {
   }
 });
 
-document.querySelectorAll("main button").forEach(btn => {
+document.querySelectorAll(".delete-app").forEach(btn => {
   btn.addEventListener("click", e => {
     appTodelete = e.target.value;
   });
