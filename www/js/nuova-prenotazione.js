@@ -9,10 +9,7 @@ dateChooser.addEventListener('input', (e) => {
   if (e.target.checkValidity() && e.target.value !== "") {
     setTimesForDate(e.target.value);
   } else {
-    timeChooser.disabled = true;
-    timeChooser.innerHTML = `
-      <option selected>Prima scegli una data</option>
-    `
+    resetTimeChooser();
   }
 });
 
@@ -72,6 +69,7 @@ async function newPTSession(date, time) {
       if (json["ok"]){
         displaySuccess(json["msg"]);
         form.reset();
+        resetTimeChooser();
       } else {
         displayWarning(json["msg"]);
       }
@@ -79,6 +77,13 @@ async function newPTSession(date, time) {
   } catch (error) {
     console.log(error.message);
   }
+}
+
+function resetTimeChooser() {
+  timeChooser.disabled = true;
+  timeChooser.innerHTML = `
+    <option selected>Prima scegli una data</option>
+  `;
 }
 
 function displaySuccess(message) {
