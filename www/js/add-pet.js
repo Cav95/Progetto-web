@@ -7,7 +7,7 @@ const data = document.querySelector("#data");
 const nomespecie = document.querySelector("#nomespecie");
 const nomerazza = document.querySelector("#nomerazza");
 const descrizione = document.querySelector("#descrizione");
-const img = document.querySelector("#img");
+const img = document.querySelector("#pet-img");
 const descrizioneimg = document.querySelector("#descrizione-img");
 
 
@@ -20,7 +20,7 @@ form.addEventListener("submit", e => {
 
 
 
-async function newPetSession(nome, dateChooser,nomespecie,nomerazza, descrizione,img, descrizioneimg  ) {
+async function newPetSession(nome, data ,nomespecie,nomerazza, descrizione,img, descrizioneimg  ) {
   const url = "api/api-addpet.php?action=create";
   const formData = new FormData();
   formData.append("nome", nome);

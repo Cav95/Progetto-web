@@ -43,7 +43,7 @@
           </div>
                     <div class="form-floating mb-3">
             <input type="text" name="nome" class="form-control" id="descrizione-img" placeholder="Descrizione Immagine" required>
-            <label for="descrizione-img" class="form-label">Descrizione</label>
+            <label for="descrizione-img" class="form-label">Descrizione Immagine</label>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="disponibile">
