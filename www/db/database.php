@@ -152,6 +152,17 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
+    public function getRaceFromSpecie($id_specie): array
+  {
+    $query = "SELECT * FROM razze r , specie s where R.ID_Specie = S.ID_Specie and R.ID_Specie =?; ";
+    $stmt = $this->db->prepare($query);
+    
+    $stmt->bind_param('i', $id_specie);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+
   public function addPet($nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg): bool
   {
     $query = "INSERT INTO Pet (
@@ -169,7 +180,15 @@ VALUES (
         ?
     )";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param('sss', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $nomerazza,);
+    $stmt->bind_param('ssssss', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $nomerazza,);
+    return $stmt->execute();
+  }
+
+    public function deletePet($pet_id): bool
+  {
+    $query = "DELETE FROM pet WHERE ID_Pet = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('i', $pet_id);
     return $stmt->execute();
   }
 }

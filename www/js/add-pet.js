@@ -43,7 +43,38 @@ async function newPetSession(nome, dateChooser,nomespecie,nomerazza, descrizione
       if (json["ok"]){
         displaySuccess(json["msg"]);
         form.reset();
-        resetTimeChooser();
+      } else {
+        displayWarning(json["msg"]);
+      }
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+async function deletePetSession(nome, dateChooser,nomespecie,nomerazza, descrizione,img, descrizioneimg ) {
+  const url = "api/api-addpet.php?action=delete";
+  const formData = new FormData();
+  formData.append("nome", nome);
+  formData.append("data", data);
+  formData.append("nomespecie", nomespecie);
+  formData.append("nomerazza", nomerazza);
+  formData.append("descrizione", descrizione);
+  formData.append("img", img);  
+  formData.append("descrizioneimg", descrizioneimg);
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData
+    });
+    if (!response.ok) {
+      throw new Error("Response status: " + response.status);
+    }
+    const json = await response.json();
+    if (json["msg"] != null) {
+      if (json["ok"]){
+        displaySuccess(json["msg"]);
+        form.reset();
       } else {
         displayWarning(json["msg"]);
       }

@@ -3,31 +3,58 @@ require_once "../bootstrap.php";
 
 $result["ok"] = false;
 
-if (
-  isset($_POST["nome"]) && 
-  isset($_POST["datanascita"]) && 
-  isset($_POST["nomespecie"]) &&
-  isset($_POST["nomerazza"]) &&
-  isset($_POST["descrizione"])&&
-  isset($_POST["img"])&&
-  isset($_POST["descrizioneimg"])
-) {
-  $nome = $_POST["nome"];
-  $datanascita = $_POST["datanascita"];
-  $nomespecie = $_POST["nomespecie"];
-  $nomerazza = $_POST["nomerazza"];
-  $descrizione = $_POST["descrizione"];
-  $img =  $_POST["img"];
-  $descrizioneimg = $_POST["descrizioneimg"];
+if (!isset($_REQUEST["action"])) {
+  http_response_code(400);
+  exit;
+}
 
-      $r = $dbh->addPet($nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg);
-      if ($r) {
-        $result["ok"] = true;
-        $result["msg"] = "L'aggiunta del Pet avvenuta con successo";
-      } else {
-        $result["msg"] = "Abbiamo riscontrato un problema inaspettato. Riprova più tardi.";
+switch ($_REQUEST["action"]) {
+  // Delete a PT session
+  case 'delete':
+    if (!isset($_REQUEST["pet-id"])) {
+      http_response_code(400);
+      exit;
+    }
+    $app_owner = $dbh->getUserOfSession($_REQUEST["pet-id"]);
+    if ($app_owner != null) {
+      if (!$_SESSION["admin"] && $app_owner["id_utente"] !== $_SESSION["userid"]) {
+        http_response_code(403);
+        exit;
       }
     }
+    $result["ok"] = $dbh->deletePet($_REQUEST["pet-id"]);
+    break;
+
+  // Create a PT session
+  case 'create':
+    if (
+      !isset($_REQUEST["nome"]) || !isset($_REQUEST["data"])
+      || !isset($_REQUEST["nomepecie"])
+      || !isset($_REQUEST["nomerazza"])
+      || !isset($_REQUEST["descrizione"])
+      || !isset($_REQUEST["img"])
+      || !isset($_REQUEST["descrizioneimg"])
+    ) {
+      http_response_code(400);
+      exit;
+    }
+
+  
+    $result["ok"] = $dbh->addPet($_REQUEST["nome"], $_REQUEST["data"], $_REQUEST["nomerazza"] , $_REQUEST["descrizione"] , $_REQUEST["img"] , $_REQUEST["descrizioneimg"]);
+    $result["msg"] = $result["ok"]
+      ? "Prenotazione aggiunta correttamente! <a href='home.php'>Vedi prenotazioni</a>"
+      : "Errore imprevisto. Riprova più tardi.";
+    break;
+
+  // Get available times for a specific date
+  case 'razza':
+    if (!isset($_REQUEST["nomespecie"])) {
+      http_response_code(400);
+      exit;
+    }
+    $result["razza"] = $dbh->getRaceFromSpecie($_REQUEST["id-specie"]);
+    break;
+}
 
 header("Content-Type: application/json");
 echo json_encode($result);
