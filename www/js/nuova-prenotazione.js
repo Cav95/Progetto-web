@@ -35,7 +35,7 @@ function buildTimes(times) {
 }
 
 async function setTimesForDate(date) {
-  const url = `api/api-appuntamenti.php?action=time&date=${date}`;
+  const url = `api/api-appuntamenti.php?action=slots&for-date=${date}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {

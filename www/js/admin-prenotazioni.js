@@ -28,7 +28,7 @@ function changeDate(offestDays) {
 }
 
 async function getPTSessions(date) {
-  const url = `api/api-appuntamenti.php?action=get&date=${date}`;
+  const url = `api/api-appuntamenti.php?action=get&of-date=${date}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -39,7 +39,7 @@ async function getPTSessions(date) {
       throw new Error("Error while retrieving available times");
     }
     buildSessions(json["sessions"]);
-    window.history.replaceState({date: date}, "", `?date=${date}`);
+    window.history.replaceState({date: date}, "", `?of-date=${date}`);
   } catch (error) {
     console.log(error.message);
   }

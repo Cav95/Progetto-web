@@ -45,23 +45,23 @@ switch ($_REQUEST["action"]) {
     break;
 
   // Get available times for a specific date
-  case 'time':
-    if (!isset($_REQUEST["date"])) {
+  case 'slots':
+    if (!isset($_REQUEST["for-date"])) {
       http_response_code(400);
       exit;
     }
     $result["ok"] = true;
-    $result["times"] = $dbh->getAvailableTimes($_REQUEST["date"]);
+    $result["times"] = $dbh->getAvailableTimes($_REQUEST["for-date"]);
     break;
 
   // Get sessions from a specific date
   case 'get':
-    if (!isset($_REQUEST["date"])) {
+    if (!isset($_REQUEST["of-date"])) {
       http_response_code(400);
       exit;
     }
     $result["ok"] = true;
-    $result["sessions"] = $dbh->getPTSessionsFromDate($_REQUEST["date"]);
+    $result["sessions"] = $dbh->getPTSessionsFromDate($_REQUEST["of-date"]);
     break;
 }
 
