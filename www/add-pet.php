@@ -17,8 +17,27 @@ $templateParams["formaction"] = "Aggiungi";
 $templateParams["specie"] = $dbh->getSpecie();
 $templateParams["razza"] = $dbh->getRace();
 
-if(isset($_POST['pet-id'])){
-$templateParams["specificpet"] = $dbh->getSinglePet($_POST("pet-id"));
+if(isset($_REQUEST['pet-id'])){
+  $temp= $dbh->getSinglePet($_REQUEST['pet-id']);
+  $templateParams["specificpet"]["Nomepet"] = $temp[0]["Nomepet"];
+  $templateParams["specificpet"]["DataDiNascita"] = $temp[0]["DataDiNascita"];
+  $templateParams["specificpet"]["Nomespecie"] = $temp[0]["Nomespecie"];  
+  $templateParams["specificpet"]["Nomerazza"] = $temp[0]["Nomerazza"];
+  $templateParams["specificpet"]["Descrizione"] = $temp[0]["Descrizione"];
+  $templateParams["specificpet"]["Immagine"] = $temp[0]["Immagine"];
+  $templateParams["specificpet"]["DescrizioneImmagine"] = $temp[0]["DescrizioneImmagine"];
+  $templateParams["specificpet"]["Disponibile"] = $temp[0]["Disponibile"];
+
+}
+else{
+  $templateParams["specificpet"]["Nomepet"] = ""; 
+  $templateParams["specificpet"]["DataDiNascita"] = ""; 
+  $templateParams["specificpet"]["Nomespecie"] = "";    
+  $templateParams["specificpet"]["Nomerazza"] = "";   
+  $templateParams["specificpet"]["Descrizione"] = ""; 
+  $templateParams["specificpet"]["Immagine"] = ""; 
+  $templateParams["specificpet"]["DescrizioneImmagine"] = ""; 
+  $templateParams["specificpet"]["Disponibile"] = ""; 
 }
     
 require "template/base.php";

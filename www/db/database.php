@@ -151,7 +151,7 @@ class DatabaseHelper
   }
     public function getSinglePet($pet_id): array
   {
-    $query = "SELECT * FROM pet P ,razze R , specie S WHERE P.ID_Razza = R.ID_Razza  AND R.ID_Specie = S.ID_Specie and P_ID_Pet = ?;";
+    $query = "SELECT * FROM pet P ,razze R , specie S WHERE P.ID_Razza = R.ID_Razza  AND R.ID_Specie = S.ID_Specie and P.ID_Pet = ?;";
     $stmt = $this->db->prepare($query);    
     $stmt->bind_param('i', $pet_id);
     $stmt->execute();

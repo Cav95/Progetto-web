@@ -7,16 +7,16 @@
         <div class="alert alert-success d-none" id="alert-success"></div>
         <form action="#" method="POST">
           <div class="form-floating mb-3">
-            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" autocomplete="given-name" value="" required>
+            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" autocomplete="given-name" value="<?php echo $templateParams["specificpet"]["Nomepet"];?>" required>
             <label for="nome" class="form-label">Nome</label>
           </div>
               <div class="form-floating mb-3">
-                <input type="date" name="data" class="form-control" id="data" placeholder="Data" required>
+                <input type="date" name="data" class="form-control" id="data" placeholder="Data" value="<?php echo $templateParams["specificpet"]["DataDiNascita"];?>" required>
                 <label for="data" class="form-label">Data</label>
               </div>
           <div>
             <select id="spec-sel" class="form-select form-select-sm mb-3" aria-label="Small select example">
-              <option selected>Specie</option>               
+              <option selected><?php echo $templateParams["specificpet"]["Nomespecie"];?></option>               
               <?php foreach ($templateParams["specie"] as $specie):
               ?>
                 <option value="<?php echo $specie["ID_Specie"]; ?>" id="nomespecie"><?php echo $specie["Nomespecie"]; ?></option>
@@ -25,7 +25,7 @@
           </div>
           <div>
             <select id="razza-sel" class="form-select form-select-sm mb-3" aria-label="Small select example">
-              <option selected>Razza</option>
+              <option selected><?php echo $templateParams["specificpet"]["Nomerazza"];?></option>
               <?php foreach ($templateParams["razza"] as $razza):
               ?>
                 <option value="<?php echo $razza["ID_Razza"]; ?>" id="nomerazza"><?php echo $razza["Nomespecie"] . "-" . $razza["Nomerazza"]; ?></option>
@@ -34,19 +34,19 @@
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" name="descrizione" class="form-control" id="descrizione" placeholder="Descrizione" required>
+            <input type="text" name="descrizione" class="form-control" id="descrizione" placeholder="Descrizione" value="<?php echo $templateParams["specificpet"]["Descrizione"];?>"required>
             <label for="descrizione" class="form-label">Descrizione</label>
           </div>
           <div class="mb-3">
             <label for="formFile" class="form-label">Scegli Immagine Animale</label>
-            <input class="form-control" type="file" id="pet-img">
+            <input class="form-control" type="file" id="pet-img" value="<?php echo $templateParams["specificpet"]["Immagine"];?>">
           </div>
                     <div class="form-floating mb-3">
-            <input type="text" name="nome" class="form-control" id="descrizione-img" placeholder="Descrizione Immagine" required>
+            <input type="text" name="nome" class="form-control" id="descrizione-img" placeholder="Descrizione Immagine" value="<?php echo $templateParams["specificpet"]["DescrizioneImmagine"];?>"required>
             <label for="descrizione-img" class="form-label">Descrizione Immagine</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="disponibile">
+            <input class="form-check-input" type="checkbox" value="<?php echo $templateParams["specificpet"]["Disponibile"];?>" id="disponibile">
             <label class="form-check-label" for="checkDefault">
               Disponibile
             </label>
