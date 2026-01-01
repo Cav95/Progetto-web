@@ -2,7 +2,7 @@
 require_once "bootstrap.php";
 
 if (isUserLoggedIn()) {
-  $backURL = empty($_SESSION["backURL"]) ? "home.php" : $_SESSION["backURL"];
+  $backURL = empty($_SESSION["backURL"]) ? "prenotazioni.php" : $_SESSION["backURL"];
   unset($_SESSION["backURL"]);
   header("Location: " . $backURL);
   exit;

@@ -29,7 +29,7 @@
           </li>
         <?php endif; ?>
         <li class="nav-item">
-          <a class="nav-link" href="home.php">
+          <a class="nav-link" href="prenotazioni.php">
             <?php echo isLoggedUserAdmin() ? "Gestisci prenotazioni" : "Le tue prenotazioni"; ?>
           </a>
         </li>

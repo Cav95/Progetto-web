@@ -40,7 +40,7 @@ switch ($_REQUEST["action"]) {
     }
     $result["ok"] = $dbh->addReservation($_SESSION["userid"], $_REQUEST["app-date"], $_REQUEST["app-time"]);
     $result["msg"] = $result["ok"]
-      ? "Prenotazione aggiunta correttamente! <a href='petèage.php'>Vedi Pet</a>"
+      ? "Prenotazione aggiunta correttamente! <a href='prenotazioni.php'>Vedi prenotazioni</a>"
       : "Errore imprevisto. Riprova più tardi.";
     break;
 
