@@ -6,7 +6,7 @@ $templateParams["css"] = ["css/navbar.css"];
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 // Generic
-$templateParams["title"] = "Pet | Unibo Pet Therapy";
+$templateParams["title"] = "Pet page - Unibo Pet Therapy";
 $templateParams["js"] = array("js/petcard.js");
 
 require "template/base.php";

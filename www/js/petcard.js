@@ -7,7 +7,7 @@ function generaCard(petCard) {
     if (petCard["isadmin"] && petCard["islogedin"]) {
         addPetbuttom = `<div class="container text-center p-3">
         <div class="row justify-content-md-center">
-        <a href="#" class="col-md-auto btn btn-primary allign-center">Aggiungi Pet</a>
+        <a href="add-pet.php" class="col-md-auto btn btn-primary allign-center">Aggiungi Pet</a>
           </div>
 </div>`
     }
@@ -40,7 +40,7 @@ function generaCard(petCard) {
 
             card += `<div class="container text-center p-3">
         <div class="row justify-content-md-center">
-        <a href="#" id="${petCard["pet"][i]["ID_Pet"]}"class="btn btn-primary">Modifica Pet</a>
+        <a href="add-pet.php" id="${petCard["pet"][i]["ID_Pet"]}"class="btn btn-primary">Modifica Pet</a>
             </div>
     </div>
     </div>

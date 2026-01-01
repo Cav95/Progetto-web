@@ -108,7 +108,8 @@ class DatabaseHelper
     return $stmt->execute();
   }
 
-  public function getAvailableTimes($date): array {
+  public function getAvailableTimes($date): array
+  {
     $query =
       "SELECT TIME_FORMAT(orario, '%H:%i') as orario 
        FROM orari
@@ -128,7 +129,8 @@ class DatabaseHelper
     return $times;
   }
 
-  public function addReservation($user_id, $date, $time): bool {
+  public function addReservation($user_id, $date, $time): bool
+  {
     $query = "INSERT INTO prenotazioni(data, ora, utente, luogo) 
               VALUES (?, ?, ?, (SELECT codice 
                                 FROM luoghi 
@@ -148,4 +150,61 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
+  public function getSpecie(): array
+  {
+    $query = "SELECT * FROM specie";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+
+  public function getRace(): array
+  {
+    $query = "SELECT * FROM razze r , specie s where R.ID_Specie = S.ID_Specie; ";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+
+    public function getRaceFromSpecie($id_specie): array
+  {
+    $query = "SELECT * FROM razze r , specie s where R.ID_Specie = S.ID_Specie and R.ID_Specie =?; ";
+    $stmt = $this->db->prepare($query);
+    
+    $stmt->bind_param('i', $id_specie);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+
+  public function addPet($nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg): bool
+  {
+    $query = "INSERT INTO Pet (
+        Nomepet,
+        DataDiNascita,
+        Descrizione,
+        Immagine,
+        DescrizioneImmagine,
+        Disponibile,
+        ID_Razza
+    )
+VALUES (
+        ?,?,?,?,?,
+        1,
+        ?
+    )";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('ssssss', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $nomerazza,);
+    return $stmt->execute();
+  }
+
+    public function deletePet($pet_id): bool
+  {
+    $query = "DELETE FROM pet WHERE ID_Pet = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('i', $pet_id);
+    return $stmt->execute();
+  }
 }
