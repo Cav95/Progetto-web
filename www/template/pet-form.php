@@ -63,7 +63,7 @@
 
             <div class="d-flex justify-content-start col">
               <input type="submit" class="btn btn-primary my-3 px-3"
-                value="<?php echo $templateParams["formaction"]; ?>">
+                value="<?php echo $templateParams["formaction"]; ?>" id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>">
             </div>
             <div class="d-flex justify-content-end col">
               <input type="submit" class="btn btn-primary my-3 px-3 bg-warning" value="Elimina">

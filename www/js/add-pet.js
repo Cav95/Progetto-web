@@ -14,21 +14,41 @@ const descrizioneimg = document.querySelector("#descrizione-img");
 form.addEventListener("submit", e => {
   if (form.checkValidity()) {
     e.preventDefault();
-    newPetSession(
-      nome.value,
-      data.value,
-      nomespecie.value,
-      nomerazza.value,
-      descrizione.value,
-      img.files && img.files[0] ? img.files[0] : null,
-      descrizioneimg.value
-    );
+    const submitter = e.submitter || document.activeElement;
+    const action = submitter && submitter.value ? submitter.value : null;
+    const id_pet = submitter && submitter.id ? submitter.id : null;
+
+    if (action === "Aggiungi") {
+      newPetSession(
+        nome.value,
+        data.value,
+        nomespecie.value,
+        nomerazza.value,
+        descrizione.value,
+        img.files && img.files[0] ? img.files[0] : null,
+        descrizioneimg.value
+      );
+    } else if (action === "Elimina") {
+      deletePetSession(id_pet);
+    } else if (action === "Modifica") {
+      modifyPetSession(
+        nome.value,
+        data.value,
+        nomespecie.value,
+        nomerazza.value,
+        descrizione.value,
+        img.files && img.files[0] ? img.files[0] : null,
+        descrizioneimg.value,
+        id_pet
+      );
+    }
   }
+
 });
 
 
 
-async function newPetSession(nome, data ,nomespecie,nomerazza, descrizione,img, descrizioneimg ) {
+async function newPetSession(nome, data, nomespecie, nomerazza, descrizione, img, descrizioneimg) {
   const url = "api/api-addpet.php?action=create";
   const formData = new FormData();
   formData.append("nome", nome);
@@ -55,7 +75,7 @@ async function newPetSession(nome, data ,nomespecie,nomerazza, descrizione,img, 
     }
     const json = await response.json();
     if (json["msg"] != null) {
-      if (json["ok"]){
+      if (json["ok"]) {
         displaySuccess(json["msg"]);
         form.reset();
       } else {
@@ -67,16 +87,26 @@ async function newPetSession(nome, data ,nomespecie,nomerazza, descrizione,img, 
   }
 }
 
-async function deletePetSession(nome, dateChooser, nomespecie, nomerazza, descrizione, img, descrizioneimg ) {
-  const url = "api/api-addpet.php?action=delete";
+async function modifyPetSession(nome, data, nomespecie, nomerazza, descrizione, img, descrizioneimg, id_pet = null) {
+  const url = "api/api-addpet.php?action=modify";
   const formData = new FormData();
   formData.append("nome", nome);
-  formData.append("data", dateChooser);
+  formData.append("data", data);
   formData.append("nomespecie", nomespecie);
   formData.append("nomerazza", nomerazza);
   formData.append("descrizione", descrizione);
-  if (img) formData.append("img", img);
+  if (id_pet) {
+    formData.append("ID_Pet", id_pet);
+  }
+  if (img instanceof File) {
+    console.log("selected file name:", img.name);
+    formData.append("img", img.name);
+  }
+
   formData.append("descrizioneimg", descrizioneimg);
+  for (const pair of formData.entries()) {
+    console.log("formData", pair[0], pair[1]);
+  }
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -87,7 +117,33 @@ async function deletePetSession(nome, dateChooser, nomespecie, nomerazza, descri
     }
     const json = await response.json();
     if (json["msg"] != null) {
-      if (json["ok"]){
+      if (json["ok"]) {
+        displaySuccess(json["msg"]);
+        form.reset();
+      } else {
+        displayWarning(json["msg"]);
+      }
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+async function deletePetSession(id_pet) {
+  const url = "api/api-addpet.php?action=delete";
+  const formData = new FormData();
+  formData.append("ID_Pet", id_pet);
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData
+    });
+    if (!response.ok) {
+      throw new Error("Response status: " + response.status);
+    }
+    const json = await response.json();
+    if (json["msg"] != null) {
+      if (json["ok"]) {
         displaySuccess(json["msg"]);
         form.reset();
       } else {

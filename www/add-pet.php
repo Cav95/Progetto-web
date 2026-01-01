@@ -18,6 +18,7 @@ if(isset($_REQUEST['pet-id'])){
   $templateParams["formaction"] = "Modifica";
 
   $temp= $dbh->getSinglePet($_REQUEST['pet-id']);
+  $templateParams["specificpet"]["ID_Pet"] = $temp[0]["ID_Pet"];
   $templateParams["specificpet"]["Nomepet"] = $temp[0]["Nomepet"];
   $templateParams["specificpet"]["DataDiNascita"] = $temp[0]["DataDiNascita"];
   $templateParams["specificpet"]["Nomespecie"] = $temp[0]["Nomespecie"];  
@@ -30,7 +31,8 @@ if(isset($_REQUEST['pet-id'])){
 }
 else{
   $templateParams["formaction"] = "Aggiungi";
-
+  
+  $templateParams["specificpet"]["ID_Pet"] = ""; 
   $templateParams["specificpet"]["Nomepet"] = ""; 
   $templateParams["specificpet"]["DataDiNascita"] = ""; 
   $templateParams["specificpet"]["Nomespecie"] = "";    
