@@ -14,7 +14,15 @@ const descrizioneimg = document.querySelector("#descrizione-img");
 form.addEventListener("submit", e => {
   if (form.checkValidity()) {
     e.preventDefault();
-    newPetSession(nome.value, data.value,nomespecie.value ,nomerazza.value , descrizione.value ,img.value , descrizioneimg.value  );
+    newPetSession(
+      nome.value,
+      data.value,
+      nomespecie.value,
+      nomerazza.value,
+      descrizione.value,
+      img.files && img.files[0] ? img.files[0] : null,
+      descrizioneimg.value
+    );
   }
 });
 
@@ -28,8 +36,15 @@ async function newPetSession(nome, data ,nomespecie,nomerazza, descrizione,img, 
   formData.append("nomespecie", nomespecie);
   formData.append("nomerazza", nomerazza);
   formData.append("descrizione", descrizione);
-  formData.append("img", img);  
+  if (img instanceof File) {
+    console.log("selected file name:", img.name);
+    formData.append("img", img.name);
+  }
+
   formData.append("descrizioneimg", descrizioneimg);
+  for (const pair of formData.entries()) {
+    console.log("formData", pair[0], pair[1]);
+  }
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -52,15 +67,15 @@ async function newPetSession(nome, data ,nomespecie,nomerazza, descrizione,img, 
   }
 }
 
-async function deletePetSession(nome, dateChooser,nomespecie,nomerazza, descrizione,img, descrizioneimg ) {
+async function deletePetSession(nome, dateChooser, nomespecie, nomerazza, descrizione, img, descrizioneimg ) {
   const url = "api/api-addpet.php?action=delete";
   const formData = new FormData();
   formData.append("nome", nome);
-  formData.append("data", data);
+  formData.append("data", dateChooser);
   formData.append("nomespecie", nomespecie);
   formData.append("nomerazza", nomerazza);
   formData.append("descrizione", descrizione);
-  formData.append("img", img);  
+  if (img) formData.append("img", img);
   formData.append("descrizioneimg", descrizioneimg);
   try {
     const response = await fetch(url, {
