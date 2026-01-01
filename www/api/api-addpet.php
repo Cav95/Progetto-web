@@ -60,7 +60,7 @@ switch ($_REQUEST["action"]) {
 
     $result["ok"] = $dbh->addPet($_REQUEST["nome"], $_REQUEST["data"], $_REQUEST["nomerazza"], $_REQUEST["descrizione"], $imgName, $_REQUEST["descrizioneimg"]);
     $result["msg"] = $result["ok"]
-      ? "Prenotazione aggiunta correttamente! <a href='home.php'>Vedi prenotazioni</a>"
+      ? "Pet aggiunto correttamente! <a href='home.php'>Vedi prenotazioni</a>"
       : "Errore imprevisto. Riprova più tardi.";
     break;
 
