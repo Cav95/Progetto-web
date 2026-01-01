@@ -72,12 +72,13 @@ async function getPTSessions(date) {
 }
 
 function buildSessions(sessions) {
-  buffer = '';
-  sessions.forEach(s => {
-    buffer += `
-      <div class="card mb-3 px-2 bg-dark text-white" id="app-${s.id_prenotazione}">
+  if (sessions.length == 0) {
+    return;
+  }
+  container.innerHTML = sessions.map(s => 
+      `<div class="card mb-3 px-2 bg-dark text-white" id="app-${s.id_prenotazione}">
         <div class="card-body row">
-          <div class="col-md-1 d-flex align-items-center gap-2">
+          <div class="col-md-2 d-flex align-items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" role="img" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16" aria-labelledby="ora-label">
               <title id="ora-label">Ora</title>
               <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
@@ -105,9 +106,9 @@ function buildSessions(sessions) {
           </div>
         </div>
       </div>
-    `
-  });
-  container.innerHTML = buffer;
+      `
+    )
+    .reduce((p, n) => p + n);
   document.querySelectorAll(".delete-app").forEach(btn => {
     btn.addEventListener("click", (e) => {
       appTodelete = e.target.value;
