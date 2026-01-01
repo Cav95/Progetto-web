@@ -60,8 +60,14 @@ switch ($_REQUEST["action"]) {
       http_response_code(400);
       exit;
     }
-    $result["ok"] = true;
+
     $result["sessions"] = $dbh->getPTSessionsFromDate($_REQUEST["of-date"]);
+    if (!$result["sessions"]) {
+      break;
+    }
+    $result["min_date"] = min(array_column($result["sessions"], "data"));
+    $result["max_date"] = max(array_column($result["sessions"], "data"));
+    $result["ok"] = true;
     break;
 }
 

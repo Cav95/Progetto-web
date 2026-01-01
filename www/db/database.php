@@ -72,15 +72,17 @@ class DatabaseHelper
   public function getPTSessionsFromDate($date): array
   {
     $query =
-      "SELECT id_prenotazione, TIME_FORMAT(p.ora, '%H:%i') as ora, l.nome as luogo, utente, email
+      "SELECT data, id_prenotazione, TIME_FORMAT(p.ora, '%H:%i') as ora, l.nome as luogo, utente, email
        FROM prenotazioni p, luoghi l, utenti u
        WHERE p.luogo = l.codice
        AND p.utente = u.id_utente
-       AND p.data = ?
-       ORDER BY p.ora;
+       AND (p.data = ?
+            OR p.data = (SELECT MIN(p1.data) FROM prenotazioni p1 WHERE p1.data > ?)
+            OR p.data = (SELECT MAX(p1.data) FROM prenotazioni p1 WHERE p1.data < ?))
+       ORDER BY p.data, p.ora;
     ";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param("s", $date);
+    $stmt->bind_param("sss", $date, $date, $date);
     $stmt->execute();
     $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);

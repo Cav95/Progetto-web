@@ -24,8 +24,12 @@ async function cancelSession(id) {
     }
     const json = await response.json();
     if (json["ok"]) {
-      document.querySelector("#app-" + id).remove();
+      const toDelete = document.querySelector("#app-" + id)
+      toDelete.classList.add("fade");
       newAppLink.focus();
+      setTimeout(() => {
+        toDelete.remove();
+      }, 150);
       console.log("Prenotazione eliminata!");
     } else {
       throw new Error("Unable to delete session");
