@@ -17,5 +17,8 @@ $templateParams["formaction"] = "Aggiungi";
 $templateParams["specie"] = $dbh->getSpecie();
 $templateParams["razza"] = $dbh->getRace();
 
+if(isset($_POST['pet-id'])){
+$templateParams["specificpet"] = $dbh->getSinglePet($_POST("pet-id"));
+}
     
 require "template/base.php";

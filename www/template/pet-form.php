@@ -7,7 +7,7 @@
         <div class="alert alert-success d-none" id="alert-success"></div>
         <form action="#" method="POST">
           <div class="form-floating mb-3">
-            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" autocomplete="given-name" required>
+            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" autocomplete="given-name" value="" required>
             <label for="nome" class="form-label">Nome</label>
           </div>
               <div class="form-floating mb-3">

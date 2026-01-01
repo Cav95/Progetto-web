@@ -28,7 +28,7 @@ form.addEventListener("submit", e => {
 
 
 
-async function newPetSession(nome, data ,nomespecie,nomerazza, descrizione,img, descrizioneimg  ) {
+async function newPetSession(nome, data ,nomespecie,nomerazza, descrizione,img, descrizioneimg ) {
   const url = "api/api-addpet.php?action=create";
   const formData = new FormData();
   formData.append("nome", nome);
