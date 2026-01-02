@@ -4,10 +4,10 @@
     <div class="col-12 col-md order-first order-md-2">
       <form action="#" method="POST">
         <div class="form-floating">
-          <input type="date" name="data" class="form-control" id="data" placeholder="Data" value="<?php echo date("Y-m-d"); ?>" required>
+          <input type="date" name="data" class="form-control" id="data" placeholder="Data" value="<?php echo date("Y-m-d"); ?>" required />
           <label for="data" class="form-label">Data</label>
         </div>
-        <input type="submit" hidden>
+        <input type="submit" class="visually-hidden" value="Cerca" />
       </form>
     </div>
     <div class="col-6 col-md order-2 order-md-first">
@@ -56,7 +56,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title fs-5" id="modalLabel">Conferma cancellazione</h4>
+        <h2 class="modal-title fs-5" id="modalLabel">Conferma cancellazione</h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

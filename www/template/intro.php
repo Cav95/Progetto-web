@@ -13,7 +13,7 @@
     Non serve necessariamente possedere un animale. I benefici massimi si riscontrano spesso nei
     programmi organizzati dagli atenei (es. Puppy Rooms o giornate anti-stress), dove l'interazione è guidata e non
     comporta per lo studente l'onere della gestione dell'animale.</p>
-  <img src="<?php echo PET_IMG_DIR . "varietaAnimali.jpg" ?>" alt="Animali da compagnia" class="w-100 border border-2">
+  <img src="<?php echo PET_IMG_DIR . "varietaAnimali.jpg" ?>" alt="Animali da compagnia" class="w-100 border border-2"/>
 </div>
 <div id="benefici" class="p-5">
   <div class="offset-md-1 float-start">
@@ -38,6 +38,6 @@
     </ul>
   </div>
   <img id="cane" src="<?php echo PET_IMG_DIR . "placeholder-dog.jpg" ?>" alt="Padrone che abbraccia il suo cane"
-    class="img-fluid rounded float-end">
+    class="img-fluid rounded float-end"/>
 
 </div>
