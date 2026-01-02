@@ -58,7 +58,7 @@ async function newPetSession(nome, data, nomespecie, nomerazza, descrizione, img
   formData.append("descrizione", descrizione);
   if (img instanceof File) {
     console.log("selected file name:", img.name);
-    formData.append("img", img.name);
+    formData.append("img", img, img.name);
   }
 
   formData.append("descrizioneimg", descrizioneimg);
@@ -100,7 +100,7 @@ async function modifyPetSession(nome, data, nomespecie, nomerazza, descrizione, 
   }
   if (img instanceof File) {
     console.log("selected file name:", img.name);
-    formData.append("img", img.name);
+    formData.append("img", img, img.name);
   }
 
   formData.append("descrizioneimg", descrizioneimg);
