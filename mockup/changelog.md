@@ -1,4 +1,7 @@
-## Ver 1.2 (Latest)
+## Ver 1.3 (Latest)
+- Changed navbar: On desktop viewport, the user profile *icon link* is now a *text link* of the user's email, for better clarity
+
+## Ver 1.2
 - Changed navbar names to be less ambiguous
 - Switched deletion and edit *icons* to *buttons*, for better clarity
 - Switched calendar date choosers to simpler date inputs
