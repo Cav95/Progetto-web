@@ -22,6 +22,9 @@ switch ($_REQUEST["action"]) {
       }
     }
     $result["ok"] = $dbh->deletePet($_REQUEST["ID_Pet"]);
+    $result["msg"] = $result["ok"]
+      ? "Pet eliminato correttamente! <a href='petpage.php'>Vedi Pet</a>"
+      : "Errore imprevisto. Riprova più tardi.";
     break;
 
   // Create a PT session
@@ -59,7 +62,7 @@ switch ($_REQUEST["action"]) {
 
     $result["ok"] = $dbh->addPet($_REQUEST["nome"], $_REQUEST["data"], $_REQUEST["nomerazza"], $_REQUEST["descrizione"], $imgName, $_REQUEST["descrizioneimg"]);
     $result["msg"] = $result["ok"]
-      ? "Pet aggiunto correttamente! <a href='home.php'>Vedi Pet</a>"
+      ? "Pet aggiunto correttamente! <a href='petpage.php'>Vedi Pet</a>"
       : "Errore imprevisto. Riprova più tardi.";
     break;
 
