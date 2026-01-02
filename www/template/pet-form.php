@@ -18,7 +18,8 @@
           </div>
           <div>
             <select id="spec-sel" name="nomespecie" class="form-select form-select-sm mb-3" aria-label="Small select example">
-              <?php foreach ($templateParams["specie"] as $specie): ?>
+              <option selected>Specie</option>
+            <?php foreach ($templateParams["specie"] as $specie): ?>
                 <option value="<?php echo $specie["ID_Specie"]; ?>"
                   <?php if ($specie["Nomespecie"] === $templateParams["specificpet"]["Nomespecie"]) echo 'selected'; ?>>
                   <?php echo $specie["Nomespecie"]; ?>
@@ -28,7 +29,8 @@
           </div>
           <div>
             <select id="razza-sel" name="nomerazza" class="form-select form-select-sm mb-3" aria-label="Small select example">
-              <?php foreach ($templateParams["razza"] as $razza): ?>
+              <option selected>Razza</option>
+            <?php foreach ($templateParams["razza"] as $razza): ?>
                 <option value="<?php echo $razza["ID_Razza"]; ?>"
                   <?php if ($razza["Nomerazza"] === $templateParams["specificpet"]["Nomerazza"]) echo 'selected'; ?>>
                   <?php echo $razza["Nomerazza"]; ?>
