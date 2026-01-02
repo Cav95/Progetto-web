@@ -34,8 +34,10 @@
 </div>
 <div class="row">
   <div class="col-md-1"></div>
-  <div class="col col-md-10 vstack mx-md-0 mx-1" id="app-container">
-    <!-- Sessions added with AJAX -->
+  <div class="col col-md-10 mx-md-0 mx-1">
+    <ul id="app-container" class="list-unstyled">
+      <!-- Sessions added with AJAX -->
+    </ul>
   </div>
   <div class="col-md-1"></div>
 </div>
