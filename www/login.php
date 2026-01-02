@@ -14,7 +14,7 @@ $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 // Generic
 $templateParams["title"] = "Login | Unibo Pet Therapy";
-$templateParams["nome"] = "login-form.php";
+$templateParams["nome"] = "form-login-registrazione.php";
 $templateParams["js"] = ["js/login.js"];
 
 // Specific
