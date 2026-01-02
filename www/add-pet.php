@@ -41,8 +41,7 @@ else{
   $templateParams["specificpet"]["Nomerazza"] = "";   
   $templateParams["specificpet"]["Descrizione"] = ""; 
   $templateParams["specificpet"]["Immagine"] = ""; 
-  $templateParams["specificpet"]["DescrizioneImmagine"] = ""; 
-  $templateParams["specificpet"]["Disponibile"] = ""; 
+  $templateParams["specificpet"]["DescrizioneImmagine"] = "";
 }
     
 require "template/base.php";

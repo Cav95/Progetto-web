@@ -43,9 +43,11 @@ form.addEventListener("submit", e => {
         descrizione.value,
         img.files && img.files[0] ? img.files[0] : null,
         descrizioneimg.value,
-        disponibile.value,
+        disponibile.checked,
         id_pet
       );
+      
+      window.location.href = 'add-pet.php?pet-id=' + id_pet;
     }
   }
 

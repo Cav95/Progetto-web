@@ -212,9 +212,8 @@ VALUES (
   public function modifyPet($nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg, $disponibile, $idpet ): bool
   {
 
-    if(str_contains($disponibile ,"on")){
+    if(str_contains($disponibile ,"true")){
       $dispo = 1;
-      
     }
     else{
       $dispo = 0;
