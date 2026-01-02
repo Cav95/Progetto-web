@@ -13,9 +13,7 @@
     <div class="col-6 col-md order-2 order-md-first">
       <div class="d-flex justify-content-end">
         <button class="btn btn-primary d-flex align-items-center gap-2" id="date-bwd">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
-          </svg>
+          <svg class="icon" aria-hidden="true"><use href="#icon-arrow-left"></use></svg>
           Indietro
         </button>
       </div>
@@ -24,9 +22,7 @@
       <div class="d-flex justify-content-start">
         <button class="btn btn-primary d-flex align-items-center gap-2" id="date-fwd">
           Avanti
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
-          </svg>
+          <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
         </button>
       </div>
     </div>
