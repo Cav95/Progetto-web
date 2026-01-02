@@ -1,4 +1,4 @@
-const container = document.querySelector("#app-container");
+const appContainer = document.querySelector("#app-container");
 const deleteAppBtn = document.querySelector("#delete-app-confirm");
 const newAppLink = document.querySelector("#new-app");
 
@@ -31,7 +31,7 @@ async function cancelSession(id) {
       setTimeout(() => {
         toDelete.remove();
         if (document.querySelector("main tbody").childElementCount == 0) {
-          container.innerHTML = `<div class="h3 text-center mt-3 mx-2 alert alert-info">Non hai nessuna prenotazione</div>`;
+          appContainer.innerHTML = `<div class="h3 text-center mt-3 mx-2 alert alert-info">Non hai nessuna prenotazione</div>`;
         }
       }, 150);
     } else {

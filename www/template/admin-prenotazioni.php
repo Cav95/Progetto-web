@@ -35,12 +35,22 @@
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col col-md-10 mx-md-0 mx-1">
-    <ul id="app-container" class="list-unstyled">
-      <li class="h3 text-center mt-3 alert alert-info">
+    <div class="h3 text-center mt-3 mx-2 alert alert-info d-none" id="no-app-alert">
         Nessuna prenotazione per la data selezionata
-      </li>
-      <!-- Sessions added with AJAX -->
-    </ul>
+    </div>
+    <table class="table table-dark table-striped table-mobile-stack align-middle" id="app-table">
+      <thead>
+        <tr>
+          <th scope="col" id="ora">Ora</th>
+          <th scope="col" id="luogo">Luogo</th>
+          <th scope="col" id="utente">Utente</th>
+          <th scope="col" id="elimina"><span class="visually-hidden">Pulsanti elimina appuntamento</span></th>
+        </tr>
+      </thead>
+      <tbody id="app-container">
+        <!-- Appointments added with AJAX -->
+      </tbody>
+    </table>
   </div>
   <div class="col-md-1"></div>
 </div>

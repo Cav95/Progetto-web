@@ -1,4 +1,6 @@
-const container = document.querySelector("#app-container");
+const appTable = document.querySelector("#app-table");
+const appAlert = document.querySelector("#no-app-alert");
+const appContainer = document.querySelector("#app-container");
 const form = document.querySelector("main form");
 const dateChooser = document.querySelector("#data");
 
@@ -73,16 +75,16 @@ async function getPTSessions(date) {
 
 function buildSessions(sessions) {
   if (sessions.length == 0) {
-    container.innerHTML = `
-      <li class="h3 text-center mt-3 alert alert-info">
-        Nessuna prenotazione per la data selezionata
-      </li>`;
+    appAlert.classList.remove("d-none");
+    appTable.classList.add("d-none");
     return;
   }
-  container.innerHTML = sessions.map(s => `
-    <li class="card mb-3 px-2 bg-dark text-white" id="app-${s.id_prenotazione}">
-      <div class="card-body row">
-        <div class="col-md-2 d-flex align-items-center gap-2">
+  appAlert.classList.add("d-none");
+  appTable.classList.remove("d-none");
+  appContainer.innerHTML = sessions.map(s => `
+    <tr id="app-${s.id_prenotazione}">
+      <td headers="ora" data-label="Ora">
+        <div class="d-flex align-items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" role="img" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16" aria-labelledby="ora-label">
             <title id="ora-label">Ora</title>
             <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
@@ -90,7 +92,9 @@ function buildSessions(sessions) {
           </svg>
           ${s.ora}
         </div>
-        <div class="col-md-3 d-flex align-items-center gap-2">
+      </td>
+      <td headers="luogo" data-label="Luogo">
+        <div class="d-flex align-items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" role="img" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16" aria-labelledby="posizione-label">
             <title id="posizione-label">Posizione</title>
             <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
@@ -98,18 +102,22 @@ function buildSessions(sessions) {
           </svg>
           ${s.luogo}
         </div>
-        <div class="col-md d-flex align-items-center gap-2">
+      </td>
+      <td headers="utente" data-label="Utente">
+        <div class="d-flex align-items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" role="img" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16" aria-labelledby="user-label">
             <title id="user-label">Utente</title>
             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
           </svg>
           <a href="utente.php?id=${s.utente}" class="link-warning">${s.email}</a>
         </div>
-        <div class="col-md-2 d-flex align-items-center justify-content-end mt-md-0 mt-3">
+      </td>
+      <td headers="elimina">
+        <div class="d-flex align-items-center justify-content-center justify-content-md-end pt-3 pt-md-0">
           <button type="button" value="${s.id_prenotazione}" class="btn btn-danger delete-app" data-bs-toggle="modal" data-bs-target="#confirmModal">Elimina</button>
         </div>
-      </div>
-    </li>
+      </td>
+    </tr>
   `).reduce((a, b) => a + b);
   document.querySelectorAll(".delete-app").forEach(btn => {
     btn.addEventListener("click", (e) => {
@@ -141,6 +149,10 @@ async function cancelSession(id) {
       title.focus();
       setTimeout(() => {
         toDelete.remove();
+        if (appContainer.childElementCount == 0) {
+          appAlert.classList.remove("d-none");
+          appTable.classList.add("d-none");
+        }
       }, 150);
       console.log("Prenotazione eliminata!");
     } else {
