@@ -87,7 +87,7 @@ async function newPetSession(nome, data, nomespecie, nomerazza, descrizione, img
   }
 }
 
-async function modifyPetSession(nome, data, nomespecie, nomerazza, descrizione, img, descrizioneimg, id_pet = null) {
+async function modifyPetSession(nome, data, nomespecie, nomerazza, descrizione, img, descrizioneimg, id_pet) {
   const url = "api/api-addpet.php?action=modify";
   const formData = new FormData();
   formData.append("nome", nome);
@@ -112,6 +112,7 @@ async function modifyPetSession(nome, data, nomespecie, nomerazza, descrizione, 
       method: "POST",
       body: formData
     });
+
     if (!response.ok) {
       throw new Error("Response status: " + response.status);
     }

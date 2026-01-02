@@ -205,7 +205,24 @@ VALUES (
         ?
     )";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param('ssssss', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $nomerazza,);
+    $stmt->bind_param('ssssss', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $nomerazza);
+    return $stmt->execute();
+  }
+
+    public function modifyPet($idpet,$nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg): bool
+  {
+    $query = "UPDATE Pet
+    set Nomepet = ? and
+        DataDiNascita= ? and
+        Descrizione= ? and
+        Immagine= ? and
+        DescrizioneImmagine= ? and
+        Disponibile= ? and
+        ID_Razza = ? and
+where ID_Pet = ?;
+";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('sssssss', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $nomerazza,$idpet);
     return $stmt->execute();
   }
 
