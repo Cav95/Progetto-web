@@ -220,17 +220,16 @@ VALUES (
       $dispo = 0;
     }
     $query = "UPDATE Pet
-    set Nomepet = ? and
-        DataDiNascita= ? and
-        Descrizione= ? and
-        Immagine= ? and
-        DescrizioneImmagine= ? and
-        Disponibile= ? and
-        ID_Razza = ? and
-where ID_Pet = ?;
-";
+    SET Nomepet = ?,
+      DataDiNascita = ?,
+      Descrizione = ?,
+      Immagine = ?,
+      DescrizioneImmagine = ?,
+      Disponibile = ?,
+      ID_Razza = ?
+    WHERE ID_Pet = ?;";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param('sssssisi', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $dispo, $nomerazza, $idpet);
+    $stmt->bind_param('sssssiii', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $dispo, $nomerazza, $idpet);
     return $stmt->execute();
   }
 
