@@ -149,10 +149,10 @@ class DatabaseHelper
     $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);
   }
-    public function getSinglePet($pet_id): array
+  public function getSinglePet($pet_id): array
   {
     $query = "SELECT * FROM pet P ,razze R , specie S WHERE P.ID_Razza = R.ID_Razza  AND R.ID_Specie = S.ID_Specie and P.ID_Pet = ?;";
-    $stmt = $this->db->prepare($query);    
+    $stmt = $this->db->prepare($query);
     $stmt->bind_param('i', $pet_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -177,11 +177,11 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
-    public function getRaceFromSpecie($id_specie): array
+  public function getRaceFromSpecie($id_specie): array
   {
     $query = "SELECT * FROM razze r , specie s where R.ID_Specie = S.ID_Specie and R.ID_Specie =?; ";
     $stmt = $this->db->prepare($query);
-    
+
     $stmt->bind_param('i', $id_specie);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -209,8 +209,16 @@ VALUES (
     return $stmt->execute();
   }
 
-    public function modifyPet($idpet,$nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg , $disponibile): bool
+  public function modifyPet($nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg, $disponibile, $idpet ): bool
   {
+
+    if(str_contains($disponibile ,"on")){
+      $dispo = 1;
+      
+    }
+    else{
+      $dispo = 0;
+    }
     $query = "UPDATE Pet
     set Nomepet = ? and
         DataDiNascita= ? and
@@ -222,11 +230,11 @@ VALUES (
 where ID_Pet = ?;
 ";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param('sssssss', $nome, $datanascita, $descrizione, $img, $descrizioneimg,$disponibile, $nomerazza,$idpet);
+    $stmt->bind_param('sssssisi', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $dispo, $nomerazza, $idpet);
     return $stmt->execute();
   }
 
-    public function deletePet($pet_id): bool
+  public function deletePet($pet_id): bool
   {
     $query = "DELETE FROM pet WHERE ID_Pet = ?;";
     $stmt = $this->db->prepare($query);

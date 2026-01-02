@@ -43,6 +43,7 @@ form.addEventListener("submit", e => {
         descrizione.value,
         img.files && img.files[0] ? img.files[0] : null,
         descrizioneimg.value,
+        disponibile.value,
         id_pet
       );
     }
@@ -90,7 +91,7 @@ async function newPetSession(nome, data,nomerazza, descrizione, img, descrizione
   }
 }
 
-async function modifyPetSession(nome, data, nomerazza, descrizione, img, descrizioneimg, id_pet) {
+async function modifyPetSession(nome, data, nomerazza, descrizione, img, descrizioneimg, disponibile, id_pet) {
   const url = "api/api-addpet.php?action=modify";
   const formData = new FormData();
   formData.append("nome", nome);
@@ -98,6 +99,7 @@ async function modifyPetSession(nome, data, nomerazza, descrizione, img, descriz
   formData.append("nomerazza", nomerazza);
   formData.append("descrizione", descrizione);
     formData.append("ID_Pet", id_pet);
+    formData.append("disponibile", disponibile);
   if (img instanceof File) {
     console.log("selected file name:", img.name);
     formData.append("img", img, img.name);

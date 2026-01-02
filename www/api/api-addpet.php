@@ -60,7 +60,14 @@ switch ($_REQUEST["action"]) {
       exit;
     }
 
-    $result["ok"] = $dbh->addPet($_REQUEST["nome"], $_REQUEST["data"], $_REQUEST["nomerazza"], $_REQUEST["descrizione"], $imgName, $_REQUEST["descrizioneimg"]);
+    $result["ok"] = $dbh->addPet(
+      $_REQUEST["nome"],
+      $_REQUEST["data"],
+      $_REQUEST["nomerazza"],
+      $_REQUEST["descrizione"],
+      $imgName,
+      $_REQUEST["descrizioneimg"]
+    );
     $result["msg"] = $result["ok"]
       ? "Pet aggiunto correttamente! <a href='petpage.php'>Vedi Pet</a>"
       : "Errore imprevisto. Riprova più tardi.";
@@ -73,6 +80,7 @@ switch ($_REQUEST["action"]) {
       || !isset($_REQUEST["nomerazza"])
       || !isset($_REQUEST["descrizione"])
       || !isset($_REQUEST["descrizioneimg"])
+      || !isset($_REQUEST["disponibile"])
       || !isset($_REQUEST["ID_Pet"])
     ) {
       http_response_code(400);
@@ -100,7 +108,16 @@ switch ($_REQUEST["action"]) {
       exit;
     }
 
-    $result["ok"] = $dbh->modifyPet($_REQUEST["nome"], $_REQUEST["data"], $_REQUEST["nomerazza"], $_REQUEST["descrizione"], $imgName, $_REQUEST["descrizioneimg"], $_REQUEST["ID_Pet"]);
+    $result["ok"] = $dbh->modifyPet(
+      $_REQUEST["nome"],
+      $_REQUEST["data"],
+      $_REQUEST["nomerazza"],
+      $_REQUEST["descrizione"],
+      $imgName,
+      $_REQUEST["descrizioneimg"],
+      $_REQUEST["disponibile"],
+      $_REQUEST["ID_Pet"]
+    );
     $result["msg"] = $result["ok"]
       ? "Pet modificato correttamente! <a href='petpage.php'>Vedi Pet</a>"
       : "Errore imprevisto. Riprova più tardi.";
