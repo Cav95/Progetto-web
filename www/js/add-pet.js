@@ -18,6 +18,11 @@ form.addEventListener("submit", e => {
     const action = submitter && submitter.value ? submitter.value : null;
     const id_pet = submitter && submitter.id ? submitter.id : null;
 
+    if (action === "Elimina") {
+      deletePetSession(id_pet);
+      window.location.href = 'petpage.php';
+    }
+
     if (action === "Aggiungi") {
       newPetSession(
         nome.value,
@@ -28,8 +33,6 @@ form.addEventListener("submit", e => {
         img.files && img.files[0] ? img.files[0] : null,
         descrizioneimg.value
       );
-    } else if (action === "Elimina") {
-      deletePetSession(id_pet);
     } else if (action === "Modifica") {
       modifyPetSession(
         nome.value,

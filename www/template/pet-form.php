@@ -5,7 +5,7 @@
       <div class="mb-3">
         <div class="alert alert-warning d-none" id="alert-warning"></div>
         <div class="alert alert-success d-none" id="alert-success"></div>
-        <form action="#" method="POST">
+        <form id="pet-form" action="#" method="POST">
           <div class="form-floating mb-3">
             <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" autocomplete="given-name"
               value="<?php echo $templateParams["specificpet"]["Nomepet"]; ?>" required>
@@ -66,12 +66,30 @@
                 value="<?php echo $templateParams["formaction"]; ?>" id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>">
             </div>
             <div class="d-flex justify-content-end col">
-              <input type="submit" class="btn btn-primary my-3 px-3 bg-warning" value="Elimina" id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>" >
+              <input type="button" class="btn btn-danger delete-app" data-bs-toggle="modal" data-bs-target="#confirmModal" value="Elimina" data-id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>" >
             </div>
           </div>
         </form>
       </div>
+    </div>
+  </div>
+</div>
 
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalLabel">Conferma cancellazione pet</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Sei sicuro di voler cancellare questo animale?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+        <input type="submit" id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>" class="btn btn-danger" value="Elimina" form="pet-form">
+      </div>
     </div>
   </div>
 </div>
