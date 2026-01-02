@@ -11,6 +11,7 @@ const img = document.querySelector("#pet-img");
 const existingImgInput = document.querySelector("#existing-img");
 const existingImg = existingImgInput ? existingImgInput.value : null;
 const descrizioneimg = document.querySelector("#descrizione-img");
+const disponibile = document.querySelector("#disponibile");
 
 
 form.addEventListener("submit", e => {
@@ -96,9 +97,7 @@ async function modifyPetSession(nome, data, nomerazza, descrizione, img, descriz
   formData.append("data", data);
   formData.append("nomerazza", nomerazza);
   formData.append("descrizione", descrizione);
-  if (id_pet) {
     formData.append("ID_Pet", id_pet);
-  }
   if (img instanceof File) {
     console.log("selected file name:", img.name);
     formData.append("img", img, img.name);

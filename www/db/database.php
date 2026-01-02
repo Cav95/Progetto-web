@@ -209,7 +209,7 @@ VALUES (
     return $stmt->execute();
   }
 
-    public function modifyPet($idpet,$nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg): bool
+    public function modifyPet($idpet,$nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg , $disponibile): bool
   {
     $query = "UPDATE Pet
     set Nomepet = ? and
@@ -222,7 +222,7 @@ VALUES (
 where ID_Pet = ?;
 ";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param('sssssss', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $nomerazza,$idpet);
+    $stmt->bind_param('sssssss', $nome, $datanascita, $descrizione, $img, $descrizioneimg,$disponibile, $nomerazza,$idpet);
     return $stmt->execute();
   }
 

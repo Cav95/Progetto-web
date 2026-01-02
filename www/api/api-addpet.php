@@ -66,15 +66,15 @@ switch ($_REQUEST["action"]) {
       : "Errore imprevisto. Riprova più tardi.";
     break;
 
-      // Create a PT session
+  // Create a PT session
   case 'modify':
     if (
       !isset($_REQUEST["nome"]) || !isset($_REQUEST["data"])
       || !isset($_REQUEST["nomerazza"])
       || !isset($_REQUEST["descrizione"])
       || !isset($_REQUEST["descrizioneimg"])
-      || !isset($_REQUEST["ID_Pet"])) {
-        echo "pippo";
+      || !isset($_REQUEST["ID_Pet"])
+    ) {
       http_response_code(400);
       exit;
     }
@@ -100,7 +100,7 @@ switch ($_REQUEST["action"]) {
       exit;
     }
 
-    $result["ok"] = $dbh->modifyPet($_REQUEST["nome"], $_REQUEST["data"], $_REQUEST["nomerazza"], $_REQUEST["descrizione"], $imgName, $_REQUEST["descrizioneimg"],$_REQUEST["id-pet"]);
+    $result["ok"] = $dbh->modifyPet($_REQUEST["nome"], $_REQUEST["data"], $_REQUEST["nomerazza"], $_REQUEST["descrizione"], $imgName, $_REQUEST["descrizioneimg"], $_REQUEST["ID_Pet"]);
     $result["msg"] = $result["ok"]
       ? "Pet modificato correttamente! <a href='petpage.php'>Vedi Pet</a>"
       : "Errore imprevisto. Riprova più tardi.";
