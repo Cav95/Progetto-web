@@ -4,10 +4,12 @@ const form = document.querySelector("main form");
 
 const nome = document.querySelector("#nome");
 const data = document.querySelector("#data");
-const nomespecie = document.querySelector("#nomespecie");
-const nomerazza = document.querySelector("#nomerazza");
+const nomespecie = document.querySelector("#spec-sel");
+const nomerazza = document.querySelector("#razza-sel");
 const descrizione = document.querySelector("#descrizione");
 const img = document.querySelector("#pet-img");
+const existingImgInput = document.querySelector("#existing-img");
+const existingImg = existingImgInput ? existingImgInput.value : null;
 const descrizioneimg = document.querySelector("#descrizione-img");
 
 
@@ -27,7 +29,6 @@ form.addEventListener("submit", e => {
       newPetSession(
         nome.value,
         data.value,
-        nomespecie.value,
         nomerazza.value,
         descrizione.value,
         img.files && img.files[0] ? img.files[0] : null,
@@ -37,7 +38,6 @@ form.addEventListener("submit", e => {
       modifyPetSession(
         nome.value,
         data.value,
-        nomespecie.value,
         nomerazza.value,
         descrizione.value,
         img.files && img.files[0] ? img.files[0] : null,
@@ -51,12 +51,11 @@ form.addEventListener("submit", e => {
 
 
 
-async function newPetSession(nome, data, nomespecie, nomerazza, descrizione, img, descrizioneimg) {
+async function newPetSession(nome, data,nomerazza, descrizione, img, descrizioneimg) {
   const url = "api/api-addpet.php?action=create";
   const formData = new FormData();
   formData.append("nome", nome);
   formData.append("data", data);
-  formData.append("nomespecie", nomespecie);
   formData.append("nomerazza", nomerazza);
   formData.append("descrizione", descrizione);
   if (img instanceof File) {
@@ -90,12 +89,11 @@ async function newPetSession(nome, data, nomespecie, nomerazza, descrizione, img
   }
 }
 
-async function modifyPetSession(nome, data, nomespecie, nomerazza, descrizione, img, descrizioneimg, id_pet) {
+async function modifyPetSession(nome, data, nomerazza, descrizione, img, descrizioneimg, id_pet) {
   const url = "api/api-addpet.php?action=modify";
   const formData = new FormData();
   formData.append("nome", nome);
   formData.append("data", data);
-  formData.append("nomespecie", nomespecie);
   formData.append("nomerazza", nomerazza);
   formData.append("descrizione", descrizione);
   if (id_pet) {
@@ -104,6 +102,8 @@ async function modifyPetSession(nome, data, nomespecie, nomerazza, descrizione, 
   if (img instanceof File) {
     console.log("selected file name:", img.name);
     formData.append("img", img, img.name);
+  } else if (existingImg) {
+    formData.append("img", existingImg);
   }
 
   formData.append("descrizioneimg", descrizioneimg);
