@@ -36,6 +36,9 @@
   <div class="col-md-1"></div>
   <div class="col col-md-10 mx-md-0 mx-1">
     <ul id="app-container" class="list-unstyled">
+      <li class="h3 text-center mt-3 alert alert-info">
+        Nessuna prenotazione per la data selezionata
+      </li>
       <!-- Sessions added with AJAX -->
     </ul>
   </div>

@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col col-md-10 mx-md-0 mx-1">
-    <ul class="list-unstyled">
+    <ul class="list-unstyled" id="app-container">
       <?php foreach ($templateParams["prenotazioni"] as $prenotazione): ?>
         <li class="card mb-3 px-2 bg-dark text-white" id="<?php echo "app-" . $prenotazione["id_prenotazione"]; ?>">
           <div class="card-body row gap-md-4">
@@ -39,6 +39,9 @@
           </div>
         </li>
       <?php endforeach; ?>
+      <?php if (count($templateParams["prenotazioni"]) == 0): ?>
+        <li class="h3 text-center mt-3 alert alert-info">Non hai nessuna prenotazione</li>
+      <?php endif; ?>
     </ul>
   </div>
   <div class="col-md-1"></div>

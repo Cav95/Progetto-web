@@ -73,7 +73,10 @@ async function getPTSessions(date) {
 
 function buildSessions(sessions) {
   if (sessions.length == 0) {
-    container.innerHTML = "";
+    container.innerHTML = `
+      <li class="h3 text-center mt-3 alert alert-info">
+        Nessuna prenotazione per la data selezionata
+      </li>`;
     return;
   }
   container.innerHTML = sessions.map(s => `

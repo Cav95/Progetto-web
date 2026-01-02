@@ -1,3 +1,4 @@
+const container = document.querySelector("#app-container");
 const deleteAppBtn = document.querySelector("#delete-app-confirm");
 const newAppLink = document.querySelector("#new-app");
 
@@ -29,8 +30,10 @@ async function cancelSession(id) {
       newAppLink.focus();
       setTimeout(() => {
         toDelete.remove();
+        if (document.querySelector("main ul").childElementCount == 0) {
+          container.innerHTML = `<li class="h3 text-center mt-3 alert alert-info">Non hai nessuna prenotazione</li>`;
+        }
       }, 150);
-      console.log("Prenotazione eliminata!");
     } else {
       throw new Error("Unable to delete session");
     }
