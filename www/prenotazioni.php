@@ -27,4 +27,6 @@ if (isLoggedUserAdmin()) {
   $templateParams["prenotazioni"] = $dbh->getNextPTSessionsFromUser($_SESSION["userid"]);
 }
 
+$templateParams["css"][] = "css/prenotazioni.css";
+
 require "template/base.php";

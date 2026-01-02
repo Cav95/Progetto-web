@@ -30,8 +30,8 @@ async function cancelSession(id) {
       newAppLink.focus();
       setTimeout(() => {
         toDelete.remove();
-        if (document.querySelector("main ul").childElementCount == 0) {
-          container.innerHTML = `<li class="h3 text-center mt-3 alert alert-info">Non hai nessuna prenotazione</li>`;
+        if (document.querySelector("main tbody").childElementCount == 0) {
+          container.innerHTML = `<div class="h3 text-center mt-3 mx-2 alert alert-info">Non hai nessuna prenotazione</div>`;
         }
       }, 150);
     } else {
