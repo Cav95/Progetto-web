@@ -28,7 +28,7 @@ switch ($_REQUEST["action"]) {
         $r = $dbh->modifyUserPsw($userid, $hash);
         if ($r) {
           $result["ok"] = true;
-          $result["msg"] = "Registrazione avvenuta con successo! Vai al <a href='./login.php' class='link-primary'>login</a>";
+          $result["msg"] = "Password modificata con successo! Vai al <a href='./login.php' class='link-primary'>login</a>";
         } else {
           $result["msg"] = "Abbiamo riscontrato un problema inaspettato. Riprova più tardi.";
         }
