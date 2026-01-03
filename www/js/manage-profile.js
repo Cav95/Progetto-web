@@ -12,6 +12,8 @@ form.addEventListener("submit", e => {
     const action = submitter && submitter.value ? submitter.value : null;
     const id_user = submitter && submitter.id ? submitter.id : null;
 
+    console.log(action);
+    
     if (action === "Banna" || action === "Abilita" ) {
       userban(id_user);
     }
