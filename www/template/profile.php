@@ -8,11 +8,11 @@
             <strong>Utente inesistente!</strong>
           </div>
         <?php else: ?>
-          <div class="d-flex align-items-center gap-2 mb-1 fs-4">
+          <div class="d-flex align-items-center gap-2 mb-1 fs-5 fs-md-4">
             <svg class="icon" aria-label="Nome e Cognome"><use href="#icon-user"></use></svg>
             <?php echo $templateParams["user"]["Nome"] . " " . $templateParams["user"]["Cognome"]; ?>
           </div>
-          <div class="d-flex align-items-center gap-2 mb-4 fs-4">
+          <div class="d-flex align-items-center gap-2 mb-4 fs-5 fs-md-4">
             <svg class="icon" aria-label="Email"><use href="#icon-email"></use></svg>
             <?php echo $templateParams["user"]["Email"] ?>
           </div>

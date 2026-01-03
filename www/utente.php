@@ -13,7 +13,7 @@ $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 // Generic
 $templateParams["title"] = "Utente | Unibo Pet Therapy";
-$templateParams["nome"] = "user-form.php";
+$templateParams["nome"] = "profile.php";
 $templateParams["js"] = ["js/manage-profile.js"];
 
 // Specific
