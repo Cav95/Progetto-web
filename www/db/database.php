@@ -22,6 +22,16 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
+    public function getUserFromID($ID): array
+  {
+    $query = "SELECT * FROM utenti WHERE ID_Utente = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('i', $ID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+
   public function doesUserExist($email): bool
   {
     $query = "SELECT email FROM utenti WHERE email = ?;";
