@@ -50,6 +50,22 @@ class DatabaseHelper
     return $stmt->execute();
   }
 
+    public function modifyUserPsw($userid,$password_hash): bool
+  {
+    $query = "UPDATE UTENTI SET password = ? WHERE ID_Utente = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('si', $password_hash, $userid);
+    return $stmt->execute();
+  }
+
+  public function userBan($userid): bool
+  {
+    $query = "UPDATE UTENTI SET Bannato = 1 WHERE ID_Utente = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('i',  $userid);
+    return $stmt->execute();
+  }
+
   // CURIOSITÀ
   public function getRandomFacts($n): array
   {

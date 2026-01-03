@@ -6,32 +6,45 @@
         <div class="alert alert-warning d-none" id="alert-warning"></div>
         <div class="alert alert-success d-none" id="alert-success"></div>
         <form id="pet-form" action="#" method="POST">
-        <div class="d-flex align-items-center gap-2">
-          <svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg>
-          <p ><?php echo $templateParams["user"]["Nome"]." ". $templateParams["user"]["Cognome"]?> </p>
-        </div>
-        <div class="d-flex align-items-center gap-2">
-          <svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg>
-          <p ><?php echo $templateParams["user"]["Email"]?></p>
-        </div>
-        <?php if ($templateParams["formaction"] == "Profilo"): ?>
+          <div class="d-flex align-items-center gap-2">
+            <svg class="icon" aria-hidden="true">
+              <use href="#icon-user"></use>
+            </svg>
+            <p><?php echo $templateParams["user"]["Nome"] . " " . $templateParams["user"]["Cognome"] ?> </p>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <svg class="icon" aria-hidden="true">
+              <use href="#icon-user"></use>
+            </svg>
+            <p><?php echo $templateParams["user"]["Email"] ?></p>
+          </div>
+          <?php if ($templateParams["formaction"] == "Profilo"): ?>
             <div class="form-floating mb-3">
-              <input type="password" name="password" class="form-control" id="password" placeholder="Password" autocomplete="<?php $templateParams["formaction"] == "Accedi" ? "current-password" : "new-password"; ?>" required/>
+              <input type="password" name="password" class="form-control" id="password" placeholder="Password"
+                autocomplete="<?php $templateParams["formaction"] == "Accedi" ? "current-password" : "new-password"; ?>"
+                required />
               <label for="password" class="form-label">Password</label>
-            </div>           
+            </div>
             <div class="form-floating mb-3">
-              <input type="password" name="password-repeat" class="form-control" id="password-repeat" placeholder="Ripeti password" autocomplete="new-password" required/>
+              <input type="password" name="password-repeat" class="form-control" id="password-repeat"
+                placeholder="Ripeti password" autocomplete="new-password" required />
               <label for="password-repeat" class="form-label">Ripeti password</label>
             </div>
-              <div class="d-flex justify-content-end">
-              <input type="submit" class="btn btn-primary my-3 px-3" value="Modifica"/>
+            <div class="d-flex justify-content-end">
+              <input type="submit" id="<?php echo $templateParams["user"]["ID_Utente"] ?>"
+                class="btn btn-primary my-3 px-3" value="Modifica" />
             </div>
-            <?php endif; ?>
-            <?php if ($templateParams["formaction"] == "Visualizza Utente"): ?>
-              <div class="d-flex justify-content-end">
-              <input type="submit" class="btn btn-primary my-3 px-3 btn-danger" value="Banna Utente"/>
-            </div>            
-            <?php endif; ?>
+          <?php endif; ?>
+          <?php if ($templateParams["formaction"] == "Visualizza Utente"): ?>
+            <div class="d-flex align-items-center gap-2">
+
+              <p><?php echo $templateParams["user"]["Bannato"] == 1 ? "Bannato" : "Abilitato" ?> </p>
+            </div>
+            <div class="d-flex justify-content-end">
+              <input type="submit" id="<?php echo $templateParams["user"]["ID_Utente"] ?>"
+                class="btn btn-primary my-3 px-3 btn-danger" value="Banna" />
+            </div>
+          <?php endif; ?>
         </form>
       </div>
     </div>
