@@ -33,7 +33,7 @@ form.addEventListener("submit", e => {
 async function modifyPsw(psw, id_user) {
   const url = "api/api-profile.php?action=modifica";
   const formData = new FormData();
-  formData.append("psw", psw);
+  formData.append("password", psw);
   formData.append("ID_User", id_user);
   for (const pair of formData.entries()) {
     console.log("formData", pair[0], pair[1]);

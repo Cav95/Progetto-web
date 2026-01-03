@@ -66,16 +66,15 @@ class DatabaseHelper
     $result = $stmt->get_result();
     $ban = $result->fetch_all(MYSQLI_ASSOC)[0]["Bannato"];
 
-    echo $ban;
     if($ban == 1){
-      $ban = 0;
+      $bannato = 0;
     }else{
-      $ban = 1;
+      $bannato = 1;
     }
 
     $query = "UPDATE UTENTI SET Bannato = ? WHERE ID_Utente = ?;";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param('ii', $ban, $userid);
+    $stmt->bind_param('ii', $bannato, $userid);
     return $stmt->execute();
   }
 

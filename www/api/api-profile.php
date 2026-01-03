@@ -13,12 +13,11 @@ switch ($_REQUEST["action"]) {
   case 'modifica':
     if (
       isset($_POST["ID_User"]) &&
-      isset($_POST["password"]) &&
-      isset($_POST["password-repeat"])
+      isset($_POST["password"])
     ) {
+      
       $userid = $_POST["ID_User"];
       $password = $_POST["password"];
-      $password_R = $_POST["password-repeat"];
 
       if ($password != $password_R) {
         $result["msg"] = "Le password inserite non corrispondono!";
@@ -26,6 +25,7 @@ switch ($_REQUEST["action"]) {
 
         $hash = password_hash($password, PASSWORD_ARGON2ID);
         $r = $dbh->modifyUserPsw($userid, $hash);
+        echo $r;
         if ($r) {
           $result["ok"] = true;
           $result["msg"] = "Password modificata con successo! Vai al <a href='./login.php' class='link-primary'>login</a>";
@@ -48,9 +48,11 @@ switch ($_REQUEST["action"]) {
     $result["ok"] = $dbh->userBan(
       $_REQUEST["ID_User"]
     );
-    $result["msg"] = $result["ok"]
-      ? "Utente bannato correttamente! <a href='home.php'>Vai a Home</a>"
+    $ban = $dbh->getUserFromID($_REQUEST["ID_User"])[0]["Bannato"];
 
+    $result["msg"] = $result["ok"]
+      ? $ban == 1 ?"Utente bannato correttamente! <a href='home.php'>Vai a Home</a>" :
+      "Utente abilitato correttamente! <a href='home.php'>Vai a Home</a>"
       : "Errore imprevisto. Riprova più tardi.";
     break;
 }
