@@ -1,4 +1,9 @@
-## Ver 1.3 (Latest)
+## Ver 1.4 (Latest)
+- Renamed page /*home* to /*prenotazioni* for better clarity
+- Changed appointments display to be *tabular*, for accessibility reasons
+- Redesigned buttons "< Indietro" and "Avanti >" in /*appointments* and added them to the mobile viewport version
+
+## Ver 1.3
 - Changed navbar: On desktop viewport, the user profile *icon link* is now a *text link* of the user's email, for better clarity
 
 ## Ver 1.2
