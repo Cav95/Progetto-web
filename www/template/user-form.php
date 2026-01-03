@@ -42,7 +42,7 @@
             </div>
             <div class="d-flex justify-content-end">
               <input type="submit" id="<?php echo $templateParams["user"]["ID_Utente"] ?>"
-                class="btn btn-primary my-3 px-3 btn-danger" value="Banna" />
+                class="btn btn-primary my-3 px-3 btn-danger" value="<?php echo $templateParams["user"]["Bannato"] == 1 ? "Abilita" : "Banna" ?>" />
             </div>
           <?php endif; ?>
         </form>
