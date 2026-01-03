@@ -22,6 +22,16 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
+    public function getUserFromID($ID): array
+  {
+    $query = "SELECT * FROM utenti WHERE ID_Utente = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('i', $ID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+  }
+
   public function doesUserExist($email): bool
   {
     $query = "SELECT email FROM utenti WHERE email = ?;";
@@ -37,6 +47,34 @@ class DatabaseHelper
     $query = "INSERT INTO utenti(email, nome, cognome, password) VALUES (?, ?, ?, ?);";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param('ssss', $email, $name, $surname, $password_hash);
+    return $stmt->execute();
+  }
+
+    public function modifyUserPsw($userid,$password_hash): bool
+  {
+    $query = "UPDATE UTENTI SET password = ? WHERE ID_Utente = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('si', $password_hash, $userid);
+    return $stmt->execute();
+  }
+
+  public function userBan($userid): bool
+  {$query = "SELECT * FROM utenti WHERE ID_Utente = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('i', $userid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $ban = $result->fetch_all(MYSQLI_ASSOC)[0]["Bannato"];
+
+    if($ban == 1){
+      $bannato = 0;
+    }else{
+      $bannato = 1;
+    }
+
+    $query = "UPDATE UTENTI SET Bannato = ? WHERE ID_Utente = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('ii', $bannato, $userid);
     return $stmt->execute();
   }
 
