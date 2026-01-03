@@ -40,7 +40,7 @@
                   </div>
                 </td>
                 <td headers="elimina" class="d-flex align-items-center justify-content-center justify-content-md-end pt-3 pt-md-2">
-                  <button type="button" value="<?php echo $prenotazione["id_prenotazione"] ?>" class="btn btn-danger delete-app" data-bs-toggle="modal" data-bs-target="#confirmModal">Disdici prenotazione</button>
+                  <button type="button" data-appid="<?php echo $prenotazione["id_prenotazione"] ?>" class="btn btn-danger delete-app" data-bs-toggle="modal" data-bs-target="#confirmModal">Disdici prenotazione</button>
                 </td>
               </tr>
             <?php endforeach; ?>

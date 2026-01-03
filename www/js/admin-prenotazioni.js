@@ -79,6 +79,8 @@ function buildSessions(sessions) {
     appTable.classList.add("d-none");
     return;
   }
+  const now = new Date().toISOString();
+  const date = cachePTS.currDate;
   appAlert.classList.add("d-none");
   appTable.classList.remove("d-none");
   appContainer.innerHTML = sessions.map(s => `
@@ -102,15 +104,15 @@ function buildSessions(sessions) {
         </div>
       </td>
       <td headers="elimina">
-        <div class="d-flex align-items-center justify-content-center justify-content-md-end pt-3 pt-md-0">
-          <button type="button" value="${s.id_prenotazione}" class="btn btn-danger delete-app" data-bs-toggle="modal" data-bs-target="#confirmModal">Elimina</button>
+        <div class="d-flex align-items-center justify-content-center justify-content-md-end pt-2 pt-md-0">
+          <button type="button" data-appid="${s.id_prenotazione}" class="btn btn-danger delete-app" data-bs-toggle="modal" data-bs-target="#confirmModal" ${(date + "T" + s.ora) <= now ? `disabled aria-disabled="true"` : ``}>Annulla sessione</button>
         </div>
       </td>
     </tr>
   `).reduce((a, b) => a + b);
   document.querySelectorAll(".delete-app").forEach(btn => {
     btn.addEventListener("click", (e) => {
-      appTodelete = e.target.value;
+      appTodelete = e.target.dataset.appid;
     });
   });
 }

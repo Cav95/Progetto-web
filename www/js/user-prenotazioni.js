@@ -12,7 +12,7 @@ deleteAppBtn.addEventListener("click", () => {
 
 document.querySelectorAll(".delete-app").forEach(btn => {
   btn.addEventListener("click", e => {
-    appTodelete = e.target.value;
+    appTodelete = e.target.dataset.appid;
   });
 });
 
