@@ -61,7 +61,6 @@ switch ($_REQUEST["action"]) {
     );
     $result["msg"] = $result["ok"]
       ? "Pet aggiunto correttamente! <a href='petpage.php'>Vedi Pet</a>"
-
       : "Errore imprevisto. Riprova più tardi.";
     break;
 

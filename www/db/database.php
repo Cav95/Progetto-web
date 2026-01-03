@@ -228,12 +228,9 @@ class DatabaseHelper
         DescrizioneImmagine,
         Disponibile,
         ID_Razza
-    )
-VALUES (
-        ?,?,?,?,?,
-        1,
-        ?
-    )";
+      )
+      VALUES (?,?,?,?,?,1,?);
+    ";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param('ssssss', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $nomerazza);
     return $stmt->execute();

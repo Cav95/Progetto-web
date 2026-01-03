@@ -16,29 +16,28 @@
               value="<?php echo $templateParams["specificpet"]["DataDiNascita"]; ?>" required>
             <label for="data" class="form-label">Data</label>
           </div>
-          <div>
+          <div class="form-floating">
             <select id="spec-sel" name="nomespecie" class="form-select form-select-sm mb-3" aria-label="Small select example">
-              <option selected>Specie</option>
-            <?php foreach ($templateParams["specie"] as $specie): ?>
+              <?php foreach ($templateParams["specie"] as $specie): ?>
                 <option value="<?php echo $specie["ID_Specie"]; ?>"
                   <?php if ($specie["Nomespecie"] === $templateParams["specificpet"]["Nomespecie"]) echo 'selected'; ?>>
                   <?php echo $specie["Nomespecie"]; ?>
                 </option>
               <?php endforeach; ?>
             </select>
+            <label for="spec-sel">Specie</label>
           </div>
-          <div>
+          <div class="form-floating">
             <select id="razza-sel" name="nomerazza" class="form-select form-select-sm mb-3" aria-label="Small select example">
-              <option selected>Razza</option>
-            <?php foreach ($templateParams["razza"] as $razza): ?>
+              <?php foreach ($templateParams["razza"] as $razza): ?>
                 <option value="<?php echo $razza["ID_Razza"]; ?>"
                   <?php if ($razza["Nomerazza"] === $templateParams["specificpet"]["Nomerazza"]) echo 'selected'; ?>>
                   <?php echo $razza["Nomerazza"]; ?>
                 </option>
               <?php endforeach; ?>
             </select>
+            <label for="razza-sel">Razza</label>
           </div>
-
           <div class="form-floating mb-3">
             <input type="text" name="descrizione" class="form-control" id="descrizione" placeholder="Descrizione"
               value="<?php echo $templateParams["specificpet"]["Descrizione"]; ?>" required>
