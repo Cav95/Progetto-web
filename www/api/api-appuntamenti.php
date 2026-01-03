@@ -3,6 +3,11 @@ require_once "../bootstrap.php";
 
 $result["ok"] = false;
 
+if (!isUserLoggedIn()) {
+  http_response_code(401);
+  exit;
+}
+
 if (!isset($_REQUEST["action"])) {
   http_response_code(400);
   exit;

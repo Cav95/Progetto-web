@@ -15,7 +15,7 @@
     endforeach;
   endif;
   ?>
-  <title><?php echo $templateParams["title"]; ?></title>
+  <title><?php echo $templateParams["title"] ?? "Unibo Pet Therapy"; ?></title>
 </head>
 
 <body class="container-fluid bg-body p-0 overflow-x-hidden">
@@ -33,8 +33,8 @@
     <div class="col-lg-9 col pb-4">
       <main>
         <?php
-        if (isset($templateParams["nome"])) {
-          require $templateParams["nome"];
+        if (isset($templateParams["main"])) {
+          require $templateParams["main"];
         }
         ?>
       </main>

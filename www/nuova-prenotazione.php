@@ -13,7 +13,7 @@ $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 // Generic
 $templateParams["title"] = "Nuova prenotazione | Unibo Pet Therapy";
-$templateParams["nome"] = "form-prenotazione.php";
+$templateParams["main"] = "main/form-prenotazione.php";
 $templateParams["js"] = ["js/nuova-prenotazione.js"];
 
 require "template/base.php";
