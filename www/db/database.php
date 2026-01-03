@@ -59,10 +59,23 @@ class DatabaseHelper
   }
 
   public function userBan($userid): bool
-  {
-    $query = "UPDATE UTENTI SET Bannato = 1 WHERE ID_Utente = ?;";
+  {$query = "SELECT * FROM utenti WHERE ID_Utente = ?;";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param('i',  $userid);
+    $stmt->bind_param('i', $userid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $ban = $result->fetch_all(MYSQLI_ASSOC)[0]["Bannato"];
+
+    echo $ban;
+    if($ban == 1){
+      $ban = 0;
+    }else{
+      $ban = 1;
+    }
+
+    $query = "UPDATE UTENTI SET Bannato = ? WHERE ID_Utente = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('ii', $ban, $userid);
     return $stmt->execute();
   }
 
