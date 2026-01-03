@@ -2,42 +2,39 @@ const alertWarning = document.querySelector("#alert-warning");
 const alertSuccess = document.querySelector("#alert-success");
 const form = document.querySelector("main form");
 
-const psw = document.querySelector("#password");
-
-
 form.addEventListener("submit", e => {
   if (form.checkValidity()) {
     e.preventDefault();
-    const submitter = e.submitter || document.activeElement;
-    const action = submitter && submitter.value ? submitter.value : null;
-    const id_user = submitter && submitter.id ? submitter.id : null;
-
-    console.log(action);
+    switch (e.submitter.id) {
+      case "chg_pwd":
+        const formElements = e.target.elements;
+        const oldPassword = formElements["old-password"].value;
+        const newPassword = formElements["new-password"].value;
+        const newPasswordRepeat = formElements["password-repeat"].value;
+        if (newPassword !== newPasswordRepeat) {
+          displayWarning("Le nuove password inserite non corrispondono!");
+          return;
+        }
+        changePassword(oldPassword, newPassword, newPasswordRepeat);
+        break;
+      
+      case "chg_ban":
+        toggleUserban(e.submitter.dataset.userid);
+        break;
     
-    if (action === "Banna" || action === "Abilita" ) {
-      userban(id_user);
+      default:
+        break;
     }
-
-    if (action === "Modifica") {
-      modifyPsw(
-        psw.value,
-        id_user
-      );
-    }
+    
   }
-
 });
 
-
-
-async function modifyPsw(psw, id_user) {
+async function changePassword(oldPassword, newPassword, newPasswordRepeat) {
   const url = "api/api-profile.php?action=modifica";
   const formData = new FormData();
-  formData.append("password", psw);
-  formData.append("ID_User", id_user);
-  for (const pair of formData.entries()) {
-    console.log("formData", pair[0], pair[1]);
-  }
+  formData.append("old-pwd", oldPassword);
+  formData.append("new-pwd", newPassword);
+  formData.append("pwd-repeat", newPasswordRepeat);
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -61,10 +58,10 @@ async function modifyPsw(psw, id_user) {
 }
 
 
-async function userban(id_user) {
-  const url = "api/api-profile.php?action=banna";
+async function toggleUserban(id_user) {
+  const url = "api/api-profile.php?action=ban";
   const formData = new FormData();
-  formData.append("ID_User", id_user);
+  formData.append("userID", id_user);
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -74,13 +71,12 @@ async function userban(id_user) {
       throw new Error("Response status: " + response.status);
     }
     const json = await response.json();
+    if (json["ok"]) {
+      window.location.reload();
+      return;
+    } 
     if (json["msg"] != null) {
-      if (json["ok"]) {
-        displaySuccess(json["msg"]);
-        form.reset();
-      } else {
-        displayWarning(json["msg"]);
-      }
+      displayWarning(json["msg"]);
     }
   } catch (error) {
     console.log(error.message);

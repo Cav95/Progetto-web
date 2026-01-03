@@ -12,24 +12,24 @@ class DatabaseHelper
   }
 
   // LOGIN / REGISTRAZIONE
-  public function getUserFromEmail($email): array
+  public function getUserFromEmail($email): array|bool|null
   {
     $query = "SELECT * FROM utenti WHERE email = ?;";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param('s', $email);
     $stmt->execute();
     $result = $stmt->get_result();
-    return $result->fetch_all(MYSQLI_ASSOC);
+    return $result->fetch_assoc();
   }
 
-    public function getUserFromID($ID): array
+  public function getUserFromID($ID): array|bool|null
   {
     $query = "SELECT * FROM utenti WHERE ID_Utente = ?;";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param('i', $ID);
     $stmt->execute();
     $result = $stmt->get_result();
-    return $result->fetch_all(MYSQLI_ASSOC);
+    return $result->fetch_assoc();
   }
 
   public function doesUserExist($email): bool
@@ -50,32 +50,22 @@ class DatabaseHelper
     return $stmt->execute();
   }
 
-    public function modifyUserPsw($userid,$password_hash): bool
+  public function changeUserPassword($userid, $new_password_hash): bool
   {
-    $query = "UPDATE UTENTI SET password = ? WHERE ID_Utente = ?;";
+    $query = "UPDATE Utenti SET password = ? WHERE ID_Utente = ?;";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param('si', $password_hash, $userid);
-    return $stmt->execute();
+    $stmt->bind_param('si', $new_password_hash, $userid);
+    $stmt->execute();
+    return $stmt->affected_rows > 0;
   }
 
-  public function userBan($userid): bool
-  {$query = "SELECT * FROM utenti WHERE ID_Utente = ?;";
+  public function userToggleBan($userid): bool
+  {
+    $query = "UPDATE Utenti SET Bannato = (SELECT !Bannato FROM Utenti WHERE ID_Utente = ?) WHERE ID_Utente = ?;";
     $stmt = $this->db->prepare($query);
-    $stmt->bind_param('i', $userid);
+    $stmt->bind_param('ii', $userid, $userid);
     $stmt->execute();
-    $result = $stmt->get_result();
-    $ban = $result->fetch_all(MYSQLI_ASSOC)[0]["Bannato"];
-
-    if($ban == 1){
-      $bannato = 0;
-    }else{
-      $bannato = 1;
-    }
-
-    $query = "UPDATE UTENTI SET Bannato = ? WHERE ID_Utente = ?;";
-    $stmt = $this->db->prepare($query);
-    $stmt->bind_param('ii', $bannato, $userid);
-    return $stmt->execute();
+    return $stmt->affected_rows > 0;
   }
 
   // CURIOSITÀ
@@ -249,13 +239,12 @@ VALUES (
     return $stmt->execute();
   }
 
-  public function modifyPet($nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg, $disponibile, $idpet ): bool
+  public function modifyPet($nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg, $disponibile, $idpet): bool
   {
 
-    if(str_contains($disponibile ,"true")){
+    if (str_contains($disponibile, "true")) {
       $dispo = 1;
-    }
-    else{
+    } else {
       $dispo = 0;
     }
     $query = "UPDATE Pet
@@ -269,7 +258,8 @@ VALUES (
     WHERE ID_Pet = ?;";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param('sssssiii', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $dispo, $nomerazza, $idpet);
-    return $stmt->execute();
+    $stmt->execute();
+    return $stmt->affected_rows > 0;
   }
 
   public function deletePet($pet_id): bool

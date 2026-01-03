@@ -3,57 +3,57 @@ require_once "../bootstrap.php";
 
 $result["ok"] = false;
 
+if (!isUserLoggedIn()) {
+  http_response_code(401);
+  exit;
+}
+
 if (!isset($_REQUEST["action"])) {
   http_response_code(400);
   exit;
 }
 
 switch ($_REQUEST["action"]) {
-  // Delete a PT session
   case 'modifica':
-    if (
-      isset($_POST["ID_User"]) &&
-      isset($_POST["password"])
-    ) {
-      
-      $userid = $_POST["ID_User"];
-      $password = $_POST["password"];
-
-      if ($password != $password_R) {
-        $result["msg"] = "Le password inserite non corrispondono!";
+    if (isset($_POST["old-pwd"]) && isset($_POST["new-pwd"]) && isset($_POST["pwd-repeat"])) {
+      $oldPassword = $_POST["old-pwd"];
+      $newPassword = $_POST["new-pwd"];
+      $newPasswordRepeat = $_POST["pwd-repeat"];
+      if ($newPassword != $newPasswordRepeat) {
+        $result["msg"] = "Le nuove password inserite non corrispondono";
       } else {
-
-        $hash = password_hash($password, PASSWORD_ARGON2ID);
-        $r = $dbh->modifyUserPsw($userid, $hash);
-        echo $r;
-        if ($r) {
-          $result["ok"] = true;
-          $result["msg"] = "Password modificata con successo! Vai al <a href='./login.php' class='link-primary'>login</a>";
+        $oldHash = $dbh->getUserFromEmail($_SESSION["email"])["Password"];
+        if (!password_verify($oldPassword, $oldHash)) {
+          $result["msg"] = "La password attuale inserita è sbagliata";
         } else {
-          $result["msg"] = "Abbiamo riscontrato un problema inaspettato. Riprova più tardi.";
+          $newHash = password_hash($newPassword, PASSWORD_ARGON2ID);
+          $r = $dbh->changeUserPassword($_SESSION["userid"], $newHash);
+          if (!$r) {
+            $result["msg"] = "Abbiamo riscontrato un problema inaspettato. Riprova più tardi.";
+          } else {
+            $result["msg"] = "Password modificata con successo!";
+            $result["ok"] = true;
+          }
         }
-
       }
     }
+    break;
 
-  // Create a PT session
-  case 'banna':
-    if (
-      !isset($_REQUEST["ID_User"])
-    ) {
+  case 'ban':
+    if (!isLoggedUserAdmin()) {
+      http_response_code(403);
+      exit;
+    }
+    if (!isset($_REQUEST["userID"])) {
       http_response_code(400);
       exit;
     }
-
-    $result["ok"] = $dbh->userBan(
-      $_REQUEST["ID_User"]
-    );
-    $ban = $dbh->getUserFromID($_REQUEST["ID_User"])[0]["Bannato"];
-
-    $result["msg"] = $result["ok"]
-      ? $ban == 1 ?"Utente bannato correttamente! <a href='home.php'>Vai a Home</a>" :
-      "Utente abilitato correttamente! <a href='home.php'>Vai a Home</a>"
-      : "Errore imprevisto. Riprova più tardi.";
+    $r = $dbh->userToggleBan($_REQUEST["userID"]);
+    if (!$r) {
+      $result["msg"] = "Errore imprevisto. Riprova più tardi.";
+    } else {
+      $result["ok"] = true;
+    }
     break;
 }
 

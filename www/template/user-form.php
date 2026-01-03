@@ -1,72 +1,64 @@
-<div class="row justify-content-center bg-body-tertiary">
-  <div class="mb-1 mt-md-5 col-md-6 p-3 card">
-    <h2 class="text-center h1 mb-3 card-header bg-body"><?php echo $templateParams["formaction"]; ?></h2>
-    <div class="card-body">
-      <div class="mb-3">
-        <div class="alert alert-warning d-none" id="alert-warning"></div>
-        <div class="alert alert-success d-none" id="alert-success"></div>
-        <form id="pet-form" action="#" method="POST">
-          <div class="d-flex align-items-center gap-2">
-            <svg class="icon" aria-hidden="true">
-              <use href="#icon-user"></use>
-            </svg>
-            <p><?php echo $templateParams["user"]["Nome"] . " " . $templateParams["user"]["Cognome"] ?> </p>
+<section>
+  <div class="row justify-content-center bg-body-tertiary">
+    <div class="mb-1 mt-md-5 col-md-6 p-3 card">
+      <h2 class="text-center h1 mb-1 card-header bg-body"><?php echo $templateParams["formaction"]; ?></h2>
+      <div class="card-body">
+        <?php if (!$templateParams["user"]): ?>
+          <div class="alert alert-danger text-center">
+            <strong>Utente inesistente!</strong>
           </div>
-          <div class="d-flex align-items-center gap-2">
-            <svg class="icon" aria-hidden="true">
-              <use href="#icon-user"></use>
-            </svg>
-            <p><?php echo $templateParams["user"]["Email"] ?></p>
+        <?php else: ?>
+          <div class="d-flex align-items-center gap-2 mb-1 fs-4">
+            <svg class="icon" aria-label="Nome e Cognome"><use href="#icon-user"></use></svg>
+            <?php echo $templateParams["user"]["Nome"] . " " . $templateParams["user"]["Cognome"]; ?>
           </div>
-          <?php if ($templateParams["formaction"] == "Profilo"): ?>
-            <div class="form-floating mb-3">
-              <input type="password" name="password" class="form-control" id="password" placeholder="Password"
-                autocomplete="<?php $templateParams["formaction"] == "Accedi" ? "current-password" : "new-password"; ?>"
-                required />
-              <label for="password" class="form-label">Password</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="password" name="password-repeat" class="form-control" id="password-repeat"
-                placeholder="Ripeti password" autocomplete="new-password" required />
-              <label for="password-repeat" class="form-label">Ripeti password</label>
-            </div>
-            <div class="d-flex justify-content-end">
-              <input type="submit" id="<?php echo $templateParams["user"]["ID_Utente"] ?>"
-                class="btn btn-primary my-3 px-3" value="Modifica" />
-            </div>
-          <?php endif; ?>
-          <?php if ($templateParams["formaction"] == "Visualizza Utente"): ?>
-            <div class="d-flex align-items-center gap-2">
-
-              <p><?php echo $templateParams["user"]["Bannato"] == 1 ? "Bannato" : "Abilitato" ?> </p>
-            </div>
-            <div class="d-flex justify-content-end">
-              <input type="submit" id="<?php echo $templateParams["user"]["ID_Utente"] ?>"
-                class="btn btn-primary my-3 px-3 btn-danger" value="<?php echo $templateParams["user"]["Bannato"] == 1 ? "Abilita" : "Banna" ?>" />
-            </div>
-          <?php endif; ?>
-        </form>
+          <div class="d-flex align-items-center gap-2 mb-4 fs-4">
+            <svg class="icon" aria-label="Email"><use href="#icon-email"></use></svg>
+            <?php echo $templateParams["user"]["Email"] ?>
+          </div>
+          <hr>
+          <section>
+            <?php if ($templateParams["formaction"] == "Profilo"): ?>
+              <h3 class="h4 mb-3">Cambio password</h3>
+            <?php endif; ?>
+            <div class="alert alert-warning d-none" id="alert-warning"></div>
+            <div class="alert alert-success d-none" id="alert-success"></div>
+            <form action="#" method="POST">
+              <?php 
+              switch ($templateParams["formaction"]):
+                case "Profilo":
+              ?>
+                  <div class="form-floating mb-3">
+                    <input type="password" name="old-password" class="form-control" id="old-password" placeholder="Password attuale" autocomplete="current-password" required />
+                    <label for="old-password" class="form-label">Password attuale</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" name="new-password" class="form-control" id="new-password" placeholder="Nuova password" autocomplete="new-password" required />
+                    <label for="new-password" class="form-label">Nuova password</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" name="password-repeat" class="form-control" id="password-repeat" placeholder="Ripeti nuova password" autocomplete="new-password" required />
+                    <label for="password-repeat" class="form-label">Ripeti nuova password</label>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <input type="submit" id="chg_pwd" class="btn btn-primary mt-3 px-3" value="Modifica password" />
+                  </div>
+              <?php
+                  break;
+                case "Visualizza Utente":
+              ?>
+                  <p>Questo utente è <strong><?php echo $templateParams["user"]["Bannato"] == 1 ? "bannato" : "abilitato" ?></strong></p>
+                  <div class="d-flex justify-content-end">
+                    <input type="submit" id="chg_ban" class="btn px-3 btn-danger" value="<?php echo $templateParams["user"]["Bannato"] ? "Abilita" : "Banna" ?> utente" data-userid="<?php echo $templateParams["user"]["ID_Utente"]; ?>" />
+                  </div>
+              <?php
+                  break;
+              endswitch;
+              ?>
+            </form>
+          </section>
+        <?php endif; ?>
       </div>
     </div>
   </div>
-</div>
-
-<!-- Bootstrap Modal -->
-<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalLabel">Conferma cancellazione pet</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Sei sicuro di voler cancellare questo animale?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-        <input type="submit" id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>" class="btn btn-danger"
-          value="Elimina" form="pet-form">
-      </div>
-    </div>
-  </div>
-</div>
+</section>
