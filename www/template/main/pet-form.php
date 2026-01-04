@@ -53,7 +53,7 @@
             <?php endif; ?>
             <input class="form-control" type="file" id="pet-img" name="img">
             <?php if (!empty($templateParams['specificpet']['Immagine'])): ?>
-              <input type="hidden" id="existing-img" name="img" value="<?php echo $templateParams['specificpet']['Immagine']; ?>">
+              <input type="hidden" id="oldimg" name="oldimg" value="<?php echo $templateParams['specificpet']['Immagine']; ?>">
             <?php endif; ?>
           </div>
 

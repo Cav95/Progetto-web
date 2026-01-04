@@ -9,8 +9,7 @@ const nomespecie = document.querySelector("#spec-sel");
 const nomerazza = document.querySelector("#razza-sel");
 const descrizione = document.querySelector("#descrizione");
 const img = document.querySelector("#pet-img");
-const existingImgInput = document.querySelector("#existing-img");
-const existingImg = existingImgInput ? existingImgInput.value : null;
+const oldimg = document.querySelector("#oldimg");
 const descrizioneimg = document.querySelector("#descrizione-img");
 const disponibile = document.querySelector("#disponibile");
 
@@ -36,12 +35,13 @@ form.addEventListener("submit", e => {
         descrizioneimg.value
       );
     } else if (action === "Modifica") {
-      modifyPetSession(
+      modifyPet(
         nome.value,
         data.value,
         nomerazza.value,
         descrizione.value,
         img.files && img.files[0] ? img.files[0] : null,
+        oldimg.value,
         descrizioneimg.value,
         disponibile.checked,
         id_pet
@@ -83,7 +83,6 @@ async function addPet(nome, data,nomerazza, descrizione, img, descrizioneimg) {
     if (json["msg"] != null) {
       if (json["ok"]) {
         displaySuccess(json["msg"]);
-        form.reset();
       } else {
         displayWarning(json["msg"]);
       }
@@ -93,7 +92,7 @@ async function addPet(nome, data,nomerazza, descrizione, img, descrizioneimg) {
   }
 }
 
-async function modifyPetSession(nome, data, nomerazza, descrizione, img, descrizioneimg, disponibile, id_pet) {
+async function modifyPet(nome, data, nomerazza, descrizione, img,oldimg, descrizioneimg, disponibile, id_pet) {
   const url = "api/api-addpet.php?action=modify";
   const formData = new FormData();
   formData.append("nome", nome);
@@ -105,8 +104,8 @@ async function modifyPetSession(nome, data, nomerazza, descrizione, img, descriz
   if (img instanceof File) {
     console.log("selected file name:", img.name);
     formData.append("img", img, img.name);
-  } else if (existingImg) {
-    formData.append("img", existingImg);
+  } else if (oldimg) {
+    formData.append("oldimg", oldimg);
   }
 
   formData.append("descrizioneimg", descrizioneimg);
@@ -126,7 +125,6 @@ async function modifyPetSession(nome, data, nomerazza, descrizione, img, descriz
     if (json["msg"] != null) {
       if (json["ok"]) {
         displaySuccess(json["msg"]);
-        form.reset();
       } else {
         displayWarning(json["msg"]);
       }

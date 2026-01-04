@@ -77,12 +77,19 @@ switch ($_REQUEST["action"]) {
       exit;
     }
 
-    [$r, $msg] = uploadImage(UPLOAD_PET_DIR, $_FILES["img"]);
-    if ($r == 0) {
-      $result["msg"] = $msg;
-      break;
+    if(isset($_FILES["img"])) {
+      [$r, $msg] = uploadImage(UPLOAD_PET_DIR, $_FILES["img"]);
+      if ($r == 0) {
+        $result["msg"] = $msg;
+        break;
+      }
+      $imgName = $msg;
+    } else if (isset($_REQUEST["oldimg"])) {
+      $imgName = $_REQUEST["oldimg"];
+    } else {
+      http_response_code(400);
+      exit;
     }
-    $imgName = $msg;
 
     $result["ok"] = $dbh->modifyPet(
       $_REQUEST["nome"],

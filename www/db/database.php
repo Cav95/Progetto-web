@@ -255,8 +255,7 @@ class DatabaseHelper
     WHERE ID_Pet = ?;";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param('sssssiii', $nome, $datanascita, $descrizione, $img, $descrizioneimg, $dispo, $nomerazza, $idpet);
-    $stmt->execute();
-    return $stmt->affected_rows > 0;
+    return $stmt->execute();
   }
 
   public function deletePet($pet_id): bool
