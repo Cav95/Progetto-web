@@ -1,9 +1,0 @@
-#cane {
-    width: 90%;
-}
-
-@media screen and (min-width:768px) {
-    #cane {
-        width: 30%;
-    }
-}

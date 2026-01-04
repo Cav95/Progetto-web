@@ -45,12 +45,12 @@
           <h2 class="text-center my-3 h4">Curiosità</h2>
           <div class="row px-2 g-3 pb-4">
             <?php foreach ($templateParams["curiosita"] as $curiosita): ?>
-              <div class="card col-12">
+              <article class="card col-12">
                 <div class="card-body">
-                  <h5 class="card-title"><?php echo $curiosita["titolo"]; ?></h5>
+                  <h3 class="card-title h5"><?php echo $curiosita["titolo"]; ?></h3>
                   <p class="card-text"><?php echo $curiosita["descrizione"]; ?></p>
                 </div>
-              </div>
+              </article>
             <?php endforeach; ?>
           </div>
         </section>

@@ -1,43 +1,86 @@
-<h2 class="text-center my-3 h1">Home</h2>
-<div class="col-1"></div>
-<div class="col-md-10 offset-md-1 text-center">
-  <h3>CHI SIAMO</h3>
-  <p>La nostra associazione promuove servizi volti al miglioramento del benessere psicofisico della
-    persona attraverso la relazione con gli animali a fini educativi e co-terapeutici, tramite Interventi Assistiti con
-    Animali.</p>
-    <h3>A CHI È RIVOLTO?</h3>
-  <p>In particolare ci preme aiutare gli studenti perchè la correlazione positiva si spiega con il meccanismo del
-    conforto non giudicante. A differenza di professori,
-    genitori o compagni di corso, l'animale non valuta la performance accademica dello studente. Questo offre una "pausa
-    psicologica" totale dalle aspettative di rendimento, permettendo al cervello di ricaricarsi.
-    Non serve necessariamente possedere un animale. I benefici massimi si riscontrano spesso nei
-    programmi organizzati dagli atenei (es. Puppy Rooms o giornate anti-stress), dove l'interazione è guidata e non
-    comporta per lo studente l'onere della gestione dell'animale.</p>
-  <img src="<?php echo PET_IMG_DIR . "varietaAnimali.jpg" ?>" alt="Animali da compagnia" class="w-100 border border-2"/>
-</div>
-<div id="benefici" class="p-5">
-  <div class="offset-md-1 float-start">
-    <h3 class="text-center">Perchè il cane?</h3>
-    <h4>Perchè stimola:</h4>
-    <ul>
-      <li>Fantasia</li>
-      <li>Curiosità</li>
-      <li>Capacità di osservazione</li>
-      <li>Interazione</li>
-    </ul>
-    <h4>Il cane inoltre:</h4>
-    <ul>
-      <li>Accetta incondizionatamente chiunque (accettazione della diversità)</li>
-      <li>È disinteressato</li>
-      <li>Dà incondizionatamente affetto</li>
-      <li>Dà senso di protezione</li>
-      <li>Suscita sentimenti di protezione</li>
-      <li>Dà una stimolazione plurisensoriale</li>
-      <li>Utilizza più “linguaggi” e canali di comunicazione</li>
-      <li> Utilizza messaggi facilmente comprensibili</li>
-    </ul>
+<div class="row p-3 p-md-5">
+  <div class="col-md-10 offset-md-1 text-center">
+    <section>
+      <h2>CHI SIAMO</h2>
+      <p>
+        Siamo un gruppo di studenti appartenenti all'<strong>Università di Bologna</strong> iscritti al corso di <strong>Ingegneria e Scienze Informatiche</strong>.
+        Con questa applicazione, l'idea è quella di promuove servizi volti al <strong>miglioramento del benessere psicofisico</strong> della
+        persona attraverso la <strong>relazione con gli animali</strong> a fini educativi e co-terapeutici, tramite interventi assistiti con
+        animali.
+      </p>
+    </section>
+    <section class="mt-4">
+      <h2>A CHI È RIVOLTO?</h2>
+      <p>
+        Ci rivolgiamo a <strong>tutti</strong> i soggetti che, per qualunque motivo, hanno bisogno di supporto emotivo, di compagnia non giudicante o semplicemente vogliono <strong>trascorrere del tempo con degli animali</strong>!
+      </p>
+      <p>
+        In effetti, questo progetto è nato proprio a causa di una imminente sessione d'esame (se sei uno studente, saprai lo stress che può accumularsi in quel periodo...) e ci dicemmo: "<em>Ci vorrebbe proprio un servizio di Pet Therapy all'università...</em>"; nessuno prima di noi aveva mai realizzato l'idea, perciò abbiamo deciso di pensarci noi!
+      </p>
+      <img src="<?php echo PET_IMG_DIR . "varietaAnimali.jpg" ?>" alt="Animali da compagnia" class="w-100 border border-2"/>
+    </section>
   </div>
-  <img id="cane" src="<?php echo PET_IMG_DIR . "placeholder-dog.jpg" ?>" alt="Padrone che abbraccia il suo cane"
-    class="img-fluid rounded float-end"/>
+  <div class="col-md-10 offset-md-1 mt-5">
+    <section class="row align-items-center">
+      <div class="col-12 col-md-6">
+        <h2 class="text-center mb-3 mb-md-5">Perchè il cane?</h2>
+        <p class="h4">Perchè stimola:</p>
+        <ul>
+          <li>Fantasia</li>
+          <li>Curiosità</li>
+          <li>Capacità di osservazione</li>
+          <li>Interazione</li>
+        </ul>
+        <p class="h4">Il cane inoltre:</p>
+        <ul>
+          <li>Accetta incondizionatamente chiunque (accettazione della diversità)</li>
+          <li>È disinteressato</li>
+          <li>Dà incondizionatamente affetto</li>
+          <li>Dà senso di protezione</li>
+          <li>Suscita sentimenti di protezione</li>
+          <li>Dà una stimolazione plurisensoriale</li>
+          <li>Utilizza più “linguaggi” e canali di comunicazione</li>
+          <li>Utilizza messaggi facilmente comprensibili</li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-5 offset-md-1">
+        <img src="<?php echo PET_IMG_DIR . "placeholder-dog.jpg" ?>" 
+             alt="Padrone che abbraccia il suo cane" 
+             class="rounded shadow w-100"/>
+      </div>
+    </section>
+    <section class="row align-items-center py-4">
+      <div class="col-12 col-md-6 offset-md-1 order-md-2">
+        <h2 class="text-center mb-3 mb-md-5">Perché il gatto?</h2>
+        
+        <p class="h4">Perché favorisce:</p>
+        <ul>
+          <li>Il rilassamento profondo (grazie alle fusa)</li>
+          <li>La riduzione dello stress e dell'ansia</li>
+          <li>L'empatia e la sensibilità</li>
+          <li>La concentrazione e la calma interiore</li>
+        </ul>
 
+        <p class="h4">Il gatto inoltre:</p>
+        <ul>
+          <li>Rispetta i silenzi e lo spazio personale</li>
+          <li>Incoraggia il contatto fisico delicato</li>
+          <li>Offre una presenza discreta ma rassicurante</li>
+          <li>Aiuta a regolare il battito cardiaco con la sua vicinanza</li>
+          <li>Stimola la responsabilità attraverso la cura quotidiana</li>
+          <li>Non giudica e accoglie la fragilità emotiva</li>
+          <li>Comunica con segnali sottili che invitano all'ascolto</li>
+          <li>Porta gioia attraverso il gioco e l'eleganza dei movimenti</li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-5 order-md-1">
+        <img src="<?php echo PET_IMG_DIR . 'gatto_home.jpg'; ?>" 
+            alt="Gatto calmo e affettuoso che riposa vicino a una persona" 
+            class="rounded shadow w-100"/>
+      </div>
+    </section>
+  
+  </div>
+  
 </div>
