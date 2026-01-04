@@ -16,16 +16,18 @@ function generaCard(petCard) {
     result += addPetbuttom;
 
     for (let i = 0; i < petCard["pet"].length; i++) {
-
-        if (petCard["pet"][i]["Disponibile"] == 1) {
+        let card = "";
+        let dispo = petCard["pet"][i]["Disponibile"] == 1
+        if (dispo) {
             disponibile = "Disponibile";
+            card +=`<div class="card float-start p-2" style="width: 18rem;">` ;
         }
         else {
             disponibile = "Non disponibile";
+            card +=`<div class="opacity-25 card float-start p-2" style="width: 18rem;">` ;
         }
 
-        let card = `
-            <div class="card float-start p-2" style="width: 18rem;">
+        card += `
   <img src="${petCard["pet"][i]["Immagine"]}" class="card-img-top img-rounded " id="cane" alt="${petCard["pet"][i]["Descrizioneimmagine"]}">
   <div class="card-body align-content-lg-end">
     <h5 class="card-title">${petCard["pet"][i]["Nomepet"]}</h5>
@@ -46,7 +48,7 @@ function generaCard(petCard) {
     </div>`
         }
         card += `  </div>
-                        </div>`
+                        </div>`     
 
         result += card;
     }
