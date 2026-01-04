@@ -39,8 +39,6 @@ function generaCard(petCard) {
     </ul>
 `;
         if (petCard["isadmin"] && petCard["islogedin"]) {
-
-
             card += `<div class="container text-center p-3">
         <div class="row justify-content-md-center">
         <a href="add-pet.php?pet-id=${petCard["pet"][i]["ID_Pet"]}" value="${petCard["pet"][i]["ID_Pet"]}" id=pet-btn" class="btn btn-primary">Modifica Pet</a>
