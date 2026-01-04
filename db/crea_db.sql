@@ -238,6 +238,15 @@ VALUES (
         'Gatto disteso su un cuscino',
         1,
         4
+    ),
+    (
+        'Vittoryo',
+        '1964-12-21',
+        "Gatto energico e simpatico, anche se a volte un po' volgare",
+        'ghini.jpg',
+        'Gatto con le zampe in aria e una faccia buffa',
+        1,
+        3
     );
 
 INSERT INTO Prenotazioni (Data, Ora, Utente, Luogo)
