@@ -25,7 +25,7 @@ function uploadImage($path, $image): array
     $safeName = time() . "_" . preg_replace('/[^A-Za-z0-9._-]/', '_', $imageName);
     $fullPath = $path . $safeName;
 
-    $maxKB = 500;
+    $maxKB = 4000;
     $acceptedExtensions = ["jpg", "jpeg", "png", "gif"];
     $result = 0;
     $msg = "";
@@ -37,7 +37,7 @@ function uploadImage($path, $image): array
     }
 
     //Controllo dimensione dell'immagine
-    if ($image["size"] > $maxKB * 1024) {
+    if ($image["size"] > $maxKB * 1000) {
         $msg .= "File caricato pesa troppo! Dimensione massima è $maxKB KB. ";
     }
 
