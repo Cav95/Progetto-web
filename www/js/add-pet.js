@@ -1,6 +1,7 @@
 const alertWarning = document.querySelector("#alert-warning");
 const alertSuccess = document.querySelector("#alert-success");
 const form = document.querySelector("main form");
+const deleteAppBtn = document.querySelector("#delete-app-confirm");
 
 const nome = document.querySelector("#nome");
 const data = document.querySelector("#data");
@@ -13,6 +14,9 @@ const existingImg = existingImgInput ? existingImgInput.value : null;
 const descrizioneimg = document.querySelector("#descrizione-img");
 const disponibile = document.querySelector("#disponibile");
 
+deleteAppBtn.addEventListener("click", (e) => {
+  deletePetSession(e.target.dataset.petid);
+});
 
 form.addEventListener("submit", e => {
   if (form.checkValidity()) {
@@ -22,11 +26,7 @@ form.addEventListener("submit", e => {
     const id_pet = submitter && submitter.id ? submitter.id : null;
 
     if (action === "Elimina") {
-      deletePetSession(id_pet);
-      window.location.href = 'petpage.php';
-    }
-
-    if (action === "Aggiungi") {
+    } else if (action === "Aggiungi") {
       addPet(
         nome.value,
         data.value,
@@ -151,8 +151,7 @@ async function deletePetSession(id_pet) {
     const json = await response.json();
     if (json["msg"] != null) {
       if (json["ok"]) {
-        displaySuccess(json["msg"]);
-        form.reset();
+        window.location.href = 'petpage.php'
       } else {
         displayWarning(json["msg"]);
       }

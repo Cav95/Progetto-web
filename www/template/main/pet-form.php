@@ -100,7 +100,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-        <input type="submit" id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>" class="btn btn-danger"
+        <input type="submit" id="delete-app-confirm" data-bs-dismiss="modal" data-petid="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>" class="btn btn-danger"
           value="Elimina" form="pet-form">
       </div>
     </div>
