@@ -3,24 +3,24 @@ function generaCard(petCard) {
     let disponibile = "";
     let buttom = "";
     let addPetbuttom = "";
-
+    result += `<div class="container p-3" >`
     if (petCard["isadmin"] && petCard["islogedin"]) {
         addPetbuttom = `<div class="container text-center p-3">
-        <div class="row justify-content-md-center">
-        <a href="add-pet.php" class="col-md-auto btn btn-primary allign-center">Aggiungi Pet</a>
-          </div>
-</div>`
+                            <div class="row justify-content-md-center">
+                             <a href="add-pet.php" class="col-md-auto btn btn-primary allign-center">Aggiungi Pet</a>
+                             </div>
+                        </div>`
     }
 
     result += addPetbuttom;
-    result += `<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 p-4" ></div>`
+
     for (let i = 0; i < petCard["pet"].length; i++) {
 
         if (petCard["pet"][i]["Disponibile"] == 1) {
-            disponibile = "Animale disponibile";
+            disponibile = "Disponibile";
         }
         else {
-            disponibile = "Animale non disponibile";
+            disponibile = "Non disponibile";
         }
 
         let card = `
@@ -42,18 +42,15 @@ function generaCard(petCard) {
         <div class="row justify-content-md-center">
         <a href="add-pet.php?pet-id=${petCard["pet"][i]["ID_Pet"]}" value="${petCard["pet"][i]["ID_Pet"]}" id=pet-btn" class="btn btn-primary">Modifica Pet</a>
             </div>
-    </div>
-    </div>
-                        </div>`
+    </div>`
         }
-        else {
-            card += `  </div>
+        card += `  </div>
                         </div>`
-        }
 
         result += card;
     }
-    result += `</div>`;
+    result += `</div>
+                </div>`;
     return result;
 }
 

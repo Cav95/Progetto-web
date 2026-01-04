@@ -48,7 +48,7 @@
             <label for="formFile" class="form-label">Scegli Immagine Animale</label>
             <?php if (!empty($templateParams["specificpet"]["Immagine"])): ?>
               <div class="mb-2">
-                <img src="<?php echo PET_IMG_DIR . $templateParams['specificpet']['Immagine']; ?>" alt="Current image" style="max-width:200px;">
+                <img src="<?php echo PET_IMG_DIR . $templateParams['specificpet']['Immagine']; ?>" alt="Currente immage: <?php echo $templateParams["specificpet"]["DescrizioneImmagine"]; ?>" style="max-width:200px;">
               </div>
             <?php endif; ?>
             <input class="form-control" type="file" id="pet-img" name="img">
