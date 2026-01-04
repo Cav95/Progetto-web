@@ -77,7 +77,7 @@
             </div>
             <div class="d-flex justify-content-end col">
               <input type="button" class="btn btn-danger delete-app" data-bs-toggle="modal"
-                data-bs-target="#confirmModal" value="Elimina"
+                data-bs-target="#confirmModal" value="Elimina" style="visibility: <?php echo $templateParams['hidden']; ?>"
                 data-id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>">
             </div>
           </div>
