@@ -1,2 +1,2 @@
-# LaTeX intermediate and output files
-LaTeX*/build/
+# Ignore images uploaded for test purposes
+www/upload/pet/[0-9]*
