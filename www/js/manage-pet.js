@@ -168,8 +168,9 @@ async function setRaces(id_specie) {
     }
     const json = await response.json();
     if (json["ok"]) {
+      currentRace = nomerazza.dataset.current;
       nomerazza.innerHTML = json.razze.map(razza => `
-        <option value="${razza.ID_Razza}">${razza.Nomerazza}</option>
+        <option value="${razza.ID_Razza}" ${razza.Nomerazza === currentRace ? "selected" : ""}>${razza.Nomerazza}</option>
         `
       ).reduce((a, b) => a + b);
     } else {

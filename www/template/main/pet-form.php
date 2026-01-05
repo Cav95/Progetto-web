@@ -28,8 +28,8 @@
             <label for="spec-sel">Specie</label>
           </div>
           <div class="form-floating">
-            <select id="razza-sel" name="nomerazza" class="form-select form-select-sm mb-3">
-              
+            <select id="razza-sel" name="nomerazza" class="form-select form-select-sm mb-3" data-current="<?php echo $templateParams["specificpet"]["Nomerazza"]; ?>">
+              <!-- Options added with JS -->
             </select>
             <label for="razza-sel">Razza</label>
           </div>
