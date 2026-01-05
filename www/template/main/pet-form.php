@@ -7,7 +7,7 @@
         <div class="alert alert-success d-none" id="alert-success"></div>
         <form id="pet-form" action="#" method="POST">
           <div class="form-floating mb-3">
-            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome"
+            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" maxlength="50"
               value="<?php echo $templateParams["specificpet"]["Nomepet"]; ?>" required>
             <label for="nome" class="form-label">Nome</label>
           </div>
@@ -34,7 +34,7 @@
             <label for="razza-sel">Razza</label>
           </div>
           <div class="form-floating mb-3">
-            <textarea type="text" name="descrizione" class="form-control h-auto" id="descrizione" placeholder="Descrizione"
+            <textarea type="text" name="descrizione" class="form-control h-auto" id="descrizione" placeholder="Descrizione" maxlength="300"
               required rows="4" ><?php echo $templateParams["specificpet"]["Descrizione"]; ?></textarea>
             <label for="descrizione" class="form-label">Descrizione</label>
           </div>
@@ -53,7 +53,7 @@
           </div>
 
           <div class="form-floating mb-3">
-            <textarea type="text" name="nome" class="form-control h-auto" id="descrizione-img" placeholder="Descrizione Immagine"
+            <textarea type="text" name="nome" class="form-control h-auto" id="descrizione-img" placeholder="Descrizione Immagine" maxlength="300"
               value="" rows="4"><?php echo $templateParams["specificpet"]["DescrizioneImmagine"]; ?></textarea>
             <label for="descrizione-img" class="form-label">Descrizione Immagine</label>
           </div>

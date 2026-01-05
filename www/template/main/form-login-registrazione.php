@@ -9,16 +9,16 @@
           <form action="#" method="POST">
             <?php if ($templateParams["formaction"] == "Registrati"): ?>
             <div class="form-floating mb-3">
-              <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" autocomplete="given-name" required/>
+              <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" autocomplete="given-name" maxlength="50" required/>
               <label for="nome" class="form-label">Nome</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="text" name="cognome" class="form-control" id="cognome" placeholder="Cognome" autocomplete="family-name" required/>
+              <input type="text" name="cognome" class="form-control" id="cognome" placeholder="Cognome" autocomplete="family-name" maxlength="50" required/>
               <label for="cognome" class="form-label">Cognome</label>
             </div>
             <?php endif; ?>
             <div class="form-floating mb-3">
-              <input type="text" name="email" class="form-control" id="email" placeholder="Email" autocomplete="email" required/>
+              <input type="text" name="email" class="form-control" id="email" placeholder="Email" autocomplete="email" maxlength="50" required/>
               <label for="email" class="form-label">Email</label>
             </div>
             <div class="form-floating mb-3">

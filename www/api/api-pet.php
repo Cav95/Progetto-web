@@ -36,6 +36,11 @@ switch ($_REQUEST["action"]) {
       exit;
     }
 
+    if (!isset($_FILES["img"])) {
+      $result["msg"] = "Devi caricare un'immagine";
+      break;
+    }
+
     [$r, $msg] = uploadImage(UPLOAD_PET_DIR, $_FILES["img"]);
     if ($r == 0) {
       $result["msg"] = $msg;
