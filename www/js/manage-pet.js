@@ -53,7 +53,7 @@ form.addEventListener("submit", e => {
 
 });
 
-
+nomespecie.addEventListener("change", () => setRaces(nomespecie.value));
 
 async function addPet(nome, data,nomerazza, descrizione, img, descrizioneimg) {
   const url = "api/api-pet.php?action=create";
@@ -158,6 +158,29 @@ async function deletePet(id_pet) {
     console.log(error.message);
   }
 }
+
+async function setRaces(id_specie) {
+  const url = `api/api-pet.php?action=razze&specie=${id_specie}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Response status: " + response.status);
+    }
+    const json = await response.json();
+    if (json["ok"]) {
+      nomerazza.innerHTML = json.razze.map(razza => `
+        <option value="${razza.ID_Razza}">${razza.Nomerazza}</option>
+        `
+      ).reduce((a, b) => a + b);
+    } else {
+      displayWarning(json["msg"]);
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+setRaces(nomespecie.value);
 
 function displaySuccess(message) {
   alertSuccess.innerHTML = message;

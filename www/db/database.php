@@ -189,7 +189,7 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
-  public function getSpecie(): array
+  public function getSpecies(): array
   {
     $query = "SELECT * FROM specie";
     $stmt = $this->db->prepare($query);
@@ -198,18 +198,18 @@ class DatabaseHelper
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
-  public function getRace(): array
+  public function getRaces(): array
   {
-    $query = "SELECT * FROM razze r , specie s where R.ID_Specie = S.ID_Specie; ";
+    $query = "SELECT * FROM razze;";
     $stmt = $this->db->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);
   }
 
-  public function getRaceFromSpecie($id_specie): array
+  public function getRacesFromSpecies($id_specie): array
   {
-    $query = "SELECT * FROM razze r , specie s where R.ID_Specie = S.ID_Specie and R.ID_Specie =?; ";
+    $query = "SELECT * FROM razze r where r.ID_Specie = ?;";
     $stmt = $this->db->prepare($query);
 
     $stmt->bind_param('i', $id_specie);

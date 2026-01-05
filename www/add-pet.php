@@ -11,8 +11,8 @@ $templateParams["main"] = "main/pet-form.php";
 $templateParams["js"] = ["js/manage-pet.js"];
 
 //Pet feuture
-$templateParams["specie"] = $dbh->getSpecie();
-$templateParams["razza"] = $dbh->getRace();
+$templateParams["specie"] = $dbh->getSpecies();
+$templateParams["razza"] = $dbh->getRaces();
 
 if(isset($_REQUEST['pet-id'])){
   $templateParams["formaction"] = "Modifica";

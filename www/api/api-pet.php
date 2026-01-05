@@ -1,8 +1,8 @@
 <?php
 require_once "../bootstrap.php";
 
-if (!isUserLoggedIn()) {
-  http_response_code(401);
+if (!isLoggedUserAdmin()) {
+  http_response_code(403);
   exit;
 }
 
@@ -15,10 +15,6 @@ if (!isset($_REQUEST["action"])) {
 
 switch ($_REQUEST["action"]) {
   case 'delete':
-    if (!isLoggedUserAdmin()) {
-      http_response_code(403);
-      exit;
-    }
     if (!isset($_REQUEST["ID_Pet"])) {
       http_response_code(400);
       exit;
@@ -30,10 +26,6 @@ switch ($_REQUEST["action"]) {
     break;
 
   case 'create':
-    if (!isLoggedUserAdmin()) {
-      http_response_code(403);
-      exit;
-    }
     if (
       !isset($_REQUEST["nome"]) || !isset($_REQUEST["data"])
       || !isset($_REQUEST["nomerazza"])
@@ -113,12 +105,13 @@ switch ($_REQUEST["action"]) {
       : "Errore imprevisto. Riprova più tardi.";
     break;
 
-  case 'razza':
-    if (!isset($_REQUEST["nomespecie"])) {
+  case 'razze':
+    if (!isset($_REQUEST["specie"])) {
       http_response_code(400);
       exit;
     }
-    $result["razza"] = $dbh->getRaceFromSpecie($_REQUEST["id-specie"]);
+    $result["razze"] = $dbh->getRacesFromSpecies($_REQUEST["specie"]);
+    $result["ok"] = true;
     break;
 }
 
