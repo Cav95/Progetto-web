@@ -39,8 +39,8 @@
             <label for="razza-sel">Razza</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" name="descrizione" class="form-control" id="descrizione" placeholder="Descrizione"
-              value="<?php echo $templateParams["specificpet"]["Descrizione"]; ?>" required>
+            <textarea  name="descrizione" class="form-control h-auto" id="descrizione" placeholder="Descrizione"
+              required rows="5" ><?php echo $templateParams["specificpet"]["Descrizione"]; ?></textarea>
             <label for="descrizione" class="form-label">Descrizione</label>
           </div>
 
@@ -58,8 +58,8 @@
           </div>
 
           <div class="form-floating mb-3">
-            <input type="text" name="nome" class="form-control" id="descrizione-img" placeholder="Descrizione Immagine"
-              value="<?php echo $templateParams["specificpet"]["DescrizioneImmagine"]; ?>">
+            <textarea type="text" name="nome" class="form-control h-auto" id="descrizione-img" placeholder="Descrizione Immagine"
+              value=""><?php echo $templateParams["specificpet"]["DescrizioneImmagine"]; ?></textarea>
             <label for="descrizione-img" class="form-label">Descrizione Immagine</label>
           </div>
 
