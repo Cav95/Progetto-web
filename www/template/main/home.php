@@ -1,23 +1,23 @@
 <div class="row p-3 p-md-5">
   <div class="col-md-10 offset-md-1 text-center">
     <section>
-      <h2>CHI SIAMO</h2>
+      <h2>Chi siamo</h2>
       <p>
-        Siamo un gruppo di studenti appartenenti all'<strong>Università di Bologna</strong> iscritti al corso di <strong>Ingegneria e Scienze Informatiche</strong>.
+        Siamo un gruppo di <strong>studenti</strong> appartenenti all'<strong>Università di Bologna</strong> iscritti al corso di Ingegneria e Scienze Informatiche.
         Con questa applicazione, l'idea è quella di promuove servizi volti al <strong>miglioramento del benessere psicofisico</strong> della
         persona attraverso la <strong>relazione con gli animali</strong> a fini educativi e co-terapeutici, tramite interventi assistiti con
         animali.
       </p>
     </section>
-    <section class="mt-4">
-      <h2>A CHI È RIVOLTO?</h2>
+    <section class="mt-5">
+      <h2>A chi è rivolto</h2>
       <p>
         Ci rivolgiamo a <strong>tutti</strong> i soggetti che, per qualunque motivo, hanno bisogno di supporto emotivo, di compagnia non giudicante o semplicemente vogliono <strong>trascorrere del tempo con degli animali</strong>!
       </p>
       <p>
         In effetti, questo progetto è nato proprio a causa di una imminente sessione d'esame (se sei uno studente, saprai lo stress che può accumularsi in quel periodo...) e ci dicemmo: "<em>Ci vorrebbe proprio un servizio di Pet Therapy all'università...</em>"; nessuno prima di noi aveva mai realizzato l'idea, perciò abbiamo deciso di pensarci noi!
       </p>
-      <img src="<?php echo PET_IMG_DIR . "varietaAnimali.jpg" ?>" alt="Animali da compagnia" class="w-100 border border-2"/>
+      <img src="<?php echo DESIGN_IMG_DIR . "home_animals.jpg" ?>" alt="Molti animali insieme, tra cui cani, gatti, conigli e uccelli" class="w-100 rounded shadow"/>
     </section>
   </div>
   <div class="col-md-10 offset-md-1 mt-5">

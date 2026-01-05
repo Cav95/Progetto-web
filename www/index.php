@@ -9,4 +9,6 @@ $templateParams["curiosita"] = $dbh->getRandomFacts(5);
 $templateParams["title"] = "Unibo Pet Therapy";
 $templateParams["main"] = "main/home.php";
 
+$templateParams["css"][] = "css/index.css";
+
 require "template/base.php";
