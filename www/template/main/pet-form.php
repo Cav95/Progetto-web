@@ -46,7 +46,7 @@
                 <img src="<?php echo PET_IMG_DIR . $templateParams['specificpet']['Immagine']; ?>" alt="Currente immage: <?php echo $templateParams["specificpet"]["DescrizioneImmagine"]; ?>" style="max-width:200px;">
               </div>
             <?php endif; ?>
-            <input class="form-control" type="file" id="pet-img" name="img">
+            <input class="form-control" type="file" id="pet-img" name="img" <?php empty($templateParams['specificpet']['Immagine']) ? "required" : ""; ?>>
             <?php if (!empty($templateParams['specificpet']['Immagine'])): ?>
               <input type="hidden" id="oldimg" name="oldimg" value="<?php echo $templateParams['specificpet']['Immagine']; ?>">
             <?php endif; ?>
@@ -54,7 +54,7 @@
 
           <div class="form-floating mb-3">
             <textarea type="text" name="nome" class="form-control h-auto" id="descrizione-img" placeholder="Descrizione Immagine" maxlength="300"
-              value="" rows="4"><?php echo $templateParams["specificpet"]["DescrizioneImmagine"]; ?></textarea>
+              value="" rows="4" required><?php echo $templateParams["specificpet"]["DescrizioneImmagine"]; ?></textarea>
             <label for="descrizione-img" class="form-label">Descrizione Immagine</label>
           </div>
 
