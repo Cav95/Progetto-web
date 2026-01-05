@@ -8,7 +8,7 @@ $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 // Generic
 $templateParams["title"] = "Aggiungi Pet | Unibo Pet Therapy";
 $templateParams["main"] = "main/pet-form.php";
-$templateParams["js"] = ["js/add-pet.js"];
+$templateParams["js"] = ["js/manage-pet.js"];
 
 //Pet feuture
 $templateParams["specie"] = $dbh->getSpecie();
