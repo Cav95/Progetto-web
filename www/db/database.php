@@ -238,12 +238,7 @@ class DatabaseHelper
 
   public function modifyPet($nome, $datanascita, $nomerazza, $descrizione, $img, $descrizioneimg, $disponibile, $idpet): bool
   {
-
-    if (str_contains($disponibile, "true")) {
-      $dispo = 1;
-    } else {
-      $dispo = 0;
-    }
+    $dispo = $disponibile == "true";
     $query = "UPDATE Pet
     SET Nomepet = ?,
       DataDiNascita = ?,
@@ -260,11 +255,7 @@ class DatabaseHelper
 
   public function modifyPetNoImg($nome, $datanascita, $nomerazza, $descrizione, $disponibile, $idpet): bool
   {
-    if (str_contains($disponibile, "true")) {
-      $dispo = 1;
-    } else {
-      $dispo = 0;
-    }
+    $dispo = $disponibile == "true";
     $query = "UPDATE Pet
     SET Nomepet = ?,
       DataDiNascita = ?,

@@ -14,7 +14,7 @@ const descrizioneimg = document.querySelector("#descrizione-img");
 const disponibile = document.querySelector("#disponibile");
 
 deleteAppBtn.addEventListener("click", (e) => {
-  deletePetSession(e.target.dataset.petid);
+  deletePet(e.target.dataset.petid);
 });
 
 form.addEventListener("submit", e => {
@@ -82,7 +82,7 @@ async function addPet(nome, data,nomerazza, descrizione, img, descrizioneimg) {
     const json = await response.json();
     if (json["msg"] != null) {
       if (json["ok"]) {
-        displaySuccess(json["msg"]);
+        window.location.href = 'pet.php'
       } else {
         displayWarning(json["msg"]);
       }
@@ -124,7 +124,7 @@ async function modifyPet(nome, data, nomerazza, descrizione, img,oldimg, descriz
     const json = await response.json();
     if (json["msg"] != null) {
       if (json["ok"]) {
-        displaySuccess(json["msg"]);
+        window.location.href = 'pet.php'
       } else {
         displayWarning(json["msg"]);
       }
@@ -134,7 +134,7 @@ async function modifyPet(nome, data, nomerazza, descrizione, img,oldimg, descriz
   }
 }
 
-async function deletePetSession(id_pet) {
+async function deletePet(id_pet) {
   const url = "api/api-pet.php?action=delete";
   const formData = new FormData();
   formData.append("ID_Pet", id_pet);
