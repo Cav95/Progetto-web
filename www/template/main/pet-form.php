@@ -7,7 +7,7 @@
         <div class="alert alert-success d-none" id="alert-success"></div>
         <form id="pet-form" action="#" method="POST">
           <div class="form-floating mb-3">
-            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" autocomplete="given-name"
+            <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome"
               value="<?php echo $templateParams["specificpet"]["Nomepet"]; ?>" required>
             <label for="nome" class="form-label">Nome</label>
           </div>
@@ -17,7 +17,7 @@
             <label for="data" class="form-label">Data</label>
           </div>
           <div class="form-floating">
-            <select id="spec-sel" name="nomespecie" class="form-select form-select-sm mb-3" aria-label="Small select example">
+            <select id="spec-sel" name="nomespecie" class="form-select form-select-sm mb-3">
               <?php foreach ($templateParams["specie"] as $specie): ?>
                 <option value="<?php echo $specie["ID_Specie"]; ?>"
                   <?php if ($specie["Nomespecie"] === $templateParams["specificpet"]["Nomespecie"]) echo 'selected'; ?>>
@@ -28,13 +28,8 @@
             <label for="spec-sel">Specie</label>
           </div>
           <div class="form-floating">
-            <select id="razza-sel" name="nomerazza" class="form-select form-select-sm mb-3" aria-label="Small select example">
-              <?php foreach ($templateParams["razza"] as $razza): ?>
-                <option value="<?php echo $razza["ID_Razza"]; ?>"
-                  <?php if ($razza["Nomerazza"] === $templateParams["specificpet"]["Nomerazza"]) echo 'selected'; ?>>
-                  <?php echo $razza["Nomerazza"]; ?>
-                </option>
-              <?php endforeach; ?>
+            <select id="razza-sel" name="nomerazza" class="form-select form-select-sm mb-3">
+              
             </select>
             <label for="razza-sel">Razza</label>
           </div>
@@ -70,12 +65,12 @@
           </div>
           <div class="col-auto">
 
-            <div class="d-flex justify-content-start col">
+            <div class="d-flex justify-content-end col">
               <input type="submit" class="btn btn-primary my-3 px-3"
                 value="<?php echo $templateParams["formaction"]; ?>"
                 id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>">
             </div>
-            <div class="d-flex justify-content-end col">
+            <div class="d-flex justify-content-start col">
               <input type="button" class="btn btn-danger delete-app" data-bs-toggle="modal"
                 data-bs-target="#confirmModal" value="Elimina" style="visibility: <?php echo $templateParams['hidden']; ?>"
                 data-id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>">

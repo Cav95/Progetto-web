@@ -124,17 +124,6 @@ VALUES (
         0,
         0
     );
-    
-
-INSERT INTO Specie (Nomespecie)
-VALUES ('Cane'),
-    ('Gatto');
-
-INSERT INTO Razze (Nomerazza, ID_Specie)
-VALUES ('Labrador', 1),
-    ('Barboncino', 1),
-    ('Siamese', 2),
-    ('Persiano', 2);
 
 INSERT INTO Luoghi (Codice, Nome, Piano, Capienza)
 VALUES ('A101', 'Aula 1.1', 1, 2),
@@ -174,7 +163,22 @@ VALUES ('I gatti hanno sviluppato il "miagolio" per noi','I gattini miagolano pe
 ('Gatti e lattosio', 'Nonostante l''immagine classica, molti gatti adulti sono intolleranti al lattosio. Dare loro il latte vaccino può causare seri problemi digestivi.'),
 ('La potenza del morso', 'Il Pastore Tedesco ha una pressione del morso di circa 108 kg, sufficiente a rompere ossa resistenti, ma può essere delicatissimo con i cuccioli.'),
 ('Gatti e territori', 'I gatti strofinano il muso contro mobili e persone per marcare il territorio con le ghiandole odorifere situate sulle guance.'),
-('Cani e sbadigli', 'Lo sbadiglio nel cane non indica solo sonno. Spesso è un "segnale di calma" usato per scaricare lo stress o per tranquillizzare altri cani e umani.');;
+('Cani e sbadigli', 'Lo sbadiglio nel cane non indica solo sonno. Spesso è un "segnale di calma" usato per scaricare lo stress o per tranquillizzare altri cani e umani.');
+
+INSERT INTO Specie (Nomespecie)
+VALUES ('Cane'),
+    ('Gatto'),
+    ('Sconosciuta');
+
+INSERT INTO Razze (Nomerazza, ID_Specie)
+VALUES ('Carlino', 1),
+    ('Barboncino', 1),
+    ('Golden Retriever', 1),
+    ('Europeo', 2),
+    ('Soriano', 2),
+    ('British Shorthair', 2),
+    ("Bengala", 2),
+    ("Sconosciuta", 3);
 
 INSERT INTO Pet (
         Nomepet,
@@ -188,74 +192,74 @@ INSERT INTO Pet (
 VALUES (
         'Fido',
         '2019-06-01',
-        'Cane adulto di taglia media, pelo corto e sguardo vivace',
-        'dog_1.jpg',
-        'Cane seduto con lingua fuori',
+        'Cane adulto tranquillo, ma che ama giocare',
+        'fido.jpg',
+        'Cane di razza carlino, seduto con lingua fuori',
         1,
         1
     ),
     (
         'Rocky',
         '2020-03-12',
-        'Cane di piccola taglia con pelo riccio, molto affettuoso',
-        'dog_2.jpg',
-        'Cane di piccola taglia in primo piano',
+        'Bellissimo cane, estremamente affettuoso e giocherellone',
+        'rocky.jpg',
+        'Cane di razza golden retriever con la lingua fuori',
         1,
+        3
+    ),
+    (
+        'Coco',
+        '2017-10-05',
+        'Cane anziano, tranquillo e che fa molta compagnia',
+        'coco.jpg',
+        'Cane di razza barboncino dallo sguardo dolce',
+        0,
         2
     ),
     (
-        'Max',
-        '2017-10-05',
-        'Cane più anziano, tranquillo e adatto a terapie',
-        'dog_3.jpg',
-        'Cane sdraiato e rilassato',
-        0,
-        1
-    ),
-    (
-        'Timmy',
+        'Felix',
         '2021-01-20',
-        'Gatto giovane, pelo tigrato, curioso e vivace',
-        'cat_1.jpg',
-        'Gatto tigrato che osserva',
+        'Gatto giovane e vivace che adora le coccole',
+        'felix.jpg',
+        'Gatto domestico con mantello tuxedo che guarda in alto',
         1,
-        3
+        4
     ),
     (
         'Micia',
         '2018-08-14',
-        'Gatta dal pelo lungo, elegante e calma',
-        'cat_2.jpg',
-        'Gatta dal pelo lungo seduta',
+        'Gatta dal bellissimo pelo fulvo, molto affettuosa',
+        'micia.jpg',
+        'Gatta soriana dal pelo fulvo seduta con lo sguardo rivolto in camera',
         1,
-        4
+        5
     ),
     (
-        'Lulu',
+        'Max',
         '2022-02-28',
-        'Gatto molto socievole e giocherellone',
-        'cat_3.jpg',
-        'Gatto in posizione di gioco',
+        'Gatto tranquillo e riservato, ma non dice di no a qualche gioco',
+        'max.jpg',
+        'Gatto in posizione a sfinge sul letto, con lo sguardo perso',
         1,
-        3
+        6
     ),
     (
-        'Lui',
+        'Luis',
         '2020-11-11',
-        'Gatto calmo e affettuoso, adatto alle visite',
-        'cat_4.jpg',
-        'Gatto disteso su un cuscino',
+        'Gatto estremamente vivace, difficile da stancare',
+        'luis.jpg',
+        'Gatto bengala con lo sguardo fisso verso il soffitto',
         1,
-        4
+        7
     ),
     (
         'Vittoryo',
         '1964-12-21',
-        "Gatto energico e simpatico, anche se a volte un po' volgare",
+        "Non ne sappiamo molto... ma è molto simpatico, anche se a volte un po' volgare",
         'ghini.jpg',
-        'Gatto con le zampe in aria e una faccia buffa',
+        'Professor Vittorio Ghini in una posa di sorpresa',
         1,
-        3
+        8
     );
 
 INSERT INTO Prenotazioni (Data, Ora, Utente, Luogo)
