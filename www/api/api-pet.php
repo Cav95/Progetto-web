@@ -84,23 +84,30 @@ switch ($_REQUEST["action"]) {
         break;
       }
       $imgName = $msg;
+      $result["ok"] = $dbh->modifyPet(
+        $_REQUEST["nome"],
+        $_REQUEST["data"],
+        $_REQUEST["nomerazza"],
+        $_REQUEST["descrizione"],
+        $imgName,
+        $_REQUEST["descrizioneimg"],
+        $_REQUEST["disponibile"],
+        $_REQUEST["ID_Pet"]
+      );
     } else if (isset($_REQUEST["oldimg"])) {
-      $imgName = $_REQUEST["oldimg"];
+      $result["ok"] = $dbh->modifyPetNoImg(
+        $_REQUEST["nome"],
+        $_REQUEST["data"],
+        $_REQUEST["nomerazza"],
+        $_REQUEST["descrizione"],
+        $_REQUEST["disponibile"],
+        $_REQUEST["ID_Pet"]
+      );
     } else {
       http_response_code(400);
       exit;
     }
 
-    $result["ok"] = $dbh->modifyPet(
-      $_REQUEST["nome"],
-      $_REQUEST["data"],
-      $_REQUEST["nomerazza"],
-      $_REQUEST["descrizione"],
-      $imgName,
-      $_REQUEST["descrizioneimg"],
-      $_REQUEST["disponibile"],
-      $_REQUEST["ID_Pet"]
-    );
     $result["msg"] = $result["ok"]
       ? "Pet modificato correttamente! <a href='pet.php'>Vedi Pet</a>"
       : "Errore imprevisto. Riprova più tardi.";

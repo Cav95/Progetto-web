@@ -258,6 +258,25 @@ class DatabaseHelper
     return $stmt->execute();
   }
 
+  public function modifyPetNoImg($nome, $datanascita, $nomerazza, $descrizione, $disponibile, $idpet): bool
+  {
+    if (str_contains($disponibile, "true")) {
+      $dispo = 1;
+    } else {
+      $dispo = 0;
+    }
+    $query = "UPDATE Pet
+    SET Nomepet = ?,
+      DataDiNascita = ?,
+      Descrizione = ?,
+      Disponibile = ?,
+      ID_Razza = ?
+    WHERE ID_Pet = ?;";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param('sssiii', $nome, $datanascita, $descrizione, $dispo, $nomerazza, $idpet);
+    return $stmt->execute();
+  }
+
   public function deletePet($pet_id): bool
   {
     $query = "DELETE FROM pet WHERE ID_Pet = ?;";
