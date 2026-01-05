@@ -57,7 +57,7 @@ function generaCard(petCard) {
 }
 
 async function getPetData() {
-    const url = "api//api-petpage.php";
+    const url = "api/api-getpets.php";
     try {
         const response = await fetch(url);
         if (!response.ok) {

@@ -56,7 +56,7 @@ form.addEventListener("submit", e => {
 
 
 async function addPet(nome, data,nomerazza, descrizione, img, descrizioneimg) {
-  const url = "api/api-addpet.php?action=create";
+  const url = "api/api-pet.php?action=create";
   const formData = new FormData();
   formData.append("nome", nome);
   formData.append("data", data);
@@ -93,7 +93,7 @@ async function addPet(nome, data,nomerazza, descrizione, img, descrizioneimg) {
 }
 
 async function modifyPet(nome, data, nomerazza, descrizione, img,oldimg, descrizioneimg, disponibile, id_pet) {
-  const url = "api/api-addpet.php?action=modify";
+  const url = "api/api-pet.php?action=modify";
   const formData = new FormData();
   formData.append("nome", nome);
   formData.append("data", data);
@@ -135,7 +135,7 @@ async function modifyPet(nome, data, nomerazza, descrizione, img,oldimg, descriz
 }
 
 async function deletePetSession(id_pet) {
-  const url = "api/api-addpet.php?action=delete";
+  const url = "api/api-pet.php?action=delete";
   const formData = new FormData();
   formData.append("ID_Pet", id_pet);
   try {
@@ -149,7 +149,7 @@ async function deletePetSession(id_pet) {
     const json = await response.json();
     if (json["msg"] != null) {
       if (json["ok"]) {
-        window.location.href = 'petpage.php'
+        window.location.href = 'pet.php'
       } else {
         displayWarning(json["msg"]);
       }
