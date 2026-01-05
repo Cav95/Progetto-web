@@ -227,10 +227,10 @@ VALUES (
     ),
     (
         'Micia',
-        '2018-08-14',
-        'Gatta dal bellissimo pelo fulvo, molto affettuosa',
+        '2025-08-14',
+        'Giovane gatta dal bellissimo pelo fulvo, molto affettuosa',
         'micia.jpg',
-        'Gatta soriana dal pelo fulvo seduta con lo sguardo rivolto in camera',
+        'Giovane gatta soriana dal pelo fulvo seduta con lo sguardo rivolto in camera',
         1,
         5
     ),
@@ -255,7 +255,7 @@ VALUES (
     (
         'Vittoryo',
         '1964-12-21',
-        "Non ne sappiamo molto... ma è molto simpatico, anche se a volte un po' volgare",
+        "Non ne sappiamo molto, ma è molto simpatico, anche se a volte un po' volgare...",
         'ghini.jpg',
         'Professor Vittorio Ghini in una posa di sorpresa',
         1,
