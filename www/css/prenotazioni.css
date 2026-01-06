@@ -1,3 +1,4 @@
+/* Responsive table design */
 @media (max-width: 767.98px) {
     .table-mobile-stack thead {
         display: none;

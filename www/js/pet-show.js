@@ -34,7 +34,7 @@ function generaCard(petCard) {
         }
 
         card += `
-            <img src="${petCard["pet"][i]["Immagine"]}" class="card-img-top img-rounded " id="cane" alt="${petCard["pet"][i]["Descrizioneimmagine"]}">
+            <img src="${petCard["pet"][i]["Immagine"]}" class="card-img-top img-rounded " id="cane" alt="${petCard["pet"][i]["Descrizioneimmagine"]}"/>
             <div class="card-body align-content-lg-end">
                 <h3 class="card-title h5">${petCard["pet"][i]["Nomepet"]}</h3>
                 <p class="card-text">${petCard["pet"][i]["Descrizione"]}</p>

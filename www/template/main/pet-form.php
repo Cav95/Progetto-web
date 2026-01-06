@@ -8,12 +8,12 @@
         <form id="pet-form" action="#" method="POST">
           <div class="form-floating mb-3">
             <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome" maxlength="50"
-              value="<?php echo $templateParams["specificpet"]["Nomepet"]; ?>" required>
+              value="<?php echo $templateParams["specificpet"]["Nomepet"]; ?>" required />
             <label for="nome" class="form-label">Nome</label>
           </div>
           <div class="form-floating mb-3">
             <input type="date" name="data" class="form-control" id="data" placeholder="Data"
-              value="<?php echo $templateParams["specificpet"]["DataDiNascita"]; ?>" required>
+              value="<?php echo $templateParams["specificpet"]["DataDiNascita"]; ?>" required />
             <label for="data" class="form-label">Data</label>
           </div>
           <div class="form-floating">
@@ -43,12 +43,12 @@
             <label for="formFile" class="form-label">Scegli Immagine Animale</label>
             <?php if (!empty($templateParams["specificpet"]["Immagine"])): ?>
               <div class="mb-2">
-                <img src="<?php echo PET_IMG_DIR . $templateParams['specificpet']['Immagine']; ?>" alt="Currente immage: <?php echo $templateParams["specificpet"]["DescrizioneImmagine"]; ?>" style="max-width:200px;">
+                <img src="<?php echo PET_IMG_DIR . $templateParams['specificpet']['Immagine']; ?>" alt="Currente immage: <?php echo $templateParams["specificpet"]["DescrizioneImmagine"]; ?>" style="max-width:200px;" />
               </div>
             <?php endif; ?>
-            <input class="form-control" type="file" id="pet-img" name="img" <?php empty($templateParams['specificpet']['Immagine']) ? "required" : ""; ?>>
+            <input class="form-control" type="file" id="pet-img" name="img" <?php empty($templateParams['specificpet']['Immagine']) ? "required" : ""; ?> />
             <?php if (!empty($templateParams['specificpet']['Immagine'])): ?>
-              <input type="hidden" id="oldimg" name="oldimg" value="<?php echo $templateParams['specificpet']['Immagine']; ?>">
+              <input type="hidden" id="oldimg" name="oldimg" value="<?php echo $templateParams['specificpet']['Immagine']; ?>" />
             <?php endif; ?>
           </div>
 
@@ -60,7 +60,7 @@
 
           <div class="form-check" style="visibility: <?php echo $templateParams['hidden']; ?>">
             <input class="form-check-input" type="checkbox" name="disponibile" id="disponibile"
-              <?php if (!empty($templateParams["specificpet"]["Disponibile"]) && $templateParams["specificpet"]["Disponibile"] === "yes") echo 'checked'; ?>>
+              <?php if (!empty($templateParams["specificpet"]["Disponibile"]) && $templateParams["specificpet"]["Disponibile"] === "yes") echo 'checked'; ?> />
             <label class="form-check-label" for="disponibile">Disponibile</label>
           </div>
           <div class="col-auto">
@@ -68,12 +68,12 @@
             <div class="d-flex justify-content-end col">
               <input type="submit" class="btn btn-primary my-3 px-3"
                 value="<?php echo $templateParams["formaction"]; ?>"
-                id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>">
+                id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>"/>
             </div>
             <div class="d-flex justify-content-start col">
               <input type="button" class="btn btn-danger delete-app" data-bs-toggle="modal"
                 data-bs-target="#confirmModal" value="Elimina" style="visibility: <?php echo $templateParams['hidden']; ?>"
-                data-id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>">
+                data-id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>"/>
             </div>
           </div>
         </form>
@@ -95,7 +95,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-        <input type="submit" id="delete-app-confirm" data-bs-dismiss="modal" data-petid="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>" class="btn btn-danger" value="Elimina" form="pet-form">
+        <input type="submit" id="delete-app-confirm" data-bs-dismiss="modal" data-petid="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>" class="btn btn-danger" value="Elimina" form="pet-form"/>
       </div>
     </div>
   </div>
