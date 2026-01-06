@@ -58,9 +58,14 @@
             <label for="descrizione-img" class="form-label">Descrizione Immagine</label>
           </div>
 
-          <div class="form-check" style="visibility: <?php echo $templateParams['hidden']; ?>">
-            <input class="form-check-input" type="checkbox" name="disponibile" id="disponibile"
-              <?php if (!empty($templateParams["specificpet"]["Disponibile"]) && $templateParams["specificpet"]["Disponibile"] === "yes") echo 'checked'; ?> />
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" name="disponibile" id="disponibile"
+            <?php 
+              if (
+                $templateParams["formaction"] == "Aggiungi" 
+                || (!empty($templateParams["specificpet"]["Disponibile"]) 
+                  && $templateParams["specificpet"]["Disponibile"] === "yes")
+              ) echo 'checked'; ?> />
             <label class="form-check-label" for="disponibile">Disponibile</label>
           </div>
           <div class="col-auto">
@@ -70,11 +75,15 @@
                 value="<?php echo $templateParams["formaction"]; ?>"
                 id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>"/>
             </div>
-            <div class="d-flex justify-content-start col">
-              <input type="button" class="btn btn-danger delete-app" data-bs-toggle="modal"
-                data-bs-target="#confirmModal" value="Elimina" style="visibility: <?php echo $templateParams['hidden']; ?>"
-                data-id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>"/>
-            </div>
+            <?php if ($templateParams["formaction"] == "Modifica"): ?>
+              <div class="d-flex justify-content-start col">
+                <button type="button" class="btn btn-danger delete-app" data-bs-toggle="modal"
+                  data-bs-target="#confirmModal" value="Elimina"
+                  data-id="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>">
+                Elimina Pet
+                </button>
+              </div>
+            <?php endif; ?>
           </div>
         </form>
       </div>

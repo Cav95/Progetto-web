@@ -21,7 +21,6 @@ $templateParams["razza"] = $dbh->getRaces();
 
 if(isset($_REQUEST['pet-id'])){
   $templateParams["formaction"] = "Modifica";
-  $templateParams["hidden"] = "visible";
 
   $temp= $dbh->getSinglePet($_REQUEST['pet-id']);
   $templateParams["specificpet"]["ID_Pet"] = $temp[0]["ID_Pet"];
@@ -37,7 +36,6 @@ if(isset($_REQUEST['pet-id'])){
 }
 else{
   $templateParams["formaction"] = "Aggiungi";
-  $templateParams["hidden"] = "hidden";
   
   $templateParams["specificpet"]["ID_Pet"] = ""; 
   $templateParams["specificpet"]["Nomepet"] = ""; 

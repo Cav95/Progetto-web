@@ -23,8 +23,8 @@
   <div class="col-md-10 offset-md-1 mt-5">
     <section class="row align-items-center">
       <div class="col-12 col-md-6">
-        <h2 class="text-center mb-3 mb-md-5">Perchè il cane?</h2>
-        <p class="h4">Perchè stimola:</p>
+        <h2 class="text-center mb-3 mb-md-5">Perché il cane?</h2>
+        <p class="h4">Perché stimola:</p>
         <ul>
           <li>Fantasia</li>
           <li>Curiosità</li>
@@ -39,7 +39,7 @@
           <li>Dà senso di protezione</li>
           <li>Suscita sentimenti di protezione</li>
           <li>Dà una stimolazione plurisensoriale</li>
-          <li>Utilizza più “linguaggi” e canali di comunicazione</li>
+          <li>Utilizza più "linguaggi" e canali di comunicazione</li>
           <li>Utilizza messaggi facilmente comprensibili</li>
         </ul>
       </div>
