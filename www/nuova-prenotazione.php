@@ -8,12 +8,12 @@ if (!isUserLoggedIn()) {
 }
 
 // Base
-$templateParams["css"] = ["css/navbar.css"];
+$templateParams["css"] = ["navbar.css"];
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 // Generic
 $templateParams["title"] = "Nuova prenotazione | Unibo Pet Therapy";
-$templateParams["main"] = "main/form-prenotazione.php";
-$templateParams["js"] = ["js/nuova-prenotazione.js"];
+$templateParams["main"] = "form-prenotazione.php";
+$templateParams["js"] = ["nuova-prenotazione.js", "utils/alerts.js"];
 
 require "template/base.php";

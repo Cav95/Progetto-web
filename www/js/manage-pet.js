@@ -1,5 +1,5 @@
-const alertWarning = document.querySelector("#alert-warning");
-const alertSuccess = document.querySelector("#alert-success");
+import("./utils/alerts.js");
+
 const form = document.querySelector("main form");
 const deleteAppBtn = document.querySelector("#delete-app-confirm");
 
@@ -84,7 +84,7 @@ async function addPet(nome, data,nomerazza, descrizione, img, descrizioneimg) {
       if (json["ok"]) {
         window.location.href = 'pet.php'
       } else {
-        displayWarning(json["msg"]);
+        displayAlertWarning(json["msg"]);
       }
     }
   } catch (error) {
@@ -126,7 +126,7 @@ async function modifyPet(nome, data, nomerazza, descrizione, img,oldimg, descriz
       if (json["ok"]) {
         window.location.href = 'pet.php'
       } else {
-        displayWarning(json["msg"]);
+        displayAlertWarning(json["msg"]);
       }
     }
   } catch (error) {
@@ -151,7 +151,7 @@ async function deletePet(id_pet) {
       if (json["ok"]) {
         window.location.href = 'pet.php'
       } else {
-        displayWarning(json["msg"]);
+        displayAlertWarning(json["msg"]);
       }
     }
   } catch (error) {
@@ -174,7 +174,7 @@ async function setRaces(id_specie) {
         `
       ).reduce((a, b) => a + b);
     } else {
-      displayWarning(json["msg"]);
+      displayAlertWarning(json["msg"]);
     }
   } catch (error) {
     console.log(error.message);
@@ -182,22 +182,3 @@ async function setRaces(id_specie) {
 }
 
 setRaces(nomespecie.value);
-
-function displaySuccess(message) {
-  alertSuccess.innerHTML = message;
-  alertWarning.classList.add("d-none");
-  alertSuccess.classList.remove("d-none");
-  alertSuccess.focus();
-}
-
-function displayWarning(message) {
-  alertWarning.innerHTML = message;
-  alertSuccess.classList.add("d-none");
-  alertWarning.classList.remove("d-none");
-  alertWarning.focus();
-}
-
-function resetAlert() {
-  alertWarning.classList.add("d-none");
-  alertSuccess.classList.add("d-none");
-}

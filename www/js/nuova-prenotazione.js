@@ -1,5 +1,5 @@
-const alertWarning = document.querySelector("#alert-warning");
-const alertSuccess = document.querySelector("#alert-success");
+import("./utils/alerts.js");
+
 const form = document.querySelector("main form");
 
 const timeChooser = document.querySelector("#ora");
@@ -67,11 +67,11 @@ async function newPTSession(date, time) {
     const json = await response.json();
     if (json["msg"] != null) {
       if (json["ok"]){
-        displaySuccess(json["msg"]);
+        displayAlertSuccess(json["msg"]);
         form.reset();
         resetTimeChooser();
       } else {
-        displayWarning(json["msg"]);
+        displayAlertWarning(json["msg"]);
       }
     }
   } catch (error) {
@@ -84,23 +84,4 @@ function resetTimeChooser() {
   timeChooser.innerHTML = `
     <option selected>Prima scegli una data</option>
   `;
-}
-
-function displaySuccess(message) {
-  alertSuccess.innerHTML = message;
-  alertWarning.classList.add("d-none");
-  alertSuccess.classList.remove("d-none");
-  alertSuccess.focus();
-}
-
-function displayWarning(message) {
-  alertWarning.innerHTML = message;
-  alertSuccess.classList.add("d-none");
-  alertWarning.classList.remove("d-none");
-  alertWarning.focus();
-}
-
-function resetAlert() {
-  alertWarning.classList.add("d-none");
-  alertSuccess.classList.add("d-none");
 }

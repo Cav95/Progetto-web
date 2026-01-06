@@ -2,13 +2,13 @@
 require_once "bootstrap.php";
 
 // Base
-$templateParams["css"] = ["css/navbar.css"];
+$templateParams["css"] = ["navbar.css"];
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 // Generic
 $templateParams["title"] = "Aggiungi Pet | Unibo Pet Therapy";
-$templateParams["main"] = "main/pet-form.php";
-$templateParams["js"] = ["js/manage-pet.js"];
+$templateParams["main"] = "pet-form.php";
+$templateParams["js"] = ["manage-pet.js", "utils/alerts.js"];
 
 //Pet feuture
 $templateParams["specie"] = $dbh->getSpecies();

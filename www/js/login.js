@@ -1,4 +1,5 @@
-const alertWarning = document.querySelector("#alert-warning");
+import("./utils/alerts.js");
+
 const form = document.querySelector("main form");
 
 form.addEventListener("submit", e => {
@@ -28,7 +29,7 @@ async function register(email, password) {
       window.location.reload();
     } else {
       if (json["msg"] != null) {
-        displayWarning(json["msg"]);
+        displayAlertWarning(json["msg"]);
       }
     }
   } catch (error) {
@@ -36,12 +37,3 @@ async function register(email, password) {
   }
 }
 
-function displayWarning(message) {
-  alertWarning.innerHTML = message;
-  alertWarning.classList.remove("d-none");
-  alertWarning.focus(true);
-}
-
-function resetAlert() {
-  alertWarning.classList.add("d-none");
-}

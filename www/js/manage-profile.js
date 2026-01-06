@@ -1,5 +1,5 @@
-const alertWarning = document.querySelector("#alert-warning");
-const alertSuccess = document.querySelector("#alert-success");
+import("./utils/alerts.js");
+
 const form = document.querySelector("main form");
 
 form.addEventListener("submit", e => {
@@ -12,7 +12,7 @@ form.addEventListener("submit", e => {
         const newPassword = formElements["new-password"].value;
         const newPasswordRepeat = formElements["password-repeat"].value;
         if (newPassword !== newPasswordRepeat) {
-          displayWarning("Le nuove password inserite non corrispondono!");
+          displayAlertWarning("Le nuove password inserite non corrispondono!");
           return;
         }
         changePassword(oldPassword, newPassword, newPasswordRepeat);
@@ -46,10 +46,10 @@ async function changePassword(oldPassword, newPassword, newPasswordRepeat) {
     const json = await response.json();
     if (json["msg"] != null) {
       if (json["ok"]) {
-        displaySuccess(json["msg"]);
+        displayAlertSuccess(json["msg"]);
         form.reset();
       } else {
-        displayWarning(json["msg"]);
+        displayAlertWarning(json["msg"]);
       }
     }
   } catch (error) {
@@ -76,28 +76,9 @@ async function toggleUserban(id_user) {
       return;
     } 
     if (json["msg"] != null) {
-      displayWarning(json["msg"]);
+      displayAlertWarning(json["msg"]);
     }
   } catch (error) {
     console.log(error.message);
   }
-}
-
-function displaySuccess(message) {
-  alertSuccess.innerHTML = message;
-  alertWarning.classList.add("d-none");
-  alertSuccess.classList.remove("d-none");
-  alertSuccess.focus();
-}
-
-function displayWarning(message) {
-  alertWarning.innerHTML = message;
-  alertSuccess.classList.add("d-none");
-  alertWarning.classList.remove("d-none");
-  alertWarning.focus();
-}
-
-function resetAlert() {
-  alertWarning.classList.add("d-none");
-  alertSuccess.classList.add("d-none");
 }

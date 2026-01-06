@@ -33,7 +33,7 @@
       <div class="h3 text-center mt-3 mx-2 alert alert-info d-none" id="no-app-alert">
           Nessuna prenotazione per la data selezionata
       </div>
-      <table class="table table-dark table-striped table-mobile-stack align-middle" id="app-table">
+      <table class="table table-dark table-striped table-mobile-stack align-middle d-none" id="app-table">
         <thead>
           <tr>
             <th scope="col" id="ora">Ora</th>

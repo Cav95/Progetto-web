@@ -44,7 +44,7 @@
         </ul>
       </div>
       <div class="col-12 col-md-5 offset-md-1">
-        <img src="<?php echo PET_IMG_DIR . "placeholder-dog.jpg" ?>" 
+        <img src="<?php echo DESIGN_IMG_DIR . "home_dog.jpg" ?>" 
              alt="Padrone che abbraccia il suo cane" 
              class="rounded shadow w-100"/>
       </div>
@@ -75,7 +75,7 @@
       </div>
 
       <div class="col-12 col-md-5 order-md-1">
-        <img src="<?php echo PET_IMG_DIR . 'gatto_home.jpg'; ?>" 
+        <img src="<?php echo DESIGN_IMG_DIR . "home_cat.jpg"; ?>" 
             alt="Gatto calmo e affettuoso che riposa vicino a una persona" 
             class="rounded shadow w-100"/>
       </div>

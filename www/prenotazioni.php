@@ -8,25 +8,22 @@ if (!isUserLoggedIn()) {
 }
 
 // Base
-$templateParams["css"] = ["css/navbar.css"];
+$templateParams["css"] = ["navbar.css"];
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 // Generic
 $templateParams["title"] = "Prenotazioni | Unibo Pet Therapy";
-if (isLoggedUserAdmin()) {
-  $templateParams["main"] = "main/admin-prenotazioni.php";
-  $templateParams["js"] = ["js/admin-prenotazioni.js"];
+$templateParams["css"][] = "prenotazioni.css";
 
-  // Specific
-  $templateParams["prenotazioni"] = $dbh->getPTSessionsFromDate('2026-01-15');
+if (isLoggedUserAdmin()) {
+  $templateParams["main"] = "admin-prenotazioni.php";
+  $templateParams["js"] = ["admin-prenotazioni.js"];
 } else {
-  $templateParams["main"] = "main/user-prenotazioni.php";
-  $templateParams["js"] = ["js/user-prenotazioni.js"];
+  $templateParams["main"] = "user-prenotazioni.php";
+  $templateParams["js"] = ["user-prenotazioni.js"];
 
   // Specific
   $templateParams["prenotazioni"] = $dbh->getNextPTSessionsFromUser($_SESSION["userid"]);
 }
-
-$templateParams["css"][] = "css/prenotazioni.css";
 
 require "template/base.php";

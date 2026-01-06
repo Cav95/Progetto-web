@@ -7,13 +7,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"/>
   <link rel="stylesheet" href="css/base.css"/>
   <?php
-  if(isset($templateParams["css"])):
-    foreach($templateParams["css"] as $sheet):
+  foreach($templateParams["css"] ?? [] as $sheet):
   ?>
-      <link rel="stylesheet" href="<?php echo $sheet; ?>"/>
+    <link rel="stylesheet" href="css/<?php echo $sheet; ?>"/>
   <?php
-    endforeach;
-  endif;
+  endforeach;
   ?>
   <title><?php echo $templateParams["title"] ?? "Unibo Pet Therapy"; ?></title>
 </head>
@@ -34,7 +32,7 @@
       <main>
         <?php
         if (isset($templateParams["main"])) {
-          require $templateParams["main"];
+          require "main/" . $templateParams["main"];
         }
         ?>
       </main>
@@ -44,7 +42,7 @@
         <section>
           <h2 class="text-center my-3 h4">Curiosità</h2>
           <div class="row px-2 g-3 pb-4">
-            <?php foreach ($templateParams["curiosita"] as $curiosita): ?>
+            <?php foreach ($templateParams["curiosita"] ?? [] as $curiosita): ?>
               <article class="card col-12">
                 <div class="card-body">
                   <h3 class="card-title h5"><?php echo $curiosita["titolo"]; ?></h3>
@@ -65,13 +63,11 @@
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   <?php
-  if(isset($templateParams["js"])):
-    foreach($templateParams["js"] as $script):
+  foreach($templateParams["js"] ?? [] as $script):
   ?>
-      <script src="<?php echo $script; ?>"></script>
+    <script src="js/<?php echo $script; ?>"></script>
   <?php
-    endforeach;
-  endif;
+  endforeach;
   ?>
 </body>
 

@@ -2,13 +2,13 @@
 require_once "bootstrap.php";
 
 // Base
-$templateParams["css"] = ["css/navbar.css"];
+$templateParams["css"] = ["navbar.css"];
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);
 
 // Generic
 $templateParams["title"] = "Registrati | Unibo Pet Therapy";
-$templateParams["main"] = "main/form-login-registrazione.php";
-$templateParams["js"] = ["js/register.js"];
+$templateParams["main"] = "form-login-registrazione.php";
+$templateParams["js"] = ["register.js", "utils/alerts.js"];
 
 // Specific
 $templateParams["formaction"] = "Registrati";

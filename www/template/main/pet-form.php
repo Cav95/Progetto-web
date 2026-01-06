@@ -87,16 +87,15 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalLabel">Conferma cancellazione pet</h1>
+        <h1 class="modal-title fs-5" id="modalLabel">Conferma rimozione pet</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Sei sicuro di voler cancellare questo animale?
+        Sei sicuro di voler eliminare <strong>definitivamente</strong> questo Pet?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-        <input type="submit" id="delete-app-confirm" data-bs-dismiss="modal" data-petid="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>" class="btn btn-danger"
-          value="Elimina" form="pet-form">
+        <input type="submit" id="delete-app-confirm" data-bs-dismiss="modal" data-petid="<?php echo $templateParams["specificpet"]["ID_Pet"]; ?>" class="btn btn-danger" value="Elimina" form="pet-form">
       </div>
     </div>
   </div>
