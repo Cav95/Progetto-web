@@ -7,6 +7,11 @@ if (!isUserLoggedIn()) {
   exit;
 }
 
+if (isLoggedUserAdmin()) {
+  header("Location: prenotazioni.php");
+  exit;
+}
+
 // Base
 $templateParams["css"] = ["navbar.css"];
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);

@@ -1,6 +1,11 @@
 <?php
 require_once "bootstrap.php";
 
+if (!isLoggedUserAdmin()) {
+  http_response_code(403);
+  exit;
+}
+
 // Base
 $templateParams["css"] = ["navbar.css"];
 $templateParams["curiosita"] = $dbh->getRandomFacts(3);
