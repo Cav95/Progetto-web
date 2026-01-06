@@ -12,9 +12,9 @@
             <label for="nome" class="form-label">Nome</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="date" name="data" class="form-control" id="data" placeholder="Data"
+            <input type="date" name="data" class="form-control" id="data" placeholder="Data di nascita"
               value="<?php echo $templateParams["specificpet"]["DataDiNascita"]; ?>" required />
-            <label for="data" class="form-label">Data</label>
+            <label for="data" class="form-label">Data di nascita</label>
           </div>
           <div class="form-floating">
             <select id="spec-sel" name="nomespecie" class="form-select form-select-sm mb-3">
@@ -53,9 +53,9 @@
           </div>
 
           <div class="form-floating mb-3">
-            <textarea type="text" name="nome" class="form-control h-auto" id="descrizione-img" placeholder="Descrizione Immagine" maxlength="300"
+            <textarea type="text" name="nome" class="form-control h-auto" id="descrizione-img" placeholder="Descrizione immagine" maxlength="300"
               value="" rows="4" required><?php echo $templateParams["specificpet"]["DescrizioneImmagine"]; ?></textarea>
-            <label for="descrizione-img" class="form-label">Descrizione Immagine</label>
+            <label for="descrizione-img" class="form-label">Descrizione immagine</label>
           </div>
 
           <div class="form-check form-switch">
