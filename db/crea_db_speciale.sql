@@ -269,7 +269,7 @@ VALUES (
         'ghini.jpg',
         'Professor Vittorio Ghini in una posa di sorpresa',
         1,
-        8
+        18
     );
 
 INSERT INTO Prenotazioni (Data, Ora, Utente, Luogo)
