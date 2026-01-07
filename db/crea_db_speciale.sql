@@ -167,7 +167,8 @@ VALUES ('I gatti hanno sviluppato il "miagolio" per noi','I gattini miagolano pe
 
 INSERT INTO Specie (Nomespecie)
 VALUES ('Cane'),
-    ('Gatto');
+    ('Gatto'),
+    ('Sconosciuta');
 
 INSERT INTO Razze (Nomerazza, ID_Specie)
 VALUES ('Carlino', 1),
@@ -176,7 +177,8 @@ VALUES ('Carlino', 1),
     ('Europeo', 2),
     ('Soriano', 2),
     ('British Shorthair', 2),
-    ("Bengala", 2);
+    ("Bengala", 2),
+    ("Sconosciuta", 3);
 
 INSERT INTO Pet (
         Nomepet,
@@ -249,6 +251,15 @@ VALUES (
         'Gatto bengala con lo sguardo fisso verso il soffitto',
         1,
         7
+    ),
+    (
+        'Vittoryo',
+        '1964-12-21',
+        "Non ne sappiamo molto, ma è molto simpatico, anche se a volte un po' volgare...",
+        'ghini.jpg',
+        'Professor Vittorio Ghini in una posa di sorpresa',
+        1,
+        8
     );
 
 INSERT INTO Prenotazioni (Data, Ora, Utente, Luogo)
