@@ -76,7 +76,7 @@
 
       <div class="col-12 col-md-5 order-md-1">
         <img src="<?php echo DESIGN_IMG_DIR . "home_cat.jpg"; ?>" 
-            alt="Gatto calmo e affettuoso che riposa vicino a una persona" 
+            alt="Gatto giovane dal manto rossiccio" 
             class="rounded shadow w-100"/>
       </div>
     </section>
