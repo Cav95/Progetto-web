@@ -176,7 +176,18 @@ VALUES ('Carlino', 1),
     ('Europeo', 2),
     ('Soriano', 2),
     ('British Shorthair', 2),
-    ("Bengala", 2);
+    ("Bengala", 2),
+    ("Sconosciuta", 3),
+    ('Labrador Retriever', 1),
+    ('Pastore Tedesco', 1),
+    ('Beagle', 1),
+    ('Chihuahua', 1),
+    ('Border Collie', 1),
+    ('Siamese', 2),
+    ('Maine Coon', 2),
+    ('Persiano', 2),
+    ('Ragdoll', 2),
+    ('Sphynx', 2);
 
 INSERT INTO Pet (
         Nomepet,

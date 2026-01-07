@@ -47,7 +47,6 @@ form.addEventListener("submit", e => {
         id_pet
       );
       
-     // window.location.href = 'add-pet.php?pet-id=' + id_pet;
     }
   }
 
